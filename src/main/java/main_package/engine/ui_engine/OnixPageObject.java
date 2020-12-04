@@ -1,7 +1,10 @@
 package main_package.engine.ui_engine;
 
+import main_package.data.LogLevel;
 import main_package.data.Settings;
 import main_package.engine.BaseClass;
+import main_package.engine.log_engine.OnixLog;
+import main_package.engine.test_engine.OnixUiAssert;
 
 public abstract class OnixPageObject extends BaseClass {
     OnixWebDriver driver;
@@ -13,4 +16,9 @@ public abstract class OnixPageObject extends BaseClass {
         return this;
     }
     public abstract OnixPageObject openFromUrl(String url);
+
+    public OnixWebDriver getDriver() {
+        return driver;
+    }
+    public abstract OnixPageObject check(OnixUiAssert onixUiAssert);
 }
