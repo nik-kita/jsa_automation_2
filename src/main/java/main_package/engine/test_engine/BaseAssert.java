@@ -3,7 +3,7 @@ package main_package.engine.test_engine;
 import main_package.engine.BaseClass;
 import org.testng.asserts.SoftAssert;
 
-public abstract class OnixAssert extends BaseClass {
+public abstract class BaseAssert extends BaseClass {
     private SoftAssert softAssert;
     private int totalSoftCounter;
     private int successSoftCounter;
@@ -14,7 +14,7 @@ public abstract class OnixAssert extends BaseClass {
         }
         return softAssert;
     }
-    public OnixAssert assertAll() {
+    public BaseAssert assertAll() {
         if(totalSoftCounter == successSoftCounter) {
             message(true, "All softAssertions passed!" , "this message will never displayed");
         } else {
@@ -27,7 +27,7 @@ public abstract class OnixAssert extends BaseClass {
         }
         return this;
     }
-    public OnixAssert assertAll(String good, String bad) {
+    public BaseAssert assertAll(String good, String bad) {
         if(totalSoftCounter == successSoftCounter) {
             message(true, good, "this message will never displayed");
         } else {
