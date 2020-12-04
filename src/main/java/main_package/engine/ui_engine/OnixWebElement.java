@@ -46,6 +46,6 @@ public class OnixWebElement extends BaseClass {
 
     @Override
     public String toString() {
-        return "[" + seleniumWebElement.toString().substring(seleniumWebElement.toString().indexOf(")] -> ") + 6) + "]";
+        return seleniumWebElement.toString().substring(seleniumWebElement.toString().indexOf(")] -> ") + 6);
     }
 }
