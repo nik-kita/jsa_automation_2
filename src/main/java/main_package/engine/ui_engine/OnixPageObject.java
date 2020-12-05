@@ -21,4 +21,5 @@ public abstract class OnixPageObject extends BaseClass {
         return driver;
     }
     public abstract OnixPageObject check(OnixUiAssert onixUiAssert);
+
 }
