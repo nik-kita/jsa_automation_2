@@ -1,5 +1,6 @@
 package main_package.engine.ui_engine;
 
+import main_package.data.S;
 import main_package.engine.BaseClass;
 import main_package.engine.Fly;
 import org.openqa.selenium.*;
@@ -40,6 +41,11 @@ public class OnixWebDriver extends BaseClass {
 
     public OnixWebElement findElement(OnixLocator locator) {
         By path = locator.getPath();
+        for(S s : locator.specialActions()) {
+            switch(s){
+                case SCROLL_PAGE_DOWN -> this.scrollPageDown();
+            }
+        }
         OnixWebElement result = new OnixWebElement((seleniumWebDriver.findElement(path)));
         log.trace("find webElement by [{}]", path);
         return result;
