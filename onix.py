@@ -15,6 +15,8 @@ def create_unit_test(file):
         unit_string = f'''
 package {generate_package(file).get("unit")}
 
+
+import main_package.engine.test_engine.OnixUiTestRunner;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import {generate_package(file).get("main_package")[0:-1] + "." + po_name + ";"}
@@ -43,7 +45,8 @@ def create_smoke_test(file):
 
     smoke_string = f'''
 package {generate_package(file).get("smoke")}
-    
+
+import main_package.engine.test_engine.OnixUiTestRunner;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import {generate_package(file).get("main_package")[0:-1] + "." + po_name + ";"}
@@ -166,8 +169,8 @@ def escape_path(file_name):
 
 def generate_package(file_name):
     main_package = (re.search("(src/main/java/)(.*)(/\w+$)", file_name).group(2) + ";").replace("/", ".")
-    unit = "test_package.ui.unit.ui." + re.search("(ui\.)(.*)", main_package).group(2);
-    smoke = "test_package.ui.smoke.ui." + re.search("(ui\.)(.*)", main_package).group(2);
+    unit = "test_package.ui.unit.ui." + re.search("(ui\.)(.*)", main_package).group(2)
+    smoke = "test_package.ui.smoke.ui." + re.search("(ui\.)(.*)", main_package).group(2)
     result = {
         "main_package": main_package,
         "unit": unit,
@@ -178,14 +181,17 @@ def generate_package(file_name):
 
 
 if __name__ == "__main__":
-    if (sys.argv[1] == "make"):
-        if (sys.argv[2] == "--po"):
+    if (sys.argv[1] == "make:po"):
+        if (sys.argv[2] == "--all"):
             create_page_object(sys.argv[3])
+            create_smoke_test(sys.argv[3])
+            create_unit_test(sys.argv[3])
         elif (sys.argv[2] == "--unit"):
+            create_page_object(sys.argv[2])
             create_unit_test(sys.argv[3])
         elif (sys.argv[2] == "--smoke"):
+            create_page_object(sys.argv[2])
             create_smoke_test(sys.argv[3])
         else:
             create_page_object(sys.argv[2])
-            create_smoke_test(sys.argv[2])
-            create_unit_test(sys.argv[2])
+

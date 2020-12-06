@@ -1,9 +1,11 @@
 package main_package.engine.test_engine;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import main_package.data.Settings;
 import main_package.engine.BaseClass;
 import main_package.engine.Fly;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__GUEST__.page_objects.main.Main;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -24,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 public class OnixUiTestRunner extends OnixTestRunner{
     public OnixUiAssert onixUiAssert;
     public OnixWebDriver driver;
+    private Main mainGuest;
 
     public OnixWebDriver getDriver() {
         return driver;
@@ -89,5 +92,11 @@ public class OnixUiTestRunner extends OnixTestRunner{
         return this;
     }
 
+    protected Main openSite() {
+        driver.get(Settings.BASE_URL);
+        mainGuest = new Main(driver);
+        log.debug("Open https://www.jamessmithacademy.com/");
+        return mainGuest;
+    }
 
 }
