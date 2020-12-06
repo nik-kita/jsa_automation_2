@@ -1,7 +1,9 @@
 package main_package.engine.test_engine;
 
 import main_package.engine.BaseClass;
+import org.testng.annotations.Listeners;
 
+@Listeners(org.uncommons.reportng.HTMLReporter.class)
 public abstract class OnixTestRunner extends BaseClass {
     public Object[] mergeArrays(Object[]... arrays) {
         int length = 0;

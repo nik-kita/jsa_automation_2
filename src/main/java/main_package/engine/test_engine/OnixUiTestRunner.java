@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import main_package.data.Settings;
 import main_package.engine.Fly;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__GUEST__.page_objects.main.Main;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;

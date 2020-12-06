@@ -17,17 +17,48 @@ package {generate_package(file).get("unit")}
 
 
 import main_package.engine.test_engine.OnixUiTestRunner;
+import main_package.engine.ui_engine.OnixLocator;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import {generate_package(file).get("main_package")[0:-1] + "." + po_name + ";"}
+
 
 public class {test_name} extends OnixUiTestRunner {{
     {po_name} {po_name[0].lower() + po_name[1:]};
     @BeforeClass
     public void open{po_name}() {{
-        //TODO
+        main = openSite();//TODO
     }}
-    //TODO
+    
+    @Test(dataProvider = "getUnique")
+    public void unique(OnixLocator locator) {{
+        onixUiAssert.
+                checkCountOfElementByLocator(locator, 1);
+    }}
+
+    @DataProvider
+    public Object[] getUnique() {{
+        return mergeArrays(
+                {po_name}.Locator.values()
+                //TODO
+        );
+    }}
+    
+    @Test(dataProvider = "getRepeated")
+    public void repeated(OnixLocator locator) {{
+        onixUiAssert.
+                checkMinimumOfElementsByLocator(locator, 1);
+    }}
+    
+    @DataProvider
+    public Object[] getRepeated() {{
+        return mergeArrays(
+                {po_name}.Locators.values()
+                //TODO
+        );
+    }}
 }}    
 
 '''
@@ -47,9 +78,11 @@ def create_smoke_test(file):
 package {generate_package(file).get("smoke")}
 
 import main_package.engine.test_engine.OnixUiTestRunner;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import {generate_package(file).get("main_package")[0:-1] + "." + po_name + ";"}
+
 
 public class {test_name} extends OnixUiTestRunner {{
     {po_name} {po_name[0].lower() + po_name[1:]};
