@@ -3,6 +3,7 @@ package main_package.ui.specific;
 import main_package.data.S;
 import main_package.engine.BaseClass;
 import main_package.engine.Fly;
+import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.BaseSpecificPageObject;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixWebDriver;
@@ -34,6 +35,16 @@ public class JsaCookies extends BaseSpecificPageObject {
     @Override
     public JsaCookies make(Fly fly) {
         fly.make();
+        return this;
+    }
+
+    @Override
+    public JsaCookies check(OnixUiAssert onixUiAssert) {
+        for(OnixLocator l : OnixUiAssert.mergeArrays(
+                JsaCookies.Locator.values()
+        )) {
+            onixUiAssert.softCheckCountOfElementByLocator(l, 1);
+        }
         return this;
     }
 
