@@ -14,7 +14,7 @@ public class Main extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
     public Main(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] is open", "Main"); //TODO
+        log.debug("[{}] is open", "Main");
     }
 
 

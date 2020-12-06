@@ -87,7 +87,7 @@ public class {po_name} extends OnixPageObject {{
     private String ENDPOINT_URL = ""; //TODO
     public {po_name}(OnixWebDriver driver) {{
         super(driver);
-        log.debug("[{{}}] is open", "{po_name}"); //TODO
+        log.debug("[{{}}] page is open", "{po_name}"); //TODO
     }}
 
 
