@@ -4,17 +4,37 @@ file = sys.argv[1]
 
 
 def create_unit_test(file):
-    test_unit_file = "src/test/java/test_package/ui/unit/" + re.search("(src/main/java/main_package/)(\w+$)", file).group(2)
+    test_unit_file = "src/test/java/test_package/ui/unit/" + re.search("(src/main/java/main_package/)(.*)", file).group(2)
     if not os.path.exists(test_unit_file):
         os.makedirs(test_unit_file)
 
 
 def create_smoke_test(file):
-    test_smoke_file = "src/test/java/test_package/ui/smoke/" + re.search("(src/main/java/main_package/)(\w+$)", file).group(2)
-    print(test_smoke_file)
+    test_smoke_file = "src/test/java/test_package/ui/smoke/" + re.search("(src/main/java/main_package/)(.*)(/\w*$)", file).group(2)
     if not os.path.exists(test_smoke_file):
         os.makedirs(test_smoke_file)
 
+    po_name = escape_path(file)
+    test_name = po_name + "Test"
+
+    smoke_string = f'''
+package {generate_package(file).get("smoke")}
+    
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import {generate_package(file).get("main_package")[0:-1] + "." + po_name + ";"}
+
+public class {test_name} extends OnixUiTestRunner {{
+    {po_name} {po_name[0].lower() + po_name[1:]};
+    @BeforeMethod
+    public void open{po_name}() {{
+        //TODO
+    }}
+    //TODO
+}}    
+
+'''
+    open(test_smoke_file + "/" + test_name + ".java", "w").write(smoke_string)
 
 def create_page_object(file):
     po_name = escape_path(file)
@@ -121,8 +141,8 @@ def escape_path(file_name):
 
 def generate_package(file_name):
     main_package = (re.search("(src/main/java/)(.*)(/\w+$)", file_name).group(2) + ";").replace("/", ".")
-    unit = "test_package.ui.unit." + re.search("(ui\.)(.*)", main_package).group(2);
-    smoke = "test_package.ui.smoke." + re.search("(ui\.)(.*)", main_package).group(2);
+    unit = "test_package.ui.unit.ui." + re.search("(ui\.)(.*)", main_package).group(2);
+    smoke = "test_package.ui.smoke.ui." + re.search("(ui\.)(.*)", main_package).group(2);
     result = {
         "main_package": main_package,
         "unit": unit,
