@@ -9,10 +9,10 @@ def create_unit_test(file):
     if not os.path.exists(test_unit_file):
         os.makedirs(test_unit_file)
 
-        po_name = escape_path(file)
-        test_name = po_name + "Test"
+    po_name = escape_path(file)
+    test_name = po_name + "Test"
 
-        unit_string = f'''
+    unit_string = f'''
 package {generate_package(file).get("unit")}
 
 
@@ -31,7 +31,7 @@ public class {test_name} extends OnixUiTestRunner {{
 }}    
 
 '''
-        open(test_unit_file + "/" + test_name + ".java", "w").write(unit_string)
+    open(test_unit_file + "/" + test_name + ".java", "w").write(unit_string)
 
 
 def create_smoke_test(file):
@@ -128,7 +128,6 @@ public class {po_name} extends OnixPageObject {{
 
     public enum Locator implements OnixLocator {{
         //TODO
-        ,
         ;
         private By path;
         private S[] actions;
@@ -151,7 +150,6 @@ public class {po_name} extends OnixPageObject {{
 
     public enum Locators implements OnixLocator {{
         //TODO
-        ,
         ;
         private By path;
         private S[] actions;
@@ -202,10 +200,8 @@ if __name__ == "__main__":
             create_smoke_test(sys.argv[3])
             create_unit_test(sys.argv[3])
         elif (sys.argv[2] == "--unit"):
-            create_page_object(sys.argv[2])
             create_unit_test(sys.argv[3])
         elif (sys.argv[2] == "--smoke"):
-            create_page_object(sys.argv[2])
             create_smoke_test(sys.argv[3])
         else:
             create_page_object(sys.argv[2])

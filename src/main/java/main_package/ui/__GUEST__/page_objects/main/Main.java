@@ -14,7 +14,7 @@ public class Main extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
     public Main(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] is open", "Main");
+        log.debug("[{}] page is open", "Main"); //TODO
     }
 
 
@@ -55,7 +55,6 @@ public class Main extends OnixPageObject {
 
     public enum Locator implements OnixLocator {
         //TODO
-        ,
         ;
         private By path;
         private S[] actions;
@@ -78,7 +77,6 @@ public class Main extends OnixPageObject {
 
     public enum Locators implements OnixLocator {
         //TODO
-        ,
         ;
         private By path;
         private S[] actions;
