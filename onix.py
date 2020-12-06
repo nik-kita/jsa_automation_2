@@ -2,22 +2,27 @@ import sys, re, os
 
 file = sys.argv[1]
 
+
 def create_unit_test(file):
-    test_unit_file = "src/test/java/test_package/ui/unit" + re.search("(src/main/java/main_package/)(.*)").group(2) + "Test"
-    if not os.path.exists(file):
+    test_unit_file = "src/test/java/test_package/ui/unit/" + re.search("(src/main/java/main_package/)(\w+$)", file).group(2)
+    if not os.path.exists(test_unit_file):
         os.makedirs(test_unit_file)
 
+
 def create_smoke_test(file):
-    test_smoke_file = "src/test/java/test_package/ui/smoke" + re.search("(src/main/java/main_package/)(.*)").group(2) + "Test"
-    if not os.path.exists(file):
+    test_smoke_file = "src/test/java/test_package/ui/smoke/" + re.search("(src/main/java/main_package/)(\w+$)", file).group(2)
+    print(test_smoke_file)
+    if not os.path.exists(test_smoke_file):
         os.makedirs(test_smoke_file)
+
 
 def create_page_object(file):
     po_name = escape_path(file)
     package = generate_package(file)
+    path = re.search("(.*)(\w+$)", file).group(2)
 
-    if not os.path.exists(file):
-        os.makedirs(file)
+    if not os.path.exists(path):
+        os.makedirs(path)
     po_string = f'''
 package {package.get("main_package")};
     
@@ -128,13 +133,14 @@ def generate_package(file_name):
 
 
 if __name__ == "__main__":
-    if(sys.argv[2] == "--po"):
+    if (len(sys.argv) == 2):
         create_page_object(sys.argv[1])
-    elif(sys.argv[2] == "--unit"):
         create_unit_test(sys.argv[1])
-    elif(sys.argv[2] == "--smoke"):
         create_smoke_test(sys.argv[1])
     else:
-        create_page_object(sys.argv[1])
-        create_unit_test(sys.argv[1])
-        create_smoke_test(sys.argv[1])
+        if (sys.argv[2] == "--po"):
+            create_page_object(sys.argv[1])
+        elif (sys.argv[2] == "--unit"):
+            create_unit_test(sys.argv[1])
+        elif (sys.argv[2] == "--smoke"):
+            create_smoke_test(sys.argv[1])
