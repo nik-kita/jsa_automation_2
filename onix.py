@@ -4,7 +4,8 @@ file = sys.argv[1]
 
 
 def create_unit_test(file):
-    test_unit_file = "src/test/java/test_package/ui/unit/" + re.search("(src/main/java/main_package/)(.*)(/\w*$)", file).group(2)
+    test_unit_file = "src/test/java/test_package/ui/unit/" + re.search("(src/main/java/main_package/)(.*)(/\w*$)",
+                                                                       file).group(2)
     if not os.path.exists(test_unit_file):
         os.makedirs(test_unit_file)
 
@@ -32,7 +33,8 @@ public class {test_name} extends OnixUiTestRunner {{
 
 
 def create_smoke_test(file):
-    test_smoke_file = "src/test/java/test_package/ui/smoke/" + re.search("(src/main/java/main_package/)(.*)(/\w*$)", file).group(2)
+    test_smoke_file = "src/test/java/test_package/ui/smoke/" + re.search("(src/main/java/main_package/)(.*)(/\w*$)",
+                                                                         file).group(2)
     if not os.path.exists(test_smoke_file):
         os.makedirs(test_smoke_file)
 
@@ -57,6 +59,7 @@ public class {test_name} extends OnixUiTestRunner {{
 
 '''
     open(test_smoke_file + "/" + test_name + ".java", "w").write(smoke_string)
+
 
 def create_page_object(file):
     po_name = escape_path(file)
@@ -175,14 +178,14 @@ def generate_package(file_name):
 
 
 if __name__ == "__main__":
-    if (len(sys.argv) == 2):
-        create_page_object(sys.argv[1])
-        create_unit_test(sys.argv[1])
-        create_smoke_test(sys.argv[1])
-    else:
+    if (sys.argv[1] == "make"):
         if (sys.argv[2] == "--po"):
-            create_page_object(sys.argv[1])
+            create_page_object(sys.argv[3])
         elif (sys.argv[2] == "--unit"):
-            create_unit_test(sys.argv[1])
+            create_unit_test(sys.argv[3])
         elif (sys.argv[2] == "--smoke"):
-            create_smoke_test(sys.argv[1])
+            create_smoke_test(sys.argv[3])
+        else:
+            create_page_object(sys.argv[2])
+            create_smoke_test(sys.argv[2])
+            create_unit_test(sys.argv[2])
