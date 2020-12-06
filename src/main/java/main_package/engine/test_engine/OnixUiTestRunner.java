@@ -2,14 +2,12 @@ package main_package.engine.test_engine;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import main_package.data.Settings;
-import main_package.engine.BaseClass;
 import main_package.engine.Fly;
 import main_package.engine.ui_engine.OnixWebDriver;
 import main_package.ui.__GUEST__.page_objects.main.Main;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
@@ -24,13 +22,9 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class OnixUiTestRunner extends OnixTestRunner{
-    public OnixUiAssert onixUiAssert;
-    public OnixWebDriver driver;
+    protected OnixUiAssert onixUiAssert;
+    protected OnixWebDriver driver;
     private Main mainGuest;
-
-    public OnixWebDriver getDriver() {
-        return driver;
-    }
 
     @BeforeClass
     public void settingDriver() {
@@ -39,23 +33,17 @@ public class OnixUiTestRunner extends OnixTestRunner{
         log.debug("Class '{}' is started.", className);
         WebDriverManager.chromedriver().setup();
         Map<String, Object> prefs = new HashMap<>();
-        // Set the notification setting it will override the default setting
         prefs.put("profile.default_content_setting_values.notifications", 2);
         ChromeOptions options = new ChromeOptions();
-        //--------
         options.addArguments("--start-maximized");
         options.addArguments("--disable-web-security");
         options.addArguments("--no-proxy-server");
         options.setExperimentalOption("prefs", prefs);
         prefs.put("credentials_enable_service", false);
         prefs.put("profile.password_manager_enabled", false);
-        //--------
-        //chrome notification about automation will not displayed
         options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
         options.setExperimentalOption("prefs", prefs);
-        // pass the options object in Chrome driver
         WebDriver chrome = new ChromeDriver(options);
-//        chrome.manage().window().maximize();
         chrome.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
         driver = new OnixWebDriver(chrome);
         onixUiAssert = new OnixUiAssert(driver);
@@ -85,11 +73,8 @@ public class OnixUiTestRunner extends OnixTestRunner{
         log.debug("Class '{}' is finished.", this.getClass().toString());
     }
 
-
-    @Override
-    public OnixUiTestRunner make(Fly fly) {
-        fly.make();
-        return this;
+    public OnixWebDriver getDriver() {
+        return driver;
     }
 
     protected Main openSite() {
@@ -97,6 +82,12 @@ public class OnixUiTestRunner extends OnixTestRunner{
         mainGuest = new Main(driver);
         log.debug("Open https://www.jamessmithacademy.com/");
         return mainGuest;
+    }
+
+    @Override
+    public OnixUiTestRunner make(Fly fly) {
+        fly.make();
+        return this;
     }
 
 }
