@@ -81,6 +81,7 @@ import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
+import main_package.data.S;
 
 public class {po_name} extends OnixPageObject {{
     private String ENDPOINT_URL = ""; //TODO
@@ -126,34 +127,48 @@ public class {po_name} extends OnixPageObject {{
 
 
     public enum Locator implements OnixLocator {{
-
+        //TODO
+        ,
         ;
-
         private By path;
-
+        private S[] actions;
         Locator(By path) {{
             this.path = path;
         }}
-
+        Locator(By path, S... actions) {{
+            this.path = path;
+            this.actions = actions;
+        }}
         @Override
         public By getPath() {{
             return path;
+        }}
+        @Override
+        public S[] specialActions() {{
+           return actions;
         }}
     }}
 
     public enum Locators implements OnixLocator {{
-
+        //TODO
+        ,
         ;
-
         private By path;
-
+        private S[] actions;
         Locators(By path) {{
             this.path = path;
         }}
-
+        Locators(By path, S... actions) {{
+            this.path = path;
+            this.actions = actions;
+        }}
         @Override
         public By getPath() {{
             return path;
+        }}
+        @Override
+        public S[] specialActions() {{
+           return actions;
         }}
     }}
 

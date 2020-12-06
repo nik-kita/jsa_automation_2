@@ -8,6 +8,7 @@ import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
+import main_package.data.S;
 
 public class Main extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
@@ -53,44 +54,48 @@ public class Main extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        GET_STARTED_BUTTON(By.cssSelector(".banner a[href='/users/register/']")),
-        PLAY_STORE_BUTTON_BANNER(By.cssSelector(".banner img[alt='playstore']")),
-        APPSTORE_BUTTON_BANNER(By.cssSelector(".banner img[alt='appstore']")),
-        INSTAGRAM_BUTTON_INTRODUCTION(By.cssSelector(".introduction .insta")),
-        PLAY_STORE_BUTTON_DOWNLOAD(By.cssSelector(".download img[alt='playstore']")),
-        FACEBOOK_BUTTON_INTRODUCTION(By.cssSelector(".introduction .facebook")),
-        APPSTORE_BUTTON_DOWNLOAD(By.cssSelector(".download img[alt='appstore']")),
-        ABOUT_CHALLENGES_MOTIVATION(By.cssSelector(".motivation [href='/challenge/about/']")),
-        TRANSFORMATIONS_BUTTON_MEMBER_TRANSFORMATIONS(By.cssSelector(".member_transformations [href='/transformations/']")),
-        EMAIL_INPUT_DAILY_EMAILS(By.cssSelector("input[name='email']")),
-        SIGN_UP_DAILY_EMAILS(By.cssSelector("#daily-button")),
+        //TODO
+        ,
         ;
-
         private By path;
-
+        private S[] actions;
         Locator(By path) {
             this.path = path;
         }
-
+        Locator(By path, S... actions) {
+            this.path = path;
+            this.actions = actions;
+        }
         @Override
         public By getPath() {
             return path;
+        }
+        @Override
+        public S[] specialActions() {
+           return actions;
         }
     }
 
     public enum Locators implements OnixLocator {
-
+        //TODO
+        ,
         ;
-
         private By path;
-
+        private S[] actions;
         Locators(By path) {
             this.path = path;
         }
-
+        Locators(By path, S... actions) {
+            this.path = path;
+            this.actions = actions;
+        }
         @Override
         public By getPath() {
             return path;
+        }
+        @Override
+        public S[] specialActions() {
+           return actions;
         }
     }
 
