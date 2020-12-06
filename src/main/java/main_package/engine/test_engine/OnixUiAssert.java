@@ -120,6 +120,28 @@ public class OnixUiAssert extends BaseAssert {
         Assert.assertTrue(result, errorMessage);
     }
 
+    public SoftAssert softCheckMinimumOfElementsByLocator(OnixLocator locator, int min) {
+        SoftAssert softAssert = getSoftAssert();
+        int actualElCount = driver
+                .findElements(locator)
+                .size();
+        String locatorName = locator.name();
+        String locatorPath = locator.getPath().toString();
+        String locatorClass = locator.getClass().toString();
+        String errorMessage = "\n" +
+                "\n----------------------------" +
+                "\nIn " + locatorClass +
+                "\n\n" + locatorName +
+                "\n" + locatorPath +
+                "\n----------------------------find " + actualElCount + " elements" +
+                "\n=== EXPECTED THAT THEIR COUNT WILL BE MORE THAN "+ min + " ===\n";
+        boolean result = actualElCount > min;
+        softMessage(result, locatorClass + "." + locatorName + " with " + locatorPath + " + has more than " + min + " elements (" + actualElCount + ")",
+                errorMessage);
+        softAssert.assertTrue(result, errorMessage);
+        return softAssert;
+    }
+
     public void checkCountOfElementByLocator(OnixLocator locator, int expectedElCount) {
         int actualElCount = driver
                 .findElements(locator)

@@ -7,7 +7,7 @@ import main_package.engine.log_engine.OnixLog;
 import main_package.engine.test_engine.OnixUiAssert;
 
 public abstract class OnixPageObject extends BaseClass {
-    OnixWebDriver driver;
+    protected OnixWebDriver driver;
     public OnixPageObject(OnixWebDriver driver) {
         this.driver = driver;
     }
@@ -15,7 +15,7 @@ public abstract class OnixPageObject extends BaseClass {
         driver.get(Settings.BASE_URL);
         return this;
     }
-    public abstract OnixPageObject openFromUrl(String url);
+    public abstract OnixPageObject openFromUrl();
 
     public OnixWebDriver getDriver() {
         return driver;

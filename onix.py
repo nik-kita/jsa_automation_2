@@ -1,21 +1,140 @@
-import sys
-file_name = sys.argv[1]
-po_string = '''
+import sys, re, os
 
-public class {file_name} extends OnixPageObject {
+file = sys.argv[1]
 
-}
+def create_unit_test(file):
+    test_unit_file = "src/test/java/test_package/ui/unit" + re.search("(src/main/java/main_package/)(.*)").group(2) + "Test"
+    if not os.path.exists(file):
+        os.makedirs(test_unit_file)
 
+def create_smoke_test(file):
+    test_smoke_file = "src/test/java/test_package/ui/smoke" + re.search("(src/main/java/main_package/)(.*)").group(2) + "Test"
+    if not os.path.exists(file):
+        os.makedirs(test_smoke_file)
+
+def create_page_object(file):
+    po_name = escape_path(file)
+    package = generate_package(file)
+
+    if not os.path.exists(file):
+        os.makedirs(file)
+    po_string = f'''
+package {package.get("main_package")};
+    
+import main_package.data.Settings;
+import main_package.engine.Fly;
+import main_package.engine.test_engine.OnixUiAssert;
+import main_package.engine.ui_engine.OnixLocator;
+import main_package.engine.ui_engine.OnixPageObject;
+import main_package.engine.ui_engine.OnixWebDriver;
+import org.openqa.selenium.By;
+
+public class {po_name} extends OnixPageObject {{
+    private String ENDPOINT_URL = ""; //TODO
+    public {po_name}(OnixWebDriver driver) {{
+        super(driver);
+        log.debug("[{{}}] is open", "{po_name}"); //TODO
+    }}
+
+
+    @Override
+    public {po_name} make(Fly fly) {{
+        fly.make();
+        return this;
+    }}
+
+    @Override
+    public {po_name} openFromScratch() {{
+        driver.get(Settings.BASE_URL);
+        //TODO
+        return this;
+    }}
+    @Override
+    public {po_name} openFromUrl() {{
+        driver.get(Settings.BASE_URL + ENDPOINT_URL);
+        return this;
+    }}
+    @Override
+    public {po_name} check(OnixUiAssert onixUiAssert) {{
+        for(OnixLocator l : OnixUiAssert.mergeArrays(
+                {po_name}.Locator.values()
+                //TODO
+        )) {{
+            onixUiAssert.softCheckCountOfElementByLocator(l, 1);
+        }}
+        for(OnixLocator l : OnixUiAssert.mergeArrays(
+                {po_name}.Locators.values()
+                //TODO
+        )) {{
+            onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
+        }}
+        return this;
+    }} 
+
+
+    public enum Locator implements OnixLocator {{
+
+        ;
+
+        private By path;
+
+        Locator(By path) {{
+            this.path = path;
+        }}
+
+        @Override
+        public By getPath() {{
+            return path;
+        }}
+    }}
+
+    public enum Locators implements OnixLocator {{
+
+        ;
+
+        private By path;
+
+        Locators(By path) {{
+            this.path = path;
+        }}
+
+        @Override
+        public By getPath() {{
+            return path;
+        }}
+    }}
+
+}}
 
 '''
+    open(file + ".java", "w").write(po_string)
 
 
-def create_page_object():
-    file = open(file_name + ".java", "w")
-    print(file_name)
-    print(po_string)
-    file.write(po_string)
+def escape_path(file_name):
+    return re.findall("\w+$", file_name)[0]
 
 
+def generate_package(file_name):
+    main_package = (re.search("(src/main/java/)(.*)(/\w+$)", file_name).group(2) + ";").replace("/", ".")
+    unit = "test_package.ui.unit." + re.search("(ui\.)(.*)", main_package).group(2);
+    smoke = "test_package.ui.smoke." + re.search("(ui\.)(.*)", main_package).group(2);
+    result = {
+        "main_package": main_package,
+        "unit": unit,
+        "smoke": smoke,
+    }
+    print(result)
+    return result
 
-create_page_object()
+
+if __name__ == "__main__":
+    if(sys.argv[2] == "--po"):
+        create_page_object(sys.argv[1])
+    elif(sys.argv[2] == "--unit"):
+        create_unit_test(sys.argv[1])
+    elif(sys.argv[2] == "--smoke"):
+        create_smoke_test(sys.argv[1])
+    else:
+        create_page_object(sys.argv[1])
+        create_unit_test(sys.argv[1])
+        create_smoke_test(sys.argv[1])
