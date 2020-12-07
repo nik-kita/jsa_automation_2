@@ -242,15 +242,15 @@ public interface {name} extends OnixPart {{
 
     //TODO
 
-    enum Locator implements OnixLocator {{
+    enum {name}Ltr implements OnixLocator {{
         //TODO
         ;
         private By path;
         private S[] actions;
-        Locator(By path) {{
+        {name}Ltr(By path) {{
             this.path = path;
         }}
-        Locator(By path, S... actions) {{
+        {name}Ltr(By path, S... actions) {{
             this.path = path;
             this.actions = actions;
         }}
@@ -264,15 +264,15 @@ public interface {name} extends OnixPart {{
         }}
     }}
 
-    enum Locators implements OnixLocator {{
+    enum {name}Ltrs implements OnixLocator {{
         //TODO
         ;
         private By path;
         private S[] actions;
-        Locators(By path) {{
+        {name}Ltrs(By path) {{
             this.path = path;
         }}
-        Locators(By path, S... actions) {{
+        {name}Ltrs(By path, S... actions) {{
             this.path = path;
             this.actions = actions;
         }}
@@ -312,4 +312,5 @@ if __name__ == "__main__":
         elif (sys.argv[2] == "--smoke"):
             print("--smoke functionality in progress")
         else:
+            print("ok")
             part_create(sys.argv[2])

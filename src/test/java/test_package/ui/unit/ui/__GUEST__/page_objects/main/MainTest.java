@@ -6,7 +6,6 @@ import main_package.data.S;
 import main_package.engine.test_engine.OnixUiTestRunner;
 import main_package.engine.ui_engine.OnixLocator;
 import org.openqa.selenium.By;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -44,6 +43,7 @@ public class MainTest extends OnixUiTestRunner {
     public Object[] getRepeated() {
         return mergeArrays(
                 Main.Locators.values(),
+                //TODO Delete in production! Only for demonstrating framework's behavior with fail tests (see OnixFailScreenListener)
                 new OnixLocator[]{
                         new OnixLocator() {
                             @Override
