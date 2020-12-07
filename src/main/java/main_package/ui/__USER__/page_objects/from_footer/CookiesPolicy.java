@@ -40,14 +40,16 @@ public class CookiesPolicy extends OnixPageObject implements MainHeader, Footer 
     @Override
     public CookiesPolicy check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                CookiesPolicy.Locator.values()
-                //TODO
+                CookiesPolicy.Locator.values(),
+                MainHeader.MainHeaderLtr.values(),
+                Footer.FooterLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                CookiesPolicy.Locators.values()
-                //TODO
+                CookiesPolicy.Locators.values(),
+                MainHeader.MainHeaderLtrs.values(),
+                Footer.FooterLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
