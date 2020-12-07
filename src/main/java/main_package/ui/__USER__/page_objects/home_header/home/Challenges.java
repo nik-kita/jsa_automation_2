@@ -7,16 +7,23 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__GUEST__.page_objects.main.Challenge;
+import main_package.ui.__USER__.general_parts.home.HomeHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class Challenges extends OnixPageObject {
+public class Challenges extends OnixPageObject implements HomeHeader {
     private String ENDPOINT_URL = ""; //TODO
     public Challenges(OnixWebDriver driver) {
         super(driver);
         log.debug("[{}] page is open", "Challenges"); //TODO
     }
 
+    public Home clickBackArrow() {
+        driver.findElement(Locator.BACK_HOME_ARROW).click();
+        log.info("click [{}] button", "Back Arrow");
+        return new Home(driver);
+    }
 
     @Override
     public Challenges make(Fly fly) {
@@ -38,14 +45,14 @@ public class Challenges extends OnixPageObject {
     @Override
     public Challenges check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Challenges.Locator.values()
-                //TODO
+                Challenges.Locator.values(),
+                HomeHeader.HomeHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Challenges.Locators.values()
-                //TODO
+                Challenges.Locators.values(),
+                HomeHeader.HomeHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +61,7 @@ public class Challenges extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        BACK_HOME_ARROW(By.xpath("//a[@href='#/home']/img")),
         ;
         private By path;
         private S[] actions;
