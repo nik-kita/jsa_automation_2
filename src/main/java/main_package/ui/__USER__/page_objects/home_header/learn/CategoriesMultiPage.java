@@ -7,16 +7,26 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__USER__.general_parts.home.HomeHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class CategoriesMultiPage extends OnixPageObject {
+public class CategoriesMultiPage extends OnixPageObject implements HomeHeader {
     private String ENDPOINT_URL = ""; //TODO
     public CategoriesMultiPage(OnixWebDriver driver) {
         super(driver);
         log.debug("[{}] page is open", "CategoriesMultiPage"); //TODO
     }
 
+    public Learn clickBackArrow() {
+        driver.findElement(Locator.BACK_ARROW).click();
+        log.info("click [{}] button", "Back Arrow");
+        return new Learn(driver);
+    }
+
+    public enum CategoriesVariant {
+        INTRODUCING, EXERCISE_PRINCIPLES, NUTRITION_PRINCIPLES, EXERCISES, MOBILITY_FUNCTIONS, SOCIAL_MEDIA,
+    }
 
     @Override
     public CategoriesMultiPage make(Fly fly) {
@@ -38,14 +48,14 @@ public class CategoriesMultiPage extends OnixPageObject {
     @Override
     public CategoriesMultiPage check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                CategoriesMultiPage.Locator.values()
-                //TODO
+                CategoriesMultiPage.Locator.values(),
+                HomeHeader.HomeHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                CategoriesMultiPage.Locators.values()
-                //TODO
+                CategoriesMultiPage.Locators.values(),
+                HomeHeader.HomeHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +64,9 @@ public class CategoriesMultiPage extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        DROPDOWN_CATEGORY_MENU(By.cssSelector("#dropdownCategoryMenu")),
+        SEARCH(By.cssSelector("[href='#/learn/search']")),
+        BACK_ARROW(By.cssSelector(".back_link_arrow img")),
         ;
         private By path;
         private S[] actions;
@@ -76,7 +88,9 @@ public class CategoriesMultiPage extends OnixPageObject {
     }
 
     public enum Locators implements OnixLocator {
-        //TODO
+        VIDEO_ITEM(By.cssSelector(".horizontal_video_list_item_image")),
+        CATEGORY_TAG_ITEM(By.cssSelector(".sub_category_menu_item")),
+        SEE_ALL_ITEM(By.xpath("//a[text() = 'See All']")),
         ;
         private By path;
         private S[] actions;

@@ -52,7 +52,7 @@ public class PersonalTrainer extends OnixPageObject implements HomeHeader {
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
                 PersonalTrainer.Locators.values(),
-                HomeHeader.HomeHeaderLtr.values()
+                HomeHeader.HomeHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
