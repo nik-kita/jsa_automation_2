@@ -19,31 +19,31 @@ public interface AccountHeader extends OnixPart {
     default Home clickHomeHeaderButton() {
         OnixWebDriver onixWebDriver = getDriver();
         onixWebDriver.findElement(HOME_HEADER_BUTTON).click();
-        getLog().debug("'Home' from header");
+        getLog().info("click [{}] button in account-header", "Home");
         return new Home(onixWebDriver);
     }
     default Main clickJsaHeaderLogo() {
         OnixWebDriver driver = getDriver();
         driver.findElement(JSA_LOGO).click();
-        getLog().debug("'Main' from header");
+        getLog().info("click [{}] in account-header", "JSA logo");
         return new Main(driver);
     }
     default MyPlan clickAccountHeaderButton() {
         OnixWebDriver driver = getDriver();
         driver.findElement(ACCOUNT_HEADER_BUTTON).click();
-        getLog().debug("'Account' from header");
+        getLog().info("click [{}] button in account-header", "Account");
         return new MyPlan(driver);
     }
     default PricingPlans clickPricingPlansHeaderButton() {
         OnixWebDriver driver = getDriver();
         driver.findElement(PRICING_PLANS_HEADER_BUTTON).click();
-        getLog().debug("'PricingPlans' from header");
+        getLog().info("click [{}] button in account-header", "Pricing Plans");
         return new PricingPlans(driver);
     }
     default AfterLogout clickLogoutHeaderButton() {
         OnixWebDriver driver = getDriver();
         driver.findElement(LOGOUT_HEADER_BUTTON).click();
-        getLog().debug("'AfterLogout' from header");
+        getLog().info("click [{}] button in account-header", "Logout");
         return new AfterLogout(driver);
     }
 

@@ -15,56 +15,56 @@ public interface Footer extends OnixPart {
     default Blog goBlogPageFromFooter() {
         OnixWebDriver driver = getDriver();
         driver.findElement(BLOG_SUPPORT_LINK).click();
-        getLog().debug("'Blog' from footer");
+        getLog().info("click [{}] button in footer", "Blog");
         return new Blog(driver);
     }
 
     default CookiesPolicy goCookiesPolicyFromFooter() {
         OnixWebDriver driver = getDriver();
         driver.findElement(COOKIES_POLICY_LINK).click();
-        getLog().debug("'CookiesPolicy' from footer");
+        getLog().info("click [{}] button in footer", "Cookies Policy");
         return new CookiesPolicy(driver);
     }
 
     default PrivacyPolicy goPrivacyPolicyFromFooter() {
         OnixWebDriver driver = getDriver();
         driver.findElement(PRIVACY_POLICY_LINK).click();
-        getLog().debug("'PrivacyPolicy' from footer");
+        getLog().info("click [{}] button in footer", "Privacy Policy");
         return new PrivacyPolicy(driver);
     }
 
     default TermsOfService goTermsOfServiceFromFooter() {
         OnixWebDriver driver = getDriver();
         driver.findElement(TERMS_OF_SERVICE_LINK).click();
-        getLog().debug("'TermsOfService' from footer");
+        getLog().info("click [{}] button in footer", "Terms Of Service");
         return new TermsOfService(driver);
     }
 
     default ReportBugs goReportBugsFromFooter() {
         OnixWebDriver driver = getDriver();
         driver.findElement(BUG_SUPPORT_LINK).click();
-        getLog().debug("'ReportBugs' from footer");
+        getLog().info("click [{}] button in footer", "Report Bugs");
         return new ReportBugs(driver);
     }
 
     default ContactUs goContactUsFromFooter() {
         OnixWebDriver driver = getDriver();
         driver.findElement(CONTACT_US_LINK).click();
-        getLog().debug("'ContactUs' from footer");
+        getLog().info("click [{}] button in footer", "Contact Us");
         return new ContactUs(driver);
     }
 
     default AccessAndDownload goAccessAndDownloadFromFooter() {
         OnixWebDriver driver = getDriver();
         driver.findElement(ACCESS_LINK).click();
-        getLog().debug("'AccessAndDownload' from footer");
+        getLog().info("click [{}] button in footer", "Access And Download");
         return new AccessAndDownload(driver);
     }
 
     default Faqs goFaqsFromFooter() {
         OnixWebDriver driver = getDriver();
         driver.findElement(FAQS_LINK).click();
-        getLog().debug("'Faqs' from footer");
+        getLog().info("click [{}] button in footer", "FAQs");
         return new Faqs(driver);
     }
 

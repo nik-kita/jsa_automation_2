@@ -18,25 +18,25 @@ public interface AccountSidebar extends OnixPart {
     default MyProfile clickMyProfile() {
         OnixWebDriver driver = getDriver();
         driver.findElement(MY_PROFILE).click();
-        getLog().trace("Open 'My Profile' from 'AccountSidebar'");
+        getLog().info("click [{}] button in account sidebar", "My Profile");
         return new MyProfile(driver);
     }
     default MyPlan clickMyPlan() {
         OnixWebDriver driver = getDriver();
         driver.findElement(MY_PLAN_BUTTON).click();
-        getLog().trace("Open 'My Plans' from 'AccountSidebar'");
+        getLog().info("click [{}] button in account sidebar", "My Plan");
         return new MyPlan(driver);
     }
     default Units clickUnits() {
         OnixWebDriver driver = getDriver();
         driver.findElement(UNITS).click();
-        getLog().trace("Open 'Units' from 'AccountSidebar'");
+        getLog().info("click [{}] button in account sidebar", "Units");
         return new Units(driver);
     }
     default PairedDevices clickPairedDevices() {
         OnixWebDriver driver = getDriver();
         driver.findElement(PAIRED_DEVICES).click();
-        getLog().trace("Open 'PairedDevices' from 'AccountSidebar'");
+        getLog().info("click [{}] button in account sidebar", "Paired Devices");
         return new PairedDevices(driver);
     }
 
