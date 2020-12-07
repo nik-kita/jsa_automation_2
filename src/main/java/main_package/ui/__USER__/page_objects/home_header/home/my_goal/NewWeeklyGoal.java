@@ -17,6 +17,42 @@ public class NewWeeklyGoal extends OnixPageObject {
         log.debug("[{}] page is open", "NewWeeklyGoal"); //TODO
     }
 
+    public MyGoal clickCloseButton() {
+        driver.findElement(Locator.CLOSE_X_BUTTON).click();
+        log.info("click [{}] close button in [{}] popup", "x", "New Weekly Goal");
+        return new MyGoal(driver);
+    }
+    public MyGoal save(String text) {
+        driver.findElement(Locator.GAOL_TEXTAREA).sendKeys(text);
+        driver.findElement(Locator.SAVE_BUTTON).click();
+        if(driver.isElementPresent(Locator.SAVE_BUTTON)) {
+            try {
+                Thread.sleep(500);
+            } catch(InterruptedException e) {
+                log.error(e.getMessage());
+            }
+            log.warn("waiting for invisibility of [{}] button", "Save");
+        }
+        log.info("click [{}] button after adding some text \n[{}]", "Save", text);
+        return new MyGoal(driver);
+    }
+
+    public MyGoal save(String text, Fly fly) {
+        driver.findElement(Locator.GAOL_TEXTAREA).sendKeys(text);
+        driver.findElement(Locator.SAVE_BUTTON).click();
+        if(driver.isElementPresent(Locator.SAVE_BUTTON)) {
+            try {
+                Thread.sleep(500);
+            } catch(InterruptedException e) {
+                log.error(e.getMessage());
+            }
+            log.warn("waiting for invisibility of [{}] button", "Save");
+        }
+        log.info("click [{}] button after adding some text \n[{}]", "Save", text);
+        fly.make();
+        return new MyGoal(driver);
+    }
+
 
     @Override
     public NewWeeklyGoal make(Fly fly) {
@@ -54,7 +90,9 @@ public class NewWeeklyGoal extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        CLOSE_X_BUTTON(By.xpath("//button//img[contains(@src, 'close')]")),
+        GAOL_TEXTAREA(By.cssSelector(".new_weekly_goal_form textarea[name='goal']")),
+        SAVE_BUTTON(By.xpath("//div[@class='modal-window']//button[text()='Save']")),
         ;
         private By path;
         private S[] actions;

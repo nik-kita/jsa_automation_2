@@ -123,17 +123,6 @@ public class MyGoal extends OnixPageObject  implements HomeHeader {
         return new NewWeeklyGoal(driver);
     }
 
-    public NewWeeklyGoal clickNewGoalButton(OnixUiAssert onixUiAssert) {
-        driver.findElement(Locator.NEW_GOAL_BUTTON).click();
-        log.info("click on [{}] button.", "New Goal");
-        for(OnixLocator l : NewWeeklyGoal.Locator.values()) {
-            onixUiAssert.softCheckCountOfElementByLocator(l, 1);
-        }
-        return new NewWeeklyGoal(driver);
-    }
-
-
-
     @Override
     public MyGoal make(Fly fly) {
         fly.make();
