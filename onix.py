@@ -231,6 +231,10 @@ def generate_package(file_name):
 def part_create(file):
     package = generate_package(file).get("main_package")
     name = escape_path(file)
+    path = re.search("(.*)(/\w+$)", file).group(1)
+    if not os.path.exists(path):
+        os.makedirs(path)
+
 
 
     part_string = f'''
@@ -291,6 +295,7 @@ public interface {name} extends OnixPart {{
 }}
 
     '''
+    print(file)
     open(file + ".java", "w").write(part_string)
 
 if __name__ == "__main__":
