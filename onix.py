@@ -13,7 +13,7 @@ def create_unit_test(file):
     test_name = po_name + "Test"
 
     unit_string = f'''
-package {generate_package(file).get("unit")}
+package {generate_package(file).get("unit")};
 
 
 import main_package.engine.test_engine.OnixUiTestRunner;
@@ -22,14 +22,15 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import {generate_package(file).get("main_package")[0:-1] + "." + po_name + ";"}
+import {generate_package(file).get("main_package") + "." + po_name + ";"}
 
 
 public class {test_name} extends OnixUiTestRunner {{
     {po_name} {po_name[0].lower() + po_name[1:]};
     @BeforeClass
     public void open{po_name}() {{
-        {po_name[0].lower() + po_name[1:]} = openSite();//TODO
+        //TODO
+        //{po_name[0].lower() + po_name[1:]} = openSite();
     }}
 
     @Test(dataProvider = "getUnique")
@@ -75,13 +76,13 @@ def create_smoke_test(file):
     test_name = po_name + "Test"
 
     smoke_string = f'''
-package {generate_package(file).get("smoke")}
+package {generate_package(file).get("smoke")};
 
 import main_package.engine.test_engine.OnixUiTestRunner;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import {generate_package(file).get("main_package")[0:-1] + "." + po_name + ";"}
+import {generate_package(file).get("main_package") + "." + po_name + ";"}
 
 
 public class {test_name} extends OnixUiTestRunner {{
