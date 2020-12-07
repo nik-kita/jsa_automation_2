@@ -11,12 +11,21 @@ import org.openqa.selenium.By;
 import main_package.data.S;
 
 public class UpdateCardPopup extends OnixPageObject {
+    String iFrameCardInputName;
     private String ENDPOINT_URL = ""; //TODO
     public UpdateCardPopup(OnixWebDriver driver) {
         super(driver);
         log.debug("[{}] page is open", "UpdateCardPopup"); //TODO
+        iFrameCardInputName = driver
+                .findElement(Locator.CARD_NUMBER_INPUT_IFRAME).getSeleniumWebElement()
+                .getAttribute("name"); //TODO create getAttribute() in OnixWebElement
     }
 
+    public MyPlan close() {
+        driver.waitToClick(Locator.CLOSE_BUTTON).click();
+        log.info("click [{}] close button in [{}] popup", "x", "Update Card");
+        return new MyPlan(driver);
+    }
 
     @Override
     public UpdateCardPopup make(Fly fly) {
@@ -54,7 +63,11 @@ public class UpdateCardPopup extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        EMAIL_INPUT(By.cssSelector("input#email")),
+        CARD_NUMBER_INPUT_IFRAME(By.xpath("//iframe[contains(@name, 'privateStripeFrame')]")),
+        NAME_ON_CARD_INPUT(By.cssSelector("input#customer_name")),
+        UPDATE_CARD_BUTTON(By.cssSelector("button#submitPaymentButton")),
+        CLOSE_BUTTON(By.cssSelector("#updateCardModal button.close span")),
         ;
         private By path;
         private S[] actions;
