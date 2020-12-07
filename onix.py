@@ -304,12 +304,14 @@ if __name__ == "__main__":
             create_page_object(sys.argv[3])
             create_smoke_test(sys.argv[3])
             create_unit_test(sys.argv[3])
+            print(sys.argv[3])
             if(len(sys.argv) > 4):
                 path = re.search("(.*)(/\w+$)", sys.argv[3]).group(1)
                 for arg in sys.argv[3:]:
                     create_page_object(path + "/" + arg)
                     create_smoke_test(path + "/" + arg)
                     create_unit_test(path + "/" + arg)
+                    print(path + "/" + arg)
         elif (sys.argv[2] == "--unit"):
             create_unit_test(sys.argv[3])
         elif (sys.argv[2] == "--smoke"):
