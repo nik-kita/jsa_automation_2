@@ -301,10 +301,15 @@ public interface {name} extends OnixPart {{
 if __name__ == "__main__":
     if (sys.argv[1] == "make:po"):
         if (sys.argv[2] == "--all"):
-            for arg in sys.argv[3:]:
-                create_page_object(arg)
-                create_smoke_test(arg)
-                create_unit_test(arg)
+            create_page_object(sys.argv[3])
+            create_smoke_test(sys.argv[3])
+            create_unit_test(sys.argv[3])
+            if(len(sys.argv) > 4):
+                path = re.search("(.*)(/\w+$)", sys.argv[3]).group(1)
+                for arg in sys.argv[3:]:
+                    create_page_object(path + "/" + arg)
+                    create_smoke_test(path + "/" + arg)
+                    create_unit_test(path + "/" + arg)
         elif (sys.argv[2] == "--unit"):
             create_unit_test(sys.argv[3])
         elif (sys.argv[2] == "--smoke"):
