@@ -3,7 +3,7 @@ package main_package.engine.ui_engine;
 import main_package.engine.BaseClass;
 import main_package.engine.Fly;
 
-public abstract class BaseSpecificPageObject extends BaseClass implements BasePart {
+public abstract class BaseSpecificPageObject extends BaseClass implements OnixPart {
     protected OnixWebDriver driver;
     public BaseSpecificPageObject(OnixWebDriver driver) {
         this.driver = driver;
@@ -11,7 +11,8 @@ public abstract class BaseSpecificPageObject extends BaseClass implements BasePa
 
     @Override
     public BaseClass make(Fly fly) {
-        return null;
+        fly.make();
+        return this;
     }
 
     @Override

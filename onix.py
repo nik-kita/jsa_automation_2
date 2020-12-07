@@ -31,7 +31,7 @@ public class {test_name} extends OnixUiTestRunner {{
     public void open{po_name}() {{
         {po_name[0].lower() + po_name[1:]} = openSite();//TODO
     }}
-    
+
     @Test(dataProvider = "getUnique")
     public void unique(OnixLocator locator) {{
         onixUiAssert.
@@ -45,13 +45,13 @@ public class {test_name} extends OnixUiTestRunner {{
                 //TODO
         );
     }}
-    
+
     @Test(dataProvider = "getRepeated")
     public void repeated(OnixLocator locator) {{
         onixUiAssert.
                 checkMinimumOfElementsByLocator(locator, 1);
     }}
-    
+
     @DataProvider
     public Object[] getRepeated() {{
         return mergeArrays(
@@ -59,7 +59,7 @@ public class {test_name} extends OnixUiTestRunner {{
                 //TODO
         );
     }}
-}}    
+}}
 
 '''
     open(test_unit_file + "/" + test_name + ".java", "w").write(unit_string)
@@ -91,7 +91,7 @@ public class {test_name} extends OnixUiTestRunner {{
         //TODO
     }}
     //TODO
-}}    
+}}
 
 '''
     open(test_smoke_file + "/" + test_name + ".java", "w").write(smoke_string)
@@ -106,7 +106,7 @@ def create_page_object(file):
         os.makedirs(path)
     po_string = f'''
 package {package.get("main_package")};
-    
+
 import main_package.data.Settings;
 import main_package.engine.Fly;
 import main_package.engine.test_engine.OnixUiAssert;
@@ -156,7 +156,7 @@ public class {po_name} extends OnixPageObject {{
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }}
         return this;
-    }} 
+    }}
 
 
     public enum Locator implements OnixLocator {{
@@ -214,7 +214,7 @@ def escape_path(file_name):
 
 
 def generate_package(file_name):
-    main_package = (re.search("(src/main/java/)(.*)(/\w+$)", file_name).group(2) + ";").replace("/", ".")
+    main_package = (re.search("(src/main/java/)(.*)(/\w+$)", file_name).group(2)).replace("/", ".")
     unit = "test_package.ui.unit.ui." + re.search("(ui\.)(.*)", main_package).group(2)
     smoke = "test_package.ui.smoke.ui." + re.search("(ui\.)(.*)", main_package).group(2)
     result = {
@@ -225,6 +225,70 @@ def generate_package(file_name):
     print(result)
     return result
 
+def part_create(file):
+    package = generate_package(file).get("main_package")
+    name = escape_path(file)
+
+
+    part_string = f'''
+package {package};
+
+import main_package.data.S;
+import main_package.engine.ui_engine.OnixLocator;
+import main_package.engine.ui_engine.OnixPart;
+import org.openqa.selenium.By;
+
+public interface {name} extends OnixPart {{
+
+    //TODO
+
+    enum Locator implements OnixLocator {{
+        //TODO
+        ;
+        private By path;
+        private S[] actions;
+        Locator(By path) {{
+            this.path = path;
+        }}
+        Locator(By path, S... actions) {{
+            this.path = path;
+            this.actions = actions;
+        }}
+        @Override
+        public By getPath() {{
+            return path;
+        }}
+        @Override
+        public S[] specialActions() {{
+            return actions;
+        }}
+    }}
+
+    enum Locators implements OnixLocator {{
+        //TODO
+        ;
+        private By path;
+        private S[] actions;
+        Locators(By path) {{
+            this.path = path;
+        }}
+        Locators(By path, S... actions) {{
+            this.path = path;
+            this.actions = actions;
+        }}
+        @Override
+        public By getPath() {{
+            return path;
+        }}
+        @Override
+        public S[] specialActions() {{
+            return actions;
+        }}
+    }}
+}}
+
+    '''
+    open(file + ".java", "w").write(part_string)
 
 if __name__ == "__main__":
     if (sys.argv[1] == "make:po"):
@@ -239,3 +303,13 @@ if __name__ == "__main__":
         else:
             create_page_object(sys.argv[2])
 
+    #TODO
+    elif (sys.argv[1] == "make:part"):
+        if (sys.argv[2] == "--all"):
+            print("--all functionality in progress")
+        elif (sys.argv[2] == "--unit"):
+            print("--unit functionality in progress")
+        elif (sys.argv[2] == "--smoke"):
+            print("--smoke functionality in progress")
+        else:
+            part_create(sys.argv[2])

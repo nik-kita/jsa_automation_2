@@ -1,13 +1,12 @@
 package main_package.engine.ui_engine;
 
-import main_package.data.LogLevel;
 import main_package.data.Settings;
 import main_package.engine.BaseClass;
-import main_package.engine.log_engine.OnixLog;
+import main_package.engine.BaseInterface;
 import main_package.engine.test_engine.OnixUiAssert;
 import main_package.ui.specific.JsaCookies;
 
-public abstract class OnixPageObject extends BaseClass {
+public abstract class OnixPageObject extends BaseClass implements BaseInterface {
     protected OnixWebDriver driver;
     public OnixPageObject(OnixWebDriver driver) {
         this.driver = new JsaCookies(driver).acceptIfCookiesPresent();
