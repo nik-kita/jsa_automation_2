@@ -7,15 +7,23 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__USER__.general_parts.home.HomeHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class SearchVideos extends OnixPageObject {
+public class SearchVideos extends OnixPageObject implements HomeHeader {
     private String ENDPOINT_URL = ""; //TODO
     public SearchVideos(OnixWebDriver driver) {
         super(driver);
         log.debug("[{}] page is open", "SearchVideos"); //TODO
     }
+
+    public Learn clickBackArrow() {
+        driver.findElement(Locator.BACK_ARROW).click();
+        log.info("click [{}] button", "Back Arrow");
+        return new Learn(driver);
+    }
+
 
 
     @Override
@@ -38,14 +46,14 @@ public class SearchVideos extends OnixPageObject {
     @Override
     public SearchVideos check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                SearchVideos.Locator.values()
-                //TODO
+                SearchVideos.Locator.values(),
+                HomeHeader.HomeHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                SearchVideos.Locators.values()
-                //TODO
+                SearchVideos.Locators.values(),
+                HomeHeader.HomeHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +62,7 @@ public class SearchVideos extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        BACK_ARROW(By.cssSelector("a.back_link_arrow img")),
         ;
         private By path;
         private S[] actions;
