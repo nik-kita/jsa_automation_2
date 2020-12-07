@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home.my_goal;
+package main_package.ui.__USER__.page_objects.home_header.home.account.my_plan;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -10,41 +10,41 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class NewWeeklyGoal extends OnixPageObject {
+public class MyPlan extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
-    public NewWeeklyGoal(OnixWebDriver driver) {
+    public MyPlan(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "NewWeeklyGoal"); //TODO
+        log.debug("[{}] page is open", "MyPlan"); //TODO
     }
 
 
     @Override
-    public NewWeeklyGoal make(Fly fly) {
+    public MyPlan make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public NewWeeklyGoal openFromScratch() {
+    public MyPlan openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public NewWeeklyGoal openFromUrl() {
+    public MyPlan openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public NewWeeklyGoal check(OnixUiAssert onixUiAssert) {
+    public MyPlan check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                NewWeeklyGoal.Locator.values()
+                MyPlan.Locator.values()
                 //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                NewWeeklyGoal.Locators.values()
+                MyPlan.Locators.values()
                 //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);

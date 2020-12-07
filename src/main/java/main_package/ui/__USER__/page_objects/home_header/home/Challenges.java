@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home.account.my_plan;
+package main_package.ui.__USER__.page_objects.home_header.home;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -10,41 +10,41 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class UpdateCardPopup extends OnixPageObject {
+public class Challenges extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
-    public UpdateCardPopup(OnixWebDriver driver) {
+    public Challenges(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "UpdateCardPopup"); //TODO
+        log.debug("[{}] page is open", "Challenges"); //TODO
     }
 
 
     @Override
-    public UpdateCardPopup make(Fly fly) {
+    public Challenges make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public UpdateCardPopup openFromScratch() {
+    public Challenges openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public UpdateCardPopup openFromUrl() {
+    public Challenges openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public UpdateCardPopup check(OnixUiAssert onixUiAssert) {
+    public Challenges check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                UpdateCardPopup.Locator.values()
+                Challenges.Locator.values()
                 //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                UpdateCardPopup.Locators.values()
+                Challenges.Locators.values()
                 //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);

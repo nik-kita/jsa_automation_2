@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home.steps;
+package main_package.ui.__USER__.page_objects.home_header.home.account.my_profile;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -10,41 +10,41 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class EditTodayStepsPopup extends OnixPageObject {
+public class EmailPreferences extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
-    public EditTodayStepsPopup(OnixWebDriver driver) {
+    public EmailPreferences(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "EditTodayStepsPopup"); //TODO
+        log.debug("[{}] page is open", "EmailPreferences"); //TODO
     }
 
 
     @Override
-    public EditTodayStepsPopup make(Fly fly) {
+    public EmailPreferences make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public EditTodayStepsPopup openFromScratch() {
+    public EmailPreferences openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public EditTodayStepsPopup openFromUrl() {
+    public EmailPreferences openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public EditTodayStepsPopup check(OnixUiAssert onixUiAssert) {
+    public EmailPreferences check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                EditTodayStepsPopup.Locator.values()
+                EmailPreferences.Locator.values()
                 //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                EditTodayStepsPopup.Locators.values()
+                EmailPreferences.Locators.values()
                 //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);

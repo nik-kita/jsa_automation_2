@@ -1,11 +1,11 @@
 
-package main_package.ui.__USER__.page_objects.home.account.my_profile.upload_image;
+package main_package.ui.__USER__.page_objects.home_header.home.account.my_profile.upload_image;
 
 import main_package.data.S;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPart;
 import main_package.engine.ui_engine.OnixWebDriver;
-import main_package.ui.__USER__.page_objects.home.account.my_profile.MyProfile;
+import main_package.ui.__USER__.page_objects.home_header.home.account.my_profile.MyProfile;
 import org.openqa.selenium.By;
 
 public interface UploadImagePopup extends OnixPart {

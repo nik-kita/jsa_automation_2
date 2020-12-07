@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home.steps;
+package main_package.ui.__USER__.page_objects.home_header.home.steps;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -10,41 +10,41 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class Steps extends OnixPageObject {
+public class EditTodayStepsPopup extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
-    public Steps(OnixWebDriver driver) {
+    public EditTodayStepsPopup(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "Steps"); //TODO
+        log.debug("[{}] page is open", "EditTodayStepsPopup"); //TODO
     }
 
 
     @Override
-    public Steps make(Fly fly) {
+    public EditTodayStepsPopup make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public Steps openFromScratch() {
+    public EditTodayStepsPopup openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public Steps openFromUrl() {
+    public EditTodayStepsPopup openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public Steps check(OnixUiAssert onixUiAssert) {
+    public EditTodayStepsPopup check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Steps.Locator.values()
+                EditTodayStepsPopup.Locator.values()
                 //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Steps.Locators.values()
+                EditTodayStepsPopup.Locators.values()
                 //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);

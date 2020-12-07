@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home.account;
+package main_package.ui.__USER__.page_objects.home_header.home.my_progress;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -10,41 +10,41 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class PairedDevices extends OnixPageObject {
+public class ImagesTab extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
-    public PairedDevices(OnixWebDriver driver) {
+    public ImagesTab(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "PairedDevices"); //TODO
+        log.debug("[{}] page is open", "ImagesTab"); //TODO
     }
 
 
     @Override
-    public PairedDevices make(Fly fly) {
+    public ImagesTab make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public PairedDevices openFromScratch() {
+    public ImagesTab openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public PairedDevices openFromUrl() {
+    public ImagesTab openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public PairedDevices check(OnixUiAssert onixUiAssert) {
+    public ImagesTab check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                PairedDevices.Locator.values()
+                ImagesTab.Locator.values()
                 //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                PairedDevices.Locators.values()
+                ImagesTab.Locators.values()
                 //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);

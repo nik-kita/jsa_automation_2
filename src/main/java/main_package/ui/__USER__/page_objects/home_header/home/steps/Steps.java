@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home.account.my_plan;
+package main_package.ui.__USER__.page_objects.home_header.home.steps;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -10,41 +10,41 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class MyPlan extends OnixPageObject {
+public class Steps extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
-    public MyPlan(OnixWebDriver driver) {
+    public Steps(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "MyPlan"); //TODO
+        log.debug("[{}] page is open", "Steps"); //TODO
     }
 
 
     @Override
-    public MyPlan make(Fly fly) {
+    public Steps make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public MyPlan openFromScratch() {
+    public Steps openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public MyPlan openFromUrl() {
+    public Steps openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public MyPlan check(OnixUiAssert onixUiAssert) {
+    public Steps check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                MyPlan.Locator.values()
+                Steps.Locator.values()
                 //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                MyPlan.Locators.values()
+                Steps.Locators.values()
                 //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);

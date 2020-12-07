@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home.my_progress;
+package main_package.ui.__USER__.page_objects.home_header.home.my_goal;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -10,41 +10,41 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class ImagesTab extends OnixPageObject {
+public class MyGoal extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
-    public ImagesTab(OnixWebDriver driver) {
+    public MyGoal(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "ImagesTab"); //TODO
+        log.debug("[{}] page is open", "MyGoal"); //TODO
     }
 
 
     @Override
-    public ImagesTab make(Fly fly) {
+    public MyGoal make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public ImagesTab openFromScratch() {
+    public MyGoal openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public ImagesTab openFromUrl() {
+    public MyGoal openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public ImagesTab check(OnixUiAssert onixUiAssert) {
+    public MyGoal check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                ImagesTab.Locator.values()
+                MyGoal.Locator.values()
                 //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                ImagesTab.Locators.values()
+                MyGoal.Locators.values()
                 //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);

@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home.account;
+package main_package.ui.__USER__.page_objects.home_header.home.account;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;

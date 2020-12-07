@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home;
+package main_package.ui.__USER__.page_objects.home_header.home.account.my_profile.upload_image;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -10,41 +10,41 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class Home extends OnixPageObject {
+public class LocalFiles extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
-    public Home(OnixWebDriver driver) {
+    public LocalFiles(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "Home"); //TODO
+        log.debug("[{}] page is open", "LocalFiles"); //TODO
     }
 
 
     @Override
-    public Home make(Fly fly) {
+    public LocalFiles make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public Home openFromScratch() {
+    public LocalFiles openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public Home openFromUrl() {
+    public LocalFiles openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public Home check(OnixUiAssert onixUiAssert) {
+    public LocalFiles check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Home.Locator.values()
+                LocalFiles.Locator.values()
                 //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Home.Locators.values()
+                LocalFiles.Locators.values()
                 //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);

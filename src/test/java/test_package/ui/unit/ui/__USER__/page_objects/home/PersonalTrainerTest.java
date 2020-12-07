@@ -4,11 +4,10 @@ package test_package.ui.unit.ui.__USER__.page_objects.home;
 
 import main_package.engine.test_engine.OnixUiTestRunner;
 import main_package.engine.ui_engine.OnixLocator;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import main_package.ui.__USER__.page_objects.home.PersonalTrainer;
+import main_package.ui.__USER__.page_objects.home_header.home.PersonalTrainer;
 
 
 public class PersonalTrainerTest extends OnixUiTestRunner {

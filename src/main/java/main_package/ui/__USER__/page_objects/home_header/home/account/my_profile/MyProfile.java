@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home.steps;
+package main_package.ui.__USER__.page_objects.home_header.home.account.my_profile;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -10,41 +10,41 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class EditYourGoalStepsPopup extends OnixPageObject {
+public class MyProfile extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
-    public EditYourGoalStepsPopup(OnixWebDriver driver) {
+    public MyProfile(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "EditYourGoalStepsPopup"); //TODO
+        log.debug("[{}] page is open", "MyProfile"); //TODO
     }
 
 
     @Override
-    public EditYourGoalStepsPopup make(Fly fly) {
+    public MyProfile make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public EditYourGoalStepsPopup openFromScratch() {
+    public MyProfile openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public EditYourGoalStepsPopup openFromUrl() {
+    public MyProfile openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public EditYourGoalStepsPopup check(OnixUiAssert onixUiAssert) {
+    public MyProfile check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                EditYourGoalStepsPopup.Locator.values()
+                MyProfile.Locator.values()
                 //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                EditYourGoalStepsPopup.Locators.values()
+                MyProfile.Locators.values()
                 //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);

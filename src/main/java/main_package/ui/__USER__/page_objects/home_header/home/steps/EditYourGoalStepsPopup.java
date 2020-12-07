@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home.account.my_plan;
+package main_package.ui.__USER__.page_objects.home_header.home.steps;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -10,41 +10,41 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class ConfirmCancelPopup extends OnixPageObject {
+public class EditYourGoalStepsPopup extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
-    public ConfirmCancelPopup(OnixWebDriver driver) {
+    public EditYourGoalStepsPopup(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "ConfirmCancelPopup"); //TODO
+        log.debug("[{}] page is open", "EditYourGoalStepsPopup"); //TODO
     }
 
 
     @Override
-    public ConfirmCancelPopup make(Fly fly) {
+    public EditYourGoalStepsPopup make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public ConfirmCancelPopup openFromScratch() {
+    public EditYourGoalStepsPopup openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public ConfirmCancelPopup openFromUrl() {
+    public EditYourGoalStepsPopup openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public ConfirmCancelPopup check(OnixUiAssert onixUiAssert) {
+    public EditYourGoalStepsPopup check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                ConfirmCancelPopup.Locator.values()
+                EditYourGoalStepsPopup.Locator.values()
                 //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                ConfirmCancelPopup.Locators.values()
+                EditYourGoalStepsPopup.Locators.values()
                 //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);

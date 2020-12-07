@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home.my_goal;
+package main_package.ui.__USER__.page_objects.home_header.home.account.my_profile;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -10,41 +10,41 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class MyGoal extends OnixPageObject {
+public class ResetPasswordFromMyProfile extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
-    public MyGoal(OnixWebDriver driver) {
+    public ResetPasswordFromMyProfile(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "MyGoal"); //TODO
+        log.debug("[{}] page is open", "ResetPasswordFromMyProfile"); //TODO
     }
 
 
     @Override
-    public MyGoal make(Fly fly) {
+    public ResetPasswordFromMyProfile make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public MyGoal openFromScratch() {
+    public ResetPasswordFromMyProfile openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public MyGoal openFromUrl() {
+    public ResetPasswordFromMyProfile openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public MyGoal check(OnixUiAssert onixUiAssert) {
+    public ResetPasswordFromMyProfile check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                MyGoal.Locator.values()
+                ResetPasswordFromMyProfile.Locator.values()
                 //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                MyGoal.Locators.values()
+                ResetPasswordFromMyProfile.Locators.values()
                 //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);

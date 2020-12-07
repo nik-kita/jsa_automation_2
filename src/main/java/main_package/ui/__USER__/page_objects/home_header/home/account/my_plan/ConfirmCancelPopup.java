@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home.account.my_profile;
+package main_package.ui.__USER__.page_objects.home_header.home.account.my_plan;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -10,41 +10,41 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class EmailPreferences extends OnixPageObject {
+public class ConfirmCancelPopup extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
-    public EmailPreferences(OnixWebDriver driver) {
+    public ConfirmCancelPopup(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "EmailPreferences"); //TODO
+        log.debug("[{}] page is open", "ConfirmCancelPopup"); //TODO
     }
 
 
     @Override
-    public EmailPreferences make(Fly fly) {
+    public ConfirmCancelPopup make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public EmailPreferences openFromScratch() {
+    public ConfirmCancelPopup openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public EmailPreferences openFromUrl() {
+    public ConfirmCancelPopup openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public EmailPreferences check(OnixUiAssert onixUiAssert) {
+    public ConfirmCancelPopup check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                EmailPreferences.Locator.values()
+                ConfirmCancelPopup.Locator.values()
                 //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                EmailPreferences.Locators.values()
+                ConfirmCancelPopup.Locators.values()
                 //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);

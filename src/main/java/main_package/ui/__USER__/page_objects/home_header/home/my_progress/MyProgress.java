@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home;
+package main_package.ui.__USER__.page_objects.home_header.home.my_progress;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -10,41 +10,41 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class PersonalTrainer extends OnixPageObject {
+public class MyProgress extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
-    public PersonalTrainer(OnixWebDriver driver) {
+    public MyProgress(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "PersonalTrainer"); //TODO
+        log.debug("[{}] page is open", "MyProgress"); //TODO
     }
 
 
     @Override
-    public PersonalTrainer make(Fly fly) {
+    public MyProgress make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public PersonalTrainer openFromScratch() {
+    public MyProgress openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public PersonalTrainer openFromUrl() {
+    public MyProgress openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public PersonalTrainer check(OnixUiAssert onixUiAssert) {
+    public MyProgress check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                PersonalTrainer.Locator.values()
+                MyProgress.Locator.values()
                 //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                PersonalTrainer.Locators.values()
+                MyProgress.Locators.values()
                 //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);

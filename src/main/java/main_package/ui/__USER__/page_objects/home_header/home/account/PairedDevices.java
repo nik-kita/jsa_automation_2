@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home;
+package main_package.ui.__USER__.page_objects.home_header.home.account;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -10,41 +10,41 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class Challenges extends OnixPageObject {
+public class PairedDevices extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
-    public Challenges(OnixWebDriver driver) {
+    public PairedDevices(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "Challenges"); //TODO
+        log.debug("[{}] page is open", "PairedDevices"); //TODO
     }
 
 
     @Override
-    public Challenges make(Fly fly) {
+    public PairedDevices make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public Challenges openFromScratch() {
+    public PairedDevices openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public Challenges openFromUrl() {
+    public PairedDevices openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public Challenges check(OnixUiAssert onixUiAssert) {
+    public PairedDevices check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Challenges.Locator.values()
+                PairedDevices.Locator.values()
                 //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Challenges.Locators.values()
+                PairedDevices.Locators.values()
                 //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);

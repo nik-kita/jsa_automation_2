@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home.my_progress.measurements_tab;
+package main_package.ui.__USER__.page_objects.home_header.home.account.my_plan;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -10,41 +10,41 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class MeasurementsTab extends OnixPageObject {
+public class UpdateCardPopup extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
-    public MeasurementsTab(OnixWebDriver driver) {
+    public UpdateCardPopup(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "MeasurementsTab"); //TODO
+        log.debug("[{}] page is open", "UpdateCardPopup"); //TODO
     }
 
 
     @Override
-    public MeasurementsTab make(Fly fly) {
+    public UpdateCardPopup make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public MeasurementsTab openFromScratch() {
+    public UpdateCardPopup openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public MeasurementsTab openFromUrl() {
+    public UpdateCardPopup openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public MeasurementsTab check(OnixUiAssert onixUiAssert) {
+    public UpdateCardPopup check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                MeasurementsTab.Locator.values()
+                UpdateCardPopup.Locator.values()
                 //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                MeasurementsTab.Locators.values()
+                UpdateCardPopup.Locators.values()
                 //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);

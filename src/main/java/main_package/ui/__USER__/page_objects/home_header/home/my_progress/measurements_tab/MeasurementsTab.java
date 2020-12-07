@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home.account.my_profile.upload_image;
+package main_package.ui.__USER__.page_objects.home_header.home.my_progress.measurements_tab;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -10,41 +10,41 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class LocalFiles extends OnixPageObject {
+public class MeasurementsTab extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
-    public LocalFiles(OnixWebDriver driver) {
+    public MeasurementsTab(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "LocalFiles"); //TODO
+        log.debug("[{}] page is open", "MeasurementsTab"); //TODO
     }
 
 
     @Override
-    public LocalFiles make(Fly fly) {
+    public MeasurementsTab make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public LocalFiles openFromScratch() {
+    public MeasurementsTab openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public LocalFiles openFromUrl() {
+    public MeasurementsTab openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public LocalFiles check(OnixUiAssert onixUiAssert) {
+    public MeasurementsTab check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                LocalFiles.Locator.values()
+                MeasurementsTab.Locator.values()
                 //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                LocalFiles.Locators.values()
+                MeasurementsTab.Locators.values()
                 //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
