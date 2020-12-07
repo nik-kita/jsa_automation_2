@@ -7,10 +7,11 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__USER__.general_parts.home.HomeHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class MeasurementsTab extends OnixPageObject {
+public class MeasurementsTab extends OnixPageObject implements HomeHeader {
     private String ENDPOINT_URL = ""; //TODO
     public MeasurementsTab(OnixWebDriver driver) {
         super(driver);
@@ -38,14 +39,14 @@ public class MeasurementsTab extends OnixPageObject {
     @Override
     public MeasurementsTab check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                MeasurementsTab.Locator.values()
-                //TODO
+                MeasurementsTab.Locator.values(),
+                HomeHeader.HomeHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                MeasurementsTab.Locators.values()
-                //TODO
+                MeasurementsTab.Locators.values(),
+                HomeHeader.HomeHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +55,17 @@ public class MeasurementsTab extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        BENCH(By.xpath("//p[text()='Bench']")),
+        DEADLIFT(By.xpath("//p[text()='Deadlift']")),
+        SQUAT(By.xpath("//p[text()='Squat']")),
+        _1_KM_TIMED(By.xpath("//p[text()='1 Km Timed']")),
+        ARM(By.xpath("//p[text()='Arm']")),
+        CHEST(By.xpath("//p[text()='Chest']")),
+        WAIST(By.xpath("//p[text()='Waist']")),
+        HIP(By.xpath("//p[text()='Hip']")),
+        THIGH(By.xpath("//p[text()='Thigh']")),
+        CALF(By.xpath("//p[text()='Calf']")),
+        CUSTOM_BUTTON(By.xpath("//button[text()='Custom']"))
         ;
         private By path;
         private S[] actions;
