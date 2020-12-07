@@ -7,15 +7,41 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__USER__.general_parts.Footer;
+import main_package.ui.__USER__.general_parts.MainHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class Transformations extends OnixPageObject {
+import static main_package.ui.__USER__.page_objects.main.Transformations.Locators.TRANSFORMATION_BLOCK;
+
+public class Transformations extends OnixPageObject implements Footer, MainHeader {
     private String ENDPOINT_URL = ""; //TODO
+    private By hidden_see_more_button = By.xpath("//*[@class='transformation_wr']//a[@style='display: none;']");
     public Transformations(OnixWebDriver driver) {
         super(driver);
         log.debug("[{}] page is open", "Transformations"); //TODO
     }
+
+    public Transformations clickSeeMoreButton() {
+        driver.scrollPageDown();
+        driver.findElement(Locator.SEE_MORE_BUTTON).click();
+        log.info("click [{}] button", "See More");
+        return new Transformations(driver);
+    }
+
+    public int countTransformations() {
+        log.trace("count posts");
+        return driver.findElements(TRANSFORMATION_BLOCK).size();
+    }
+
+    public boolean isSeeMoreButtonPresent() {
+        boolean result = driver
+                .findElement(Locator.SEE_MORE_BUTTON)
+                .getSeleniumWebElement().isDisplayed();
+        log.trace("[See More] button is present = [{}]", result);
+        return result;
+    }
+
 
 
     @Override
@@ -38,14 +64,16 @@ public class Transformations extends OnixPageObject {
     @Override
     public Transformations check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Transformations.Locator.values()
-                //TODO
+                Transformations.Locator.values(),
+                Footer.FooterLtr.values(),
+                MainHeader.MainHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Transformations.Locators.values()
-                //TODO
+                Transformations.Locators.values(),
+                Footer.FooterLtrs.values(),
+                MainHeader.MainHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +82,7 @@ public class Transformations extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        SEE_MORE_BUTTON(By.cssSelector(".transformation_wr a")),
         ;
         private By path;
         private S[] actions;
@@ -76,7 +104,10 @@ public class Transformations extends OnixPageObject {
     }
 
     public enum Locators implements OnixLocator {
-        //TODO
+        TRANSFORMATION_BLOCK(
+                By.xpath("//div[@class='masonry-grid']//div[contains(@class, 'masonry-block')][contains(@style, 'display: block')]")
+        ),
+
         ;
         private By path;
         private S[] actions;
