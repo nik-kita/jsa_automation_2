@@ -13,6 +13,7 @@ public interface UploadImagePopup extends OnixPart {
     default MyProfile close() {
         OnixWebDriver driver = getDriver();
         driver.waitToClick(UploadImagePopupLtr.CLOSE).click();
+        getLog().info("click [{}] close button in [{}] popup", "x", "Upload Image");
         return new MyProfile(driver);
     }
 
