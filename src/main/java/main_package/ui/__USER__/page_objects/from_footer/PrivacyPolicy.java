@@ -40,14 +40,16 @@ public class PrivacyPolicy extends OnixPageObject implements MainHeader, Footer 
     @Override
     public PrivacyPolicy check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                PrivacyPolicy.Locator.values()
-                //TODO
+                PrivacyPolicy.Locator.values(),
+                MainHeader.MainHeaderLtr.values(),
+                Footer.FooterLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                PrivacyPolicy.Locators.values()
-                //TODO
+                PrivacyPolicy.Locators.values(),
+                MainHeader.MainHeaderLtrs.values(),
+                Footer.FooterLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -56,7 +58,7 @@ public class PrivacyPolicy extends OnixPageObject implements MainHeader, Footer 
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        H4_TITLE(By.xpath("//h4[contains(text(), 'Privacy Policy')]")),
         ;
         private By path;
         private S[] actions;
