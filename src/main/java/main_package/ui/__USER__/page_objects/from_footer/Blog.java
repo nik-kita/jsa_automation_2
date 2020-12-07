@@ -16,8 +16,47 @@ public class Blog extends OnixPageObject {
     private String ENDPOINT_URL = ""; //TODO
     public Blog(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "Blog"); //TODO
+        log.info("[{}] page is open", "Blog"); //TODO
     }
+
+    public Blog clickRecentPosts() {
+        driver.findElement(Locator.RECENT_POSTS).click();
+        log.info("click [{}] button", "Recent Posts");
+        return this;
+    }
+
+    public Blog clickOnlineFitness() {
+        driver.findElement(Locator.ONLINE_FITNESS).click();
+        log.info("click [{}] button", "Online Fitness");
+        return this;
+    }
+
+    public Blog clickNews() {
+        driver.findElement(Locator.NEWS).click();
+        log.info("click [{}] button", "News");
+        return this;
+    }
+
+    public Blog clickThinking() {
+        driver.findElement(Locator.THINKING).click();
+        log.info("click [{}] button", "Thinking");
+        return this;
+    }
+
+    public Blog clickFeedback() {
+        driver.findElement(Locator.FEEDBACK).click();
+        log.info("click [{}] button", "Feedback");
+        return this;
+    }
+
+    public int countPosts() {
+        driver.scrollPageDown();
+        int result =  driver.findElements(Locators.POST).size();
+        driver.scrollPageUp();
+        log.trace("count posts in current tab on 'Blog' page ({})", result);
+        return result;
+    }
+
 
 
     @Override
@@ -58,7 +97,12 @@ public class Blog extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        H4_TITLE(By.xpath("//h4[contains(text(), 'Access & Download')]")),
+        RECENT_POSTS(By.xpath("//span[contains(text(), 'Recent posts')]")),
+        ONLINE_FITNESS(By.xpath("//span[contains(text(), 'Online Fitness')]")),
+        NEWS(By.xpath("//span[contains(text(), 'News')]")),
+        TRAINING(By.xpath("//span[contains(text(), 'Training')]")),
+        THINKING(By.xpath("//span[contains(text(), 'Thinking')]")),
+        FEEDBACK(By.xpath("//span[contains(text(), 'Feedback')]")),
         ;
         private By path;
         private S[] actions;
@@ -80,7 +124,9 @@ public class Blog extends OnixPageObject {
     }
 
     public enum Locators implements OnixLocator {
-        //TODO
+        POST(By.cssSelector(".post")),
+        LINK_IN_POST(By.cssSelector(".post div.post_descr a.title")),
+
         ;
         private By path;
         private S[] actions;
