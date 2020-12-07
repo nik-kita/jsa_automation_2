@@ -10,7 +10,7 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class LocalFiles extends OnixPageObject {
+public class LocalFiles extends OnixPageObject implements UploadImagePopup {
     private String ENDPOINT_URL = ""; //TODO
     public LocalFiles(OnixWebDriver driver) {
         super(driver);
@@ -38,14 +38,14 @@ public class LocalFiles extends OnixPageObject {
     @Override
     public LocalFiles check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                LocalFiles.Locator.values()
-                //TODO
+                LocalFiles.Locator.values(),
+                UploadImagePopup.UploadImagePopupLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                LocalFiles.Locators.values()
-                //TODO
+                LocalFiles.Locators.values(),
+                UploadImagePopup.UploadImagePopupLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
