@@ -16,15 +16,18 @@ import java.util.Map;
 public class OnixWebDriver extends BaseClass {
     WebDriver seleniumWebDriver;
     private Map<String, Boolean> onixSettings;
+
     public OnixWebDriver(WebDriver seleniumWebDriver) {
         this.seleniumWebDriver = seleniumWebDriver;
         onixSettings = new HashMap<>();
     }
+
     @Override
     public OnixWebDriver make(Fly fly) {
         fly.make();
         return this;
     }
+
     public void setSetting(String setting, Boolean status) {
         onixSettings.put(setting, status);
         log.debug("put [{}] setting to OnixWebDriver", setting);
@@ -41,10 +44,19 @@ public class OnixWebDriver extends BaseClass {
 
     public OnixWebElement findElement(OnixLocator locator) {
         By path = locator.getPath();
-        if(locator.specialActions() != null) {
-            for(S s : locator.specialActions()) {
-                switch(s){
+        if (locator.specialActions() != null) {
+            for (S s : locator.specialActions()) {
+                switch (s) {
                     case SCROLL_PAGE_DOWN -> this.scrollPageDown();
+                    case HARD_WAITING_2_SECONDS -> {
+                        try {
+                            int pause = 2000;
+                            Thread.sleep(pause);
+                            log.warn("Explicitly waiting {} ms", pause);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             }
         }
@@ -70,7 +82,7 @@ public class OnixWebDriver extends BaseClass {
             result.add(new OnixWebElement(e));
         }
         int count = result.size();
-        if(count == 0) {
+        if (count == 0) {
             log.warn("find 0 elements of [{}]", locator);
         } else {
             log.trace("find {} elements [{}]", count, locator);
@@ -84,7 +96,7 @@ public class OnixWebDriver extends BaseClass {
             result.add(new OnixWebElement(e));
         }
         int count = result.size();
-        if(count == 0) {
+        if (count == 0) {
             log.warn("find 0 elements located by [{}]", seleniumPath);
         } else {
             log.trace("find {} elements located by [{}]", count, seleniumPath);
@@ -231,16 +243,18 @@ public class OnixWebDriver extends BaseClass {
         log.debug("register current tab with [{}] name", name);
         return this;
     }
+
     public OnixWebDriver switchToRegisterTab(String name) {
         seleniumWebDriver.switchTo().window(tabs.get(name));
         log.debug("switch to tab with [{}] name", name);
         return this;
     }
+
     public OnixWebDriver closeTabsExceptCurrent() {
         String current = seleniumWebDriver.getWindowHandle();
-        for(String s : seleniumWebDriver.getWindowHandles()) {
+        for (String s : seleniumWebDriver.getWindowHandles()) {
             seleniumWebDriver.switchTo().window(s);
-            if(!s.equals(current)) {
+            if (!s.equals(current)) {
                 seleniumWebDriver.close();
             }
         }
@@ -249,11 +263,12 @@ public class OnixWebDriver extends BaseClass {
         log.debug("close all tabs except current");
         return this;
     }
+
     public OnixWebDriver registerTabWithUrlLike(String urlsPart, String nameForTabs) {
         String current = seleniumWebDriver.getWindowHandle();
-        for(String s : seleniumWebDriver.getWindowHandles()) {
-            if(seleniumWebDriver.switchTo().window(s).getCurrentUrl().contains(urlsPart)) {
-                if(tabs == null) {
+        for (String s : seleniumWebDriver.getWindowHandles()) {
+            if (seleniumWebDriver.switchTo().window(s).getCurrentUrl().contains(urlsPart)) {
+                if (tabs == null) {
                     tabs = new HashMap<>();
                 }
                 tabs.put(nameForTabs, s);
@@ -276,6 +291,7 @@ public class OnixWebDriver extends BaseClass {
         log.trace("hover to element located by [{}]", path);
         return this;
     }
+
     public OnixWebDriver hoverToElementLocated(OnixLocator locator) {
         Actions actions = new Actions(seleniumWebDriver);
         actions.moveToElement(this.waitVisibility(locator.getPath()).getSeleniumWebElement());
@@ -285,8 +301,8 @@ public class OnixWebDriver extends BaseClass {
 
     public OnixWebDriver switchAnotherTab(String nameForOldTab) {
         this.registerCurrentTab(nameForOldTab);
-        for(String s : seleniumWebDriver.getWindowHandles()) {
-            if(!s.equals(tabs.get(nameForOldTab))) {
+        for (String s : seleniumWebDriver.getWindowHandles()) {
+            if (!s.equals(tabs.get(nameForOldTab))) {
                 seleniumWebDriver.switchTo().window(s);
             }
         }

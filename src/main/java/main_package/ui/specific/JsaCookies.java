@@ -12,23 +12,24 @@ import org.openqa.selenium.By;
 public class JsaCookies extends BaseSpecificPageObject {
     public JsaCookies(OnixWebDriver onixWebDriver) {
         super(onixWebDriver);
-    }
-
-    public OnixWebDriver acceptIfCookiesPresent() {
-        if(!driver.checkSetting("jsacookies")) {
+        if (!driver.checkSetting("jsacookies")) {
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if (driver.findElements(Locator.OK_BUTTON).size() > 0) {
-                driver.findElement(Locator.OK_BUTTON).click();
-                driver.setSetting("jsacookies", true);
-                log.debug("close 'JsaCookies' popup");
-            } else {
-                log.warn("try to close 'JsaCookies' popup but no such elements was found");
-            }
         }
+    }
+
+    public OnixWebDriver acceptIfCookiesPresent() {
+        if (driver.findElements(Locator.OK_BUTTON).size() > 0) {
+            driver.findElement(Locator.OK_BUTTON).click();
+            driver.setSetting("jsacookies", true);
+            log.debug("close 'JsaCookies' popup");
+        } else {
+            log.warn("try to close 'JsaCookies' popup but no such elements was found");
+        }
+
         return driver;
     }
 
@@ -40,7 +41,7 @@ public class JsaCookies extends BaseSpecificPageObject {
 
     @Override
     public JsaCookies check(OnixUiAssert onixUiAssert) {
-        for(OnixLocator l : OnixUiAssert.mergeArrays(
+        for (OnixLocator l : OnixUiAssert.mergeArrays(
                 JsaCookies.Locator.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
@@ -59,7 +60,34 @@ public class JsaCookies extends BaseSpecificPageObject {
         Locator(By path) {
             this.path = path;
         }
-        Locator(By path, S...actions) {
+
+        Locator(By path, S... actions) {
+            this.path = path;
+            this.actions = actions;
+        }
+
+        @Override
+        public By getPath() {
+            return path;
+        }
+
+        @Override
+        public S[] specialActions() {
+            return actions;
+        }
+    }
+
+    public enum Locators implements OnixLocator {
+        //TODO
+        ;
+        private By path;
+        private S[] actions;
+
+        Locators(By path) {
+            this.path = path;
+        }
+
+        Locators(By path, S... actions) {
             this.path = path;
             this.actions = actions;
         }

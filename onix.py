@@ -29,7 +29,7 @@ public class {test_name} extends OnixUiTestRunner {{
     {po_name} {po_name[0].lower() + po_name[1:]};
     @BeforeClass
     public void open{po_name}() {{
-        main = openSite();//TODO
+        {po_name[0].lower() + po_name[1:]} = openSite();//TODO
     }}
     
     @Test(dataProvider = "getUnique")
