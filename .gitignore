@@ -1,6 +1,5 @@
 gnores ######
 nikita/
-src/main/resources/logback.xml
 file_appender_results/
 test-output/
 MyTest.java
