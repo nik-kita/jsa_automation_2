@@ -7,10 +7,12 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__GUEST__.general_parts.Footer;
+import main_package.ui.__GUEST__.general_parts.MainHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class ContactUs extends OnixPageObject {
+public class ContactUs extends OnixPageObject implements MainHeader, Footer{
     private String ENDPOINT_URL = ""; //TODO
     public ContactUs(OnixWebDriver driver) {
         super(driver);
@@ -38,14 +40,16 @@ public class ContactUs extends OnixPageObject {
     @Override
     public ContactUs check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                ContactUs.Locator.values()
-                //TODO
+                ContactUs.Locator.values(),
+                Footer.FooterLtr.values(),
+                MainHeader.MainHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                ContactUs.Locators.values()
-                //TODO
+                TermsOfService.Locators.values(),
+                Footer.FooterLtrs.values(),
+                MainHeader.MainHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }

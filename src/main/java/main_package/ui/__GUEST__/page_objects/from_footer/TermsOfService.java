@@ -7,10 +7,12 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__GUEST__.general_parts.Footer;
+import main_package.ui.__GUEST__.general_parts.MainHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class TermsOfService extends OnixPageObject {
+public class TermsOfService extends OnixPageObject implements MainHeader, Footer{
     private String ENDPOINT_URL = ""; //TODO
     public TermsOfService(OnixWebDriver driver) {
         super(driver);
@@ -38,14 +40,16 @@ public class TermsOfService extends OnixPageObject {
     @Override
     public TermsOfService check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                TermsOfService.Locator.values()
-                //TODO
+                TermsOfService.Locator.values(),
+                Footer.FooterLtr.values(),
+                MainHeader.MainHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                TermsOfService.Locators.values()
-                //TODO
+                TermsOfService.Locators.values(),
+                Footer.FooterLtrs.values(),
+                MainHeader.MainHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
