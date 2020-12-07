@@ -71,6 +71,13 @@ public class OnixWebDriver extends BaseClass {
         return result;
     }
 
+    public OnixWebElement findElement(By seleniumPath, Fly fly) {
+        fly.make();
+        OnixWebElement result = new OnixWebElement(seleniumWebDriver.findElement(seleniumPath));
+        log.trace("find webElement [{}]", seleniumPath);
+        return result;
+    }
+
     public WebDriver getSeleniumDriver() {
         log.trace("return original seleniumDriver");
         return seleniumWebDriver;
