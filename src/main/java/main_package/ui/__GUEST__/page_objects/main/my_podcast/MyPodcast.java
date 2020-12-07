@@ -7,10 +7,12 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__GUEST__.general_parts.Footer;
+import main_package.ui.__GUEST__.general_parts.MainHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class MyPodcast extends OnixPageObject {
+public class MyPodcast extends OnixPageObject implements Footer, MainHeader {
     private String ENDPOINT_URL = ""; //TODO
     public MyPodcast(OnixWebDriver driver) {
         super(driver);
