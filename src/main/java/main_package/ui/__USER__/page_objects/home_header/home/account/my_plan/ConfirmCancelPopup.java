@@ -17,6 +17,11 @@ public class ConfirmCancelPopup extends OnixPageObject {
         log.debug("[{}] page is open", "ConfirmCancelPopup"); //TODO
     }
 
+    public MyPlan close() {
+        driver.waitToClick(Locator.CLOSE_BUTTON).click();
+        log.info("click [{}] close button", "x");
+        return new MyPlan(driver);
+    }
 
     @Override
     public ConfirmCancelPopup make(Fly fly) {
@@ -54,7 +59,11 @@ public class ConfirmCancelPopup extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        MAIN_REASON_SELECT(By.cssSelector("select#main_reason")),
+        LET_US_KNOW_TEXTAREA(By.cssSelector("textarea#explanation")),
+        SUBMIT_FEEDBACK_BUTTON(By.cssSelector("button[onclick='_postFeedback()']")),
+        CANCEL_SUBSCRIPTION_BUTTON(By.cssSelector("button[name='submitButton']")),
+        CLOSE_BUTTON(By.cssSelector("#cancelModal button.close span")),
         ;
         private By path;
         private S[] actions;
