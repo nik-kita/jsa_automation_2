@@ -7,16 +7,28 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__USER__.general_parts.home.HomeHeader;
+import main_package.ui.__USER__.general_parts.home.HomePart;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class Meals extends OnixPageObject {
+public class Meals extends OnixPageObject implements HomePart {
     private String ENDPOINT_URL = ""; //TODO
     public Meals(OnixWebDriver driver) {
         super(driver);
         log.debug("[{}] page is open", "Meals"); //TODO
     }
 
+    public Recipes clickRecipesTab() {
+        driver.findElement(Locator.RECIPES_TAB).click();
+        log.info("click [{}] tab-button", "Recipes");
+        return new Recipes(driver);
+    }
+    public ShoppingLists clickShoppingListsTab() {
+        driver.findElement(Locator.SHOPPING_LISTS_TAB).click();
+        log.info("click [{}] tab-button", "Shopping Lists");
+        return new ShoppingLists(driver);
+    }
 
     @Override
     public Meals make(Fly fly) {
@@ -38,14 +50,16 @@ public class Meals extends OnixPageObject {
     @Override
     public Meals check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Meals.Locator.values()
-                //TODO
+                Meals.Locator.values(),
+                HomeHeader.HomeHeaderLtr.values(),
+                HomePart.HomePartLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Meals.Locators.values()
-                //TODO
+                Meals.Locators.values(),
+                HomeHeader.HomeHeaderLtrs.values(),
+                HomePart.HomePartLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +68,8 @@ public class Meals extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        RECIPES_TAB(By.cssSelector(".tab-nav-bar-container [href='#/nutrition/recipes']")),
+        SHOPPING_LISTS_TAB(By.cssSelector(".tab-nav-bar-container [href='#/nutrition/shopping-lists']")),
         ;
         private By path;
         private S[] actions;
