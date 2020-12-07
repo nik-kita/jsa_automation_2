@@ -7,16 +7,28 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__USER__.general_parts.home.HomeHeader;
+import main_package.ui.__USER__.general_parts.home.HomePart;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class Browse extends OnixPageObject {
+public class Browse extends OnixPageObject implements HomePart {
     private String ENDPOINT_URL = ""; //TODO
     public Browse(OnixWebDriver driver) {
         super(driver);
         log.debug("[{}] page is open", "Browse"); //TODO
     }
 
+    public Personalised clickPersonalisedTab() {
+        driver.findElement(Locator.PERSONALISED_TAB).click();
+        log.info("click [{}] tab-button", "Personalised");
+        return new Personalised(driver);
+    }
+    public MyWorkouts clickMyWorkoutsTab() {
+        driver.findElement(Locator.MY_WORKOUTS_TAB).click();
+        log.info("click [{}] tab-button", "My Workouts");
+        return new MyWorkouts(driver);
+    }
 
     @Override
     public Browse make(Fly fly) {
@@ -38,14 +50,16 @@ public class Browse extends OnixPageObject {
     @Override
     public Browse check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Browse.Locator.values()
-                //TODO
+                Browse.Locator.values(),
+                HomePart.HomePartLtr.values(),
+                HomeHeader.HomeHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Browse.Locators.values()
-                //TODO
+                Browse.Locators.values(),
+                HomePart.HomePartLtrs.values(),
+                HomeHeader.HomeHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +68,8 @@ public class Browse extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        PERSONALISED_TAB(By.cssSelector(".tab-nav-bar-container [href='#/workouts/personalised']")),
+        MY_WORKOUTS_TAB(By.cssSelector(".tab-nav-bar-container [href='#/workouts/myworkouts']"))
         ;
         private By path;
         private S[] actions;
