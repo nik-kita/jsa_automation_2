@@ -14,11 +14,39 @@ import main_package.data.S;
 
 public class Transformations extends OnixPageObject implements MainHeader, Footer {
     private String ENDPOINT_URL = ""; //TODO
+    private By TRANSFORMATION_BLOCK =
+            By.xpath("//div[@class='masonry-grid']//div[contains(@class, 'masonry-block')][contains(@style, 'display: block')]");
     public Transformations(OnixWebDriver driver) {
         super(driver);
         log.debug("[{}] page is open", "Transformations"); //TODO
     }
 
+
+    public Transformations clickSeeMoreButton() {
+        driver.scrollPageDown();
+        driver.findElement(Locator.SEE_MORE_BUTTON).click();
+        log.info("Click [{}] button", "See more");
+        return new Transformations(driver);
+    }
+
+    public int countTransformations() {
+        log.trace("count posts");
+        return driver.findElements(TRANSFORMATION_BLOCK).size();
+    }
+
+    public boolean isSeeMoreButtonPresent() {
+        return driver
+                .findElement(Locator.SEE_MORE_BUTTON)
+                .getSeleniumWebElement().isDisplayed();
+    }
+    public boolean seeMore() {
+        if(isSeeMoreButtonPresent()) {
+            clickSeeMoreButton();
+            return true;
+        }
+        log.debug("all posts are shown so 'see more' button is not exists");
+        return false;
+    }
 
     @Override
     public Transformations make(Fly fly) {
@@ -58,7 +86,9 @@ public class Transformations extends OnixPageObject implements MainHeader, Foote
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        SEE_MORE_BUTTON(By.cssSelector(".transformation_wr a")),
+        HIDDEN_SEE_MORE_BUTTON(By.xpath("//*[@class='transformation_wr']//a[@style='display: none;']"))
+
         ;
         private By path;
         private S[] actions;

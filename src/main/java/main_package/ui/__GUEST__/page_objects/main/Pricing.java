@@ -58,7 +58,11 @@ public class Pricing extends OnixPageObject implements MainHeader, Footer {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        GET_STARTED_LEFT(By.xpath("//div[@class='price_block']//div[contains(text(), 'Standard Plan')]/../..//a")),
+        //TODO there are absolute same 2 links GET_STARTED_RIGHT(By.xpath("//div[@class='price_block']//div[contains(text(), 'Premium Plan')]/../..//a")),
+        SUBSCRIPTIONS_BUTTON(By.xpath("//*[contains(text(), 'Subscriptions')]")),
+        BLOCKS_BUTTON(By.xpath("//*[contains(text(), 'Blocks')]")),
+
         ;
         private By path;
         private S[] actions;
