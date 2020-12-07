@@ -41,9 +41,11 @@ public class OnixWebDriver extends BaseClass {
 
     public OnixWebElement findElement(OnixLocator locator) {
         By path = locator.getPath();
-        for(S s : locator.specialActions()) {
-            switch(s){
-                case SCROLL_PAGE_DOWN -> this.scrollPageDown();
+        if(locator.specialActions() != null) {
+            for(S s : locator.specialActions()) {
+                switch(s){
+                    case SCROLL_PAGE_DOWN -> this.scrollPageDown();
+                }
             }
         }
         OnixWebElement result = new OnixWebElement((seleniumWebDriver.findElement(path)));

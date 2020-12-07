@@ -17,7 +17,7 @@ public class JsaCookies extends BaseSpecificPageObject {
     public OnixWebDriver acceptIfCookiesPresent() {
         if(!driver.checkSetting("jsacookies")) {
             try {
-                Thread.sleep(4000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
