@@ -7,16 +7,28 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__USER__.general_parts.home.HomeHeader;
+import main_package.ui.__USER__.general_parts.home.HomePart;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class MyWorkouts extends OnixPageObject {
+public class MyWorkouts extends OnixPageObject implements HomePart {
     private String ENDPOINT_URL = ""; //TODO
     public MyWorkouts(OnixWebDriver driver) {
         super(driver);
         log.debug("[{}] page is open", "MyWorkouts"); //TODO
     }
 
+    public Personalised clickPersonalisedTab() {
+        driver.findElement(Locator.PERSONALISED_TAB).click();
+        log.info("click [{}] tab-button", "Personalised");
+        return new Personalised(driver);
+    }
+    public Browse clickBrowseTab() {
+        driver.findElement(Locator.BROWSE_TAB).click();
+        log.info("click [{}] tab-button", "Browse");
+        return new Browse(driver);
+    }
 
     @Override
     public MyWorkouts make(Fly fly) {
@@ -38,14 +50,16 @@ public class MyWorkouts extends OnixPageObject {
     @Override
     public MyWorkouts check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                MyWorkouts.Locator.values()
-                //TODO
+                MyWorkouts.Locator.values(),
+                HomePart.HomePartLtr.values(),
+                HomeHeader.HomeHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                MyWorkouts.Locators.values()
-                //TODO
+                MyWorkouts.Locators.values(),
+                HomePart.HomePartLtrs.values(),
+                HomeHeader.HomeHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +68,8 @@ public class MyWorkouts extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        PERSONALISED_TAB(By.cssSelector(".tab-nav-bar-container [href='#/workouts/personalised']")),
+        BROWSE_TAB(By.cssSelector(".tab-nav-bar-container [href='#/workouts/browse']")),
         ;
         private By path;
         private S[] actions;
