@@ -7,16 +7,22 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__USER__.general_parts.home.HomeHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class SingleLearnVideo extends OnixPageObject {
+public class SingleLearnVideo extends OnixPageObject implements HomeHeader {
     private String ENDPOINT_URL = ""; //TODO
     public SingleLearnVideo(OnixWebDriver driver) {
         super(driver);
         log.debug("[{}] page is open", "SingleLearnVideo"); //TODO
     }
 
+    public Learn clickBackArrow() {
+        driver.findElement(Locator.BACK_ARROW).click();
+        log.info("click [{}] button", "Back Arrow");
+        return new Learn(driver);
+    }
 
     @Override
     public SingleLearnVideo make(Fly fly) {
@@ -38,14 +44,14 @@ public class SingleLearnVideo extends OnixPageObject {
     @Override
     public SingleLearnVideo check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                SingleLearnVideo.Locator.values()
-                //TODO
+                SingleLearnVideo.Locator.values(),
+                HomeHeader.HomeHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                SingleLearnVideo.Locators.values()
-                //TODO
+                SingleLearnVideo.Locators.values(),
+                HomeHeader.HomeHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +60,10 @@ public class SingleLearnVideo extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        BACK_ARROW(By.cssSelector(".back_link_arrow img")),
+        FAVOURITES_HEART_BUTTON(By.xpath("//button//div[text() = 'Favourites']")),
+        COMPLETED_ICON_BUTTON(By.xpath("//button//div[text() = 'Completed']")),
+        NEXT_VIDEO_LINK(By.cssSelector(".up_next_video a")),
         ;
         private By path;
         private S[] actions;
@@ -76,7 +85,7 @@ public class SingleLearnVideo extends OnixPageObject {
     }
 
     public enum Locators implements OnixLocator {
-        //TODO
+        VIDEO_ITEM_FROM_LIST(By.cssSelector(".related_videos.container .related_videos_item_body")),
         ;
         private By path;
         private S[] actions;
