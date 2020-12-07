@@ -7,14 +7,21 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__USER__.general_parts.home.HomeHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class ToComplete extends OnixPageObject {
+public class ToComplete extends OnixPageObject implements HomeHeader {
     private String ENDPOINT_URL = ""; //TODO
     public ToComplete(OnixWebDriver driver) {
         super(driver);
         log.debug("[{}] page is open", "ToComplete"); //TODO
+    }
+
+    public Learn clickBackArrow() {
+        driver.findElement(Locator.BACK_ARROW).click();
+        log.info("click [{}] button", "Back Arrow");
+        return new Learn(driver);
     }
 
 
@@ -38,14 +45,14 @@ public class ToComplete extends OnixPageObject {
     @Override
     public ToComplete check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                ToComplete.Locator.values()
-                //TODO
+                ToComplete.Locator.values(),
+                HomeHeader.HomeHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                ToComplete.Locators.values()
-                //TODO
+                ToComplete.Locators.values(),
+                HomeHeader.HomeHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +61,8 @@ public class ToComplete extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        H6_TITLE(By.xpath("//h6[text() = 'To Complete']")),
+        BACK_ARROW(By.cssSelector(".back_link_arrow img")),
         ;
         private By path;
         private S[] actions;
