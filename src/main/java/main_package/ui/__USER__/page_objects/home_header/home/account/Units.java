@@ -7,10 +7,13 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__USER__.general_parts.Footer;
+import main_package.ui.__USER__.general_parts.home.account.AccountHeader;
+import main_package.ui.__USER__.general_parts.home.account.AccountSidebar;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class Units extends OnixPageObject {
+public class Units extends OnixPageObject implements AccountHeader, AccountSidebar, Footer {
     private String ENDPOINT_URL = ""; //TODO
     public Units(OnixWebDriver driver) {
         super(driver);
@@ -38,14 +41,18 @@ public class Units extends OnixPageObject {
     @Override
     public Units check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Units.Locator.values()
-                //TODO
+                Units.Locator.values(),
+                Footer.FooterLtr.values(),
+                AccountSidebar.AccountSidebarLtr.values(),
+                AccountHeader.AccountHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Units.Locators.values()
-                //TODO
+                Units.Locators.values(),
+                Footer.FooterLtrs.values(),
+                AccountSidebar.AccountSidebarLtrs.values(),
+                AccountHeader.AccountHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +61,13 @@ public class Units extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        METRIC_WEIGHT_UNIT(By.cssSelector("[value='Metric (kg)']")),
+        IMPERIAL_WEIGHT_UNIT(By.cssSelector("[value='Imperial (lbs)']")),
+        METRIC_LENGTH_UNIT(By.cssSelector("[value=\"Metric (cm)\"]")),
+        IMPERIAL_LENGTH_UNIT(By.cssSelector("[value=\"Imperial (in)\"]")),
+        METRIC_DISTANCE_UNIT(By.cssSelector("[value=\"Metric (m/km)\"]")),
+        IMPERIAL_DISTANCE_UNIT(By.cssSelector("[value=\"Imperial (ft/miles)\"]")),
+        UPDATE_UNITS_BUTTON(By.xpath("//button[text() = 'Update Units']"))
         ;
         private By path;
         private S[] actions;
