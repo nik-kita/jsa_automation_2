@@ -58,7 +58,7 @@ public class ReportBugs extends OnixPageObject implements MainHeader, Footer{
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        H1_TITLE(By.xpath("//h1[contains(text(), 'Report Bugs')]")),
         ;
         private By path;
         private S[] actions;

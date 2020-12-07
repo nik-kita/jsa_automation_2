@@ -58,7 +58,7 @@ public class ContactUs extends OnixPageObject implements MainHeader, Footer{
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        H1_TITLE(By.xpath("//h1[contains(text(), 'Contact Us')]")),
         ;
         private By path;
         private S[] actions;
