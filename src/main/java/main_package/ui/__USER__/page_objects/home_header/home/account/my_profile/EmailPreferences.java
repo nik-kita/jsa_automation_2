@@ -7,10 +7,11 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__USER__.general_parts.home.account.AccountHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class EmailPreferences extends OnixPageObject {
+public class EmailPreferences extends OnixPageObject implements AccountHeader {
     private String ENDPOINT_URL = ""; //TODO
     public EmailPreferences(OnixWebDriver driver) {
         super(driver);
@@ -38,14 +39,14 @@ public class EmailPreferences extends OnixPageObject {
     @Override
     public EmailPreferences check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                EmailPreferences.Locator.values()
-                //TODO
+                EmailPreferences.Locator.values(),
+                AccountHeader.AccountHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                EmailPreferences.Locators.values()
-                //TODO
+                EmailPreferences.Locators.values(),
+                AccountHeader.AccountHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +55,12 @@ public class EmailPreferences extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        OPT_OUT_OF_ALL_EMAILS_SELECT(By.cssSelector("[name=\"globalUnsubscribe\"]")),
+        //TODO may be these locator true only for specific user
+        DAILY_EMAILS_SELECT(By.cssSelector("[name=\"list-14588\"]")),
+        CHALLENGE_WAITING_LIST_SELECT(By.cssSelector("[name=\"list-14589\"]")),
+        WELCOME_EMAILS_SELECT(By.cssSelector("[name=\"list-14590\"]")),
+        UPDATE_PREFERENCES_BUTTON(By.cssSelector("[name='submitButton']")),
         ;
         private By path;
         private S[] actions;
