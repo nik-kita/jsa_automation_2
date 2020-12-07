@@ -307,7 +307,7 @@ if __name__ == "__main__":
             print(sys.argv[3])
             if(len(sys.argv) > 4):
                 path = re.search("(.*)(/\w+$)", sys.argv[3]).group(1)
-                for arg in sys.argv[3:]:
+                for arg in sys.argv[4:]:
                     create_page_object(path + "/" + arg)
                     create_smoke_test(path + "/" + arg)
                     create_unit_test(path + "/" + arg)
