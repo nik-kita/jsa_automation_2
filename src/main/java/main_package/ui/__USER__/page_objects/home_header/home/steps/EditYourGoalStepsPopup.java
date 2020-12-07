@@ -17,6 +17,34 @@ public class EditYourGoalStepsPopup extends OnixPageObject {
         log.debug("[{}] page is open", "EditYourGoalStepsPopup"); //TODO
     }
 
+    public Steps close() {
+        driver.findElement(EditTodayStepsPopup.Locator.CLOSE_BUTTON).click();
+        log.info("click [{}] close button in [{}] popup", "x", "Daily Step Goal");
+        if(driver.isElementPresent(EditTodayStepsPopup.Locator.CLOSE_BUTTON)) {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                log.warn("Waiting for invisibility of modal window (popup).");
+            }
+        }
+        return new Steps(driver);
+    }
+
+    public Steps update(int steps) {
+        driver.findElement(EditYourGoalStepsPopup.Locator.DAILY_STEP_GOAL_INPUT).getSeleniumWebElement().clear();
+        driver.findElement(EditYourGoalStepsPopup.Locator.DAILY_STEP_GOAL_INPUT).sendKeys(String.valueOf(steps));
+        log.info("Write [{}] into [{}] input.", steps, "Today's Steps");
+        driver.findElement(Locator.SAVE_BUTTON).click();
+        if(driver.isElementPresent(Locator.SAVE_BUTTON)) {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                log.warn("Waiting for invisibility of modal window (popup).");
+            }
+        }
+        return new Steps(driver);
+    }
+
 
     @Override
     public EditYourGoalStepsPopup make(Fly fly) {
@@ -54,7 +82,11 @@ public class EditYourGoalStepsPopup extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        CLOSE_BUTTON(By.cssSelector(".modal-window .btn img")),
+        DAILY_STEPS_GOAL_INPUT(By.cssSelector("input[name='steps']")),
+        DAILY_STEP_GOAL_INPUT(By.cssSelector("input[name='steps']")),
+        SAVE_BUTTON(By.cssSelector(".steps_goal_form .btn-primary"))
+
         ;
         private By path;
         private S[] actions;
