@@ -101,7 +101,7 @@ public class {test_name} extends OnixUiTestRunner {{
 def create_page_object(file):
     po_name = escape_path(file)
     package = generate_package(file)
-    path = re.search("(.*)(\w+$)", file).group(2)
+    path = re.search("(.*)(/\w+$)", file).group(1)
 
     if not os.path.exists(path):
         os.makedirs(path)
@@ -207,6 +207,8 @@ public class {po_name} extends OnixPageObject {{
 }}
 
 '''
+    print(file)
+    print(path)
     open(file + ".java", "w").write(po_string)
 
 
