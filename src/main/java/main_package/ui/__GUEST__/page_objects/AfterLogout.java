@@ -41,8 +41,8 @@ public class AfterLogout extends OnixPageObject implements Footer, MainHeader {
     public AfterLogout check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
                 AfterLogout.Locator.values(),
-                Footer.FooterLtrs.values(),
-                MainHeader.MainHeaderLtrs.values()
+                Footer.FooterLtr.values(),
+                MainHeader.MainHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }

@@ -7,6 +7,8 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__GUEST__.general_parts.Footer;
+import main_package.ui.__GUEST__.general_parts.MainHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
@@ -38,14 +40,16 @@ public class FamousDailyEmails extends OnixPageObject {
     @Override
     public FamousDailyEmails check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                FamousDailyEmails.Locator.values()
-                //TODO
+                FamousDailyEmails.Locator.values(),
+                Footer.FooterLtr.values(),
+                MainHeader.MainHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                FamousDailyEmails.Locators.values()
-                //TODO
+                FamousDailyEmails.Locators.values(),
+                Footer.FooterLtrs.values(),
+                MainHeader.MainHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +58,9 @@ public class FamousDailyEmails extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        EMAIL_INPUT(By.cssSelector("form input[name='email']")),
+        SIGN_UP_BUTTON(By.cssSelector("form button#submit")),
+        SUBSCRIBE_BUTTON(By.xpath("//button[contains(text(), 'Subscribe')]"))
         ;
         private By path;
         private S[] actions;
