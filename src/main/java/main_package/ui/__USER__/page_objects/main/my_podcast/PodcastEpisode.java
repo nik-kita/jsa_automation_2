@@ -7,16 +7,23 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__USER__.general_parts.Footer;
+import main_package.ui.__USER__.general_parts.MainHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class PodcastEpisode extends OnixPageObject {
+public class PodcastEpisode extends OnixPageObject implements Footer, MainHeader {
     private String ENDPOINT_URL = ""; //TODO
     public PodcastEpisode(OnixWebDriver driver) {
         super(driver);
         log.debug("[{}] page is open", "PodcastEpisode"); //TODO
     }
 
+    public MyPodcast clickBackToMyPodcast() {
+        driver.findElement(Locator.BACK_ARROW_LINK).click();
+        log.info("click [{}] button", "Back Arrow");
+        return new MyPodcast(driver);
+    }
 
     @Override
     public PodcastEpisode make(Fly fly) {
@@ -38,14 +45,16 @@ public class PodcastEpisode extends OnixPageObject {
     @Override
     public PodcastEpisode check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                PodcastEpisode.Locator.values()
-                //TODO
+                PodcastEpisode.Locator.values(),
+                MainHeader.MainHeaderLtr.values(),
+                Footer.FooterLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                PodcastEpisode.Locators.values()
-                //TODO
+                PodcastEpisode.Locators.values(),
+                MainHeader.MainHeaderLtrs.values(),
+                Footer.FooterLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +63,7 @@ public class PodcastEpisode extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        BACK_ARROW_LINK(By.cssSelector("[href='/podcasts/']")),
         ;
         private By path;
         private S[] actions;
