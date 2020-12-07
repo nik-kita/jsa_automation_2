@@ -7,16 +7,22 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__USER__.general_parts.home.HomeHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class Favourites extends OnixPageObject {
+public class Favourites extends OnixPageObject implements HomeHeader {
     private String ENDPOINT_URL = ""; //TODO
     public Favourites(OnixWebDriver driver) {
         super(driver);
         log.debug("[{}] page is open", "Favourites"); //TODO
     }
 
+    public Learn clickBackArrow() {
+        driver.findElement(Locator.BACK_ARROW).click();
+        log.info("click [{}] button", "Back Arrow");
+        return new Learn(driver);
+    }
 
     @Override
     public Favourites make(Fly fly) {
@@ -38,14 +44,14 @@ public class Favourites extends OnixPageObject {
     @Override
     public Favourites check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Favourites.Locator.values()
-                //TODO
+                Favourites.Locator.values(),
+                HomeHeader.HomeHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Favourites.Locators.values()
-                //TODO
+                Favourites.Locators.values(),
+                HomeHeader.HomeHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +60,8 @@ public class Favourites extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        H6_TITLE(By.xpath("//h6[text() = 'Favourites']")),
+        BACK_ARROW(By.cssSelector(".back_link_arrow img")),
         ;
         private By path;
         private S[] actions;
