@@ -7,6 +7,7 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__GUEST__.page_objects.AfterLogout;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
@@ -15,6 +16,12 @@ public class UserCabinetDropdown extends OnixPageObject {
     public UserCabinetDropdown(OnixWebDriver driver) {
         super(driver);
         log.debug("[{}] page is open", "UserCabinetDropdown"); //TODO
+    }
+
+    public AfterLogout logout() {
+        driver.findElement(Locator.LOG_OUT).click();
+        log.info("click [{}] button in [{}] dropdown", "Logout", "UserCabinetDropdown");
+        return new AfterLogout(driver);
     }
 
 
@@ -54,7 +61,10 @@ public class UserCabinetDropdown extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        ACCOUNT(By.cssSelector(".dropdown-menu [href='/users/account']")),
+        PRICING(By.cssSelector(".dropdown-menu [href='/users/pricing/']")),
+        FAQs(By.xpath("//a[contains(text(), 'FAQs')]")),
+        LOG_OUT(By.cssSelector("[href='/accounts/logout']"));
         ;
         private By path;
         private S[] actions;
