@@ -7,10 +7,12 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__USER__.general_parts.Footer;
+import main_package.ui.__USER__.general_parts.MainHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class CookiesPolicy extends OnixPageObject {
+public class CookiesPolicy extends OnixPageObject implements MainHeader, Footer {
     private String ENDPOINT_URL = ""; //TODO
     public CookiesPolicy(OnixWebDriver driver) {
         super(driver);
@@ -54,7 +56,7 @@ public class CookiesPolicy extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        H4_TITLE(By.xpath("//h4[contains(text(), 'Cookies Policy')]")),
         ;
         private By path;
         private S[] actions;
