@@ -40,14 +40,16 @@ public class Faqs extends OnixPageObject implements MainHeader, Footer {
     @Override
     public Faqs check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Faqs.Locator.values()
-                //TODO
+                Faqs.Locator.values(),
+                MainHeader.MainHeaderLtr.values(),
+                Footer.FooterLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Faqs.Locators.values()
-                //TODO
+                Faqs.Locators.values(),
+                MainHeader.MainHeaderLtrs.values(),
+                Footer.FooterLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -56,7 +58,7 @@ public class Faqs extends OnixPageObject implements MainHeader, Footer {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        H1_TITLE(By.xpath("//h1[contains(text(), 'How can we help?')]")),
         ;
         private By path;
         private S[] actions;
