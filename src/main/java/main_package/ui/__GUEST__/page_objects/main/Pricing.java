@@ -12,41 +12,41 @@ import main_package.ui.__GUEST__.general_parts.MainHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class Challenge extends OnixPageObject implements MainHeader, Footer {
+public class Pricing extends OnixPageObject implements MainHeader, Footer {
     private String ENDPOINT_URL = ""; //TODO
-    public Challenge(OnixWebDriver driver) {
+    public Pricing(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "Challenge"); //TODO
+        log.debug("[{}] page is open", "Pricing"); //TODO
     }
 
 
     @Override
-    public Challenge make(Fly fly) {
+    public Pricing make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public Challenge openFromScratch() {
+    public Pricing openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public Challenge openFromUrl() {
+    public Pricing openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public Challenge check(OnixUiAssert onixUiAssert) {
+    public Pricing check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Challenge.Locator.values()
+                Pricing.Locator.values()
                 //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                Challenge.Locators.values()
+                Pricing.Locators.values()
                 //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
