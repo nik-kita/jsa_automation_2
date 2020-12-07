@@ -7,10 +7,11 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__USER__.general_parts.home.HomeHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class ImagesTab extends OnixPageObject {
+public class ImagesTab extends OnixPageObject implements HomeHeader {
     private String ENDPOINT_URL = ""; //TODO
     public ImagesTab(OnixWebDriver driver) {
         super(driver);
@@ -38,14 +39,15 @@ public class ImagesTab extends OnixPageObject {
     @Override
     public ImagesTab check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                ImagesTab.Locator.values()
-                //TODO
+                ImagesTab.Locator.values(),
+                HomeHeader.HomeHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                ImagesTab.Locators.values()
-                //TODO
+                ImagesTab.Locators.values(),
+                HomeHeader.HomeHeaderLtrs.values()
+
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +56,7 @@ public class ImagesTab extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        ADD_IMAGE_BUTTON(By.cssSelector(".add_image_button img"))
         ;
         private By path;
         private S[] actions;
