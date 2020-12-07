@@ -40,14 +40,16 @@ public class ReportBugs extends OnixPageObject implements MainHeader, Footer {
     @Override
     public ReportBugs check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                ReportBugs.Locator.values()
-                //TODO
+                ReportBugs.Locator.values(),
+                MainHeader.MainHeaderLtr.values(),
+                Footer.FooterLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                ReportBugs.Locators.values()
-                //TODO
+                ReportBugs.Locators.values(),
+                MainHeader.MainHeaderLtrs.values(),
+                Footer.FooterLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -56,7 +58,7 @@ public class ReportBugs extends OnixPageObject implements MainHeader, Footer {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        H1_TITLE(By.xpath("//h1[contains(text(), 'Report Bugs')]")),
         ;
         private By path;
         private S[] actions;
