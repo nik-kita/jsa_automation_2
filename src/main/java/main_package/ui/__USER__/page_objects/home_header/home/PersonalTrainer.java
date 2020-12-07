@@ -7,14 +7,21 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__USER__.general_parts.home.HomeHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class PersonalTrainer extends OnixPageObject {
+public class PersonalTrainer extends OnixPageObject implements HomeHeader {
     private String ENDPOINT_URL = ""; //TODO
     public PersonalTrainer(OnixWebDriver driver) {
         super(driver);
         log.debug("[{}] page is open", "PersonalTrainer"); //TODO
+    }
+
+    public Home clickClose() {
+        driver.findElement(Locator.CLOSE_ICON).click();
+        log.info("click [{}] icon", "Close"); //TODO check message
+        return new Home(driver);
     }
 
 
@@ -38,14 +45,14 @@ public class PersonalTrainer extends OnixPageObject {
     @Override
     public PersonalTrainer check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                PersonalTrainer.Locator.values()
-                //TODO
+                PersonalTrainer.Locator.values(),
+                HomeHeader.HomeHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                PersonalTrainer.Locators.values()
-                //TODO
+                PersonalTrainer.Locators.values(),
+                HomeHeader.HomeHeaderLtr.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +61,8 @@ public class PersonalTrainer extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        CLOSE_ICON(By.xpath("//div[contains(@class, 'header_two')]//img[contains(@src, 'ic_close')]")),
+        INFO_ICON(By.xpath("//img[contains(@src, 'ic_info')]")),
         ;
         private By path;
         private S[] actions;
