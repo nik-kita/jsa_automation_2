@@ -4,14 +4,48 @@ package main_package.ui.__USER__.general_parts.home.account;
 import main_package.data.S;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPart;
+import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__USER__.page_objects.home_header.home.account.PairedDevices;
+import main_package.ui.__USER__.page_objects.home_header.home.account.Units;
+import main_package.ui.__USER__.page_objects.home_header.home.account.my_plan.MyPlan;
+import main_package.ui.__USER__.page_objects.home_header.home.account.my_profile.MyProfile;
 import org.openqa.selenium.By;
+
+import static main_package.ui.__USER__.general_parts.home.account.AccountSidebar.AccountSidebarLtr.*;
 
 public interface AccountSidebar extends OnixPart {
 
-    //TODO
+    default MyProfile clickMyProfile() {
+        OnixWebDriver driver = getDriver();
+        driver.findElement(MY_PROFILE).click();
+        getLog().trace("Open 'My Profile' from 'AccountSidebar'");
+        return new MyProfile(driver);
+    }
+    default MyPlan clickMyPlan() {
+        OnixWebDriver driver = getDriver();
+        driver.findElement(MY_PLAN_BUTTON).click();
+        getLog().trace("Open 'My Plans' from 'AccountSidebar'");
+        return new MyPlan(driver);
+    }
+    default Units clickUnits() {
+        OnixWebDriver driver = getDriver();
+        driver.findElement(UNITS).click();
+        getLog().trace("Open 'Units' from 'AccountSidebar'");
+        return new Units(driver);
+    }
+    default PairedDevices clickPairedDevices() {
+        OnixWebDriver driver = getDriver();
+        driver.findElement(PAIRED_DEVICES).click();
+        getLog().trace("Open 'PairedDevices' from 'AccountSidebar'");
+        return new PairedDevices(driver);
+    }
+
 
     enum AccountSidebarLtr implements OnixLocator {
-        //TODO
+        MY_PLAN_BUTTON(By.cssSelector(".account-tab-container-desktop [href=\"/users/account/my-plan\"]")),
+        MY_PROFILE(By.cssSelector(".account-tab-container-desktop [href=\"/users/account/profile\"]")),
+        UNITS(By.cssSelector(".account-tab-container-desktop [href=\"/users/account/units-settings\"]")),
+        PAIRED_DEVICES(By.cssSelector(".account-tab-container-desktop [href=\"/users/account/fitness-tracker\"]"))
         ;
         private By path;
         private S[] actions;
