@@ -10,7 +10,7 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class InstagramPage extends OnixPageObject {
+public class InstagramPage extends OnixPageObject  implements InAnotherTab {
     private String ENDPOINT_URL = ""; //TODO
     public InstagramPage(OnixWebDriver driver) {
         super(driver);
@@ -54,7 +54,7 @@ public class InstagramPage extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        INSTAGRAM_LOGO(By.cssSelector("a[href='/'] img[alt='Instagram']")),
         ;
         private By path;
         private S[] actions;

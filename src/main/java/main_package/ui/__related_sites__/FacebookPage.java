@@ -10,7 +10,7 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class FacebookPage extends OnixPageObject {
+public class FacebookPage extends OnixPageObject  implements InAnotherTab {
     private String ENDPOINT_URL = ""; //TODO
     public FacebookPage(OnixWebDriver driver) {
         super(driver);
@@ -54,7 +54,8 @@ public class FacebookPage extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        FACEBOOK_LOGO(By.cssSelector("a[href='https://www.facebook.com/']")),
+        JAMES_SMITH_H2(By.xpath("//h1//span[contains(text(), 'James Smith')]"))
         ;
         private By path;
         private S[] actions;

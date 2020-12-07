@@ -10,7 +10,7 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class FacebookGroupPage extends OnixPageObject {
+public class FacebookGroupPage extends OnixPageObject implements InAnotherTab {
     private String ENDPOINT_URL = ""; //TODO
     public FacebookGroupPage(OnixWebDriver driver) {
         super(driver);
@@ -54,7 +54,7 @@ public class FacebookGroupPage extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        JOIN_GROUP_BUTTON(By.cssSelector("div[aria-label='Join Group']")),
         ;
         private By path;
         private S[] actions;

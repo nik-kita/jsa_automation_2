@@ -10,7 +10,7 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class GooglePlayPage extends OnixPageObject {
+public class GooglePlayPage extends OnixPageObject implements InCurrentTab{
     private String ENDPOINT_URL = ""; //TODO
     public GooglePlayPage(OnixWebDriver driver) {
         super(driver);
@@ -54,7 +54,8 @@ public class GooglePlayPage extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        GOOGLE_PLAY_LOGO(By.xpath("//a[@title='Google Play Logo']")),
+        JSA_TITLE(By.xpath("//h1//span[contains(text(), 'James Smith Academy')]"))
         ;
         private By path;
         private S[] actions;

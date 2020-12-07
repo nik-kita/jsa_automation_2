@@ -10,7 +10,7 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class SpotifyPage extends OnixPageObject {
+public class SpotifyPage extends OnixPageObject implements InAnotherTab{
     private String ENDPOINT_URL = ""; //TODO
     public SpotifyPage(OnixWebDriver driver) {
         super(driver);

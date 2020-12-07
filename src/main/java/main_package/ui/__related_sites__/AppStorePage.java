@@ -10,7 +10,7 @@ import main_package.engine.ui_engine.OnixWebDriver;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class AppStorePage extends OnixPageObject {
+public class AppStorePage extends OnixPageObject implements InCurrentTab {
     private String ENDPOINT_URL = ""; //TODO
     public AppStorePage(OnixWebDriver driver) {
         super(driver);
@@ -54,7 +54,8 @@ public class AppStorePage extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        APPLE_LOGO(By.xpath("//ul[contains(@class, 'list')]//a[@data-analytics-title='apple home']")),
+        JSA_TITLE(By.xpath("//h1[contains(text(), 'James Smith Academy')]"))
         ;
         private By path;
         private S[] actions;
