@@ -7,10 +7,12 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__GUEST__.general_parts.Footer;
+import main_package.ui.__GUEST__.general_parts.MainHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class AfterLogout extends OnixPageObject {
+public class AfterLogout extends OnixPageObject implements Footer, MainHeader {
     private String ENDPOINT_URL = ""; //TODO
     public AfterLogout(OnixWebDriver driver) {
         super(driver);
@@ -38,14 +40,16 @@ public class AfterLogout extends OnixPageObject {
     @Override
     public AfterLogout check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                AfterLogout.Locator.values()
-                //TODO
+                AfterLogout.Locator.values(),
+                Footer.FooterLtrs.values(),
+                MainHeader.MainHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                AfterLogout.Locators.values()
-                //TODO
+                AfterLogout.Locators.values(),
+                Footer.FooterLtrs.values(),
+                MainHeader.MainHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +58,7 @@ public class AfterLogout extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        SUCCESS_LOGOUT_MESSAGE(By.cssSelector(".jumbo-message")),
         ;
         private By path;
         private S[] actions;
