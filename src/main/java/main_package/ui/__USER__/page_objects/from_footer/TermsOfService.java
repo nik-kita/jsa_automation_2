@@ -40,14 +40,16 @@ public class TermsOfService extends OnixPageObject implements MainHeader, Footer
     @Override
     public TermsOfService check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                TermsOfService.Locator.values()
-                //TODO
+                TermsOfService.Locator.values(),
+                MainHeader.MainHeaderLtr.values(),
+                Footer.FooterLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                TermsOfService.Locators.values()
-                //TODO
+                TermsOfService.Locators.values(),
+                MainHeader.MainHeaderLtrs.values(),
+                Footer.FooterLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -56,7 +58,7 @@ public class TermsOfService extends OnixPageObject implements MainHeader, Footer
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        H4_TITLE(By.xpath("//h4[contains(text(), 'Services Terms')]")),
         ;
         private By path;
         private S[] actions;
