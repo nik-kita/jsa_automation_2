@@ -1,21 +1,22 @@
 
-package test_package.ui.unit.ui.__USER__.page_objects.home_header.learn;
+package test_package.ui.unit.ui.__USER__.page_objects.home_header.learn.single_learn_video;
 
 
 import main_package.engine.test_engine.OnixUiTestRunner;
 import main_package.engine.ui_engine.OnixLocator;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import main_package.ui.__USER__.page_objects.home_header.learn.single_learn_video.SingleLearnVideo;
+import main_package.ui.__USER__.page_objects.home_header.learn.single_learn_video.VideoIFrame;
 
 
-public class SingleLearnVideoTest extends OnixUiTestRunner {
-    SingleLearnVideo singleLearnVideo;
+public class VideoIFrameTest extends OnixUiTestRunner {
+    VideoIFrame videoIFrame;
     @BeforeClass
-    public void openSingleLearnVideo() {
+    public void openVideoIFrame() {
         //TODO
-        //singleLearnVideo = openSite();
+        //videoIFrame = openSite();
     }
 
     @Test(dataProvider = "getUnique")
@@ -27,7 +28,7 @@ public class SingleLearnVideoTest extends OnixUiTestRunner {
     @DataProvider
     public Object[] getUnique() {
         return mergeArrays(
-                SingleLearnVideo.Locator.values()
+                VideoIFrame.Locator.values()
                 //TODO
         );
     }
@@ -41,7 +42,7 @@ public class SingleLearnVideoTest extends OnixUiTestRunner {
     @DataProvider
     public Object[] getRepeated() {
         return mergeArrays(
-                SingleLearnVideo.Locators.values()
+                VideoIFrame.Locators.values()
                 //TODO
         );
     }

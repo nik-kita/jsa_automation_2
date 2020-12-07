@@ -1,5 +1,5 @@
 
-package main_package.ui.__USER__.page_objects.home_header.learn;
+package main_package.ui.__USER__.page_objects.home_header.learn.single_learn_video;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -8,6 +8,7 @@ import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
 import main_package.ui.__USER__.general_parts.home.HomeHeader;
+import main_package.ui.__USER__.page_objects.home_header.learn.Learn;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
@@ -105,6 +106,7 @@ public class SingleLearnVideo extends OnixPageObject implements HomeHeader {
            return actions;
         }
     }
+
 
 }
 
