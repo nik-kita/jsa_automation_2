@@ -60,7 +60,28 @@ public class OnixWebDriver extends BaseClass {
                 }
             }
         }
-        OnixWebElement result = new OnixWebElement((seleniumWebDriver.findElement(path)));
+        WebElement findingElement;
+        if(seleniumWebDriver.findElements(path).size() == 0) {
+            log.warn("waining for element located by [{}]", path);
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            findingElement = seleniumWebDriver.findElement(path);
+        } catch (Exception e) {
+            log.warn("big problems with finding element located \n[{}]\n[{}]", path, e.getMessage());
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException interruptedException) {
+                interruptedException.printStackTrace();
+            }
+            findingElement = seleniumWebDriver.findElement(path);
+        }
+
+        OnixWebElement result = new OnixWebElement((findingElement));
         log.trace("find webElement by [{}]", path);
         return result;
     }

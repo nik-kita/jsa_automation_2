@@ -25,9 +25,6 @@ public interface MainHeader extends OnixPart {
         getLog().info("click [Jsa logo] button in header");
         return new Main(driver);
     }
-    default Main clickHeaderJsaLogo(OnixUiAssert onixUiAssert) {
-        return clickHeaderJsaLogo().check(onixUiAssert);
-    }
 
     default Challenge clickHeaderChallenge() {
         OnixWebDriver driver = getDriver();

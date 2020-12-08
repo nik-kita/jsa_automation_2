@@ -34,7 +34,9 @@ public class OnixUiTestRunner extends OnixTestRunner{
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("profile.default_content_setting_values.notifications", 2);
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
+        options.addArguments("--headless");
+//        options.addArguments("--start-maximized");
+        options.addArguments("--window-size=1280,800");
         options.addArguments("--disable-web-security");
         options.addArguments("--no-proxy-server");
         options.setExperimentalOption("prefs", prefs);
@@ -43,7 +45,7 @@ public class OnixUiTestRunner extends OnixTestRunner{
         options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
         options.setExperimentalOption("prefs", prefs);
         WebDriver chrome = new ChromeDriver(options);
-        chrome.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
+        chrome.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver = new OnixWebDriver(chrome);
         onixUiAssert = new OnixUiAssert(driver);
     }
@@ -79,7 +81,7 @@ public class OnixUiTestRunner extends OnixTestRunner{
     protected Main openSite() {
         driver.get(Settings.BASE_URL);
         mainGuest = new Main(driver);
-        log.debug("Open https://www.jamessmithacademy.com/");
+        log.info("Open https://www.jamessmithacademy.com/");
         return mainGuest;
     }
 
