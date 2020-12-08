@@ -239,6 +239,12 @@ public class OnixWebDriver extends BaseClass {
                 .until(ExpectedConditions.elementToBeClickable(locator.getPath()));
         return new OnixWebElement(e);
     }
+    public OnixWebElement waitToClick(By path) {
+        log.trace("wait to click the element located by [{}]", path);
+        WebElement e = new WebDriverWait(seleniumWebDriver, 5)
+                .until(ExpectedConditions.elementToBeClickable(path));
+        return new OnixWebElement(e);
+    }
 
     HashMap<String, String> tabs;
 
