@@ -1,5 +1,5 @@
 
-package main_package.ui.__GUEST__.page_objects.main.my_podcast;
+package main_package.ui.__GUEST__.page_objects.main.login;
 
 import main_package.data.Settings;
 import main_package.engine.Fly;
@@ -7,54 +7,47 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
-import main_package.ui.__GUEST__.general_parts.Footer;
-import main_package.ui.__GUEST__.general_parts.MainHeader;
+import main_package.ui.__related_sites__.InCurrentTab;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class PodcastEpisode extends OnixPageObject implements MainHeader, Footer {
+public class AppleWindowForLogin extends OnixPageObject implements InCurrentTab {
     private String ENDPOINT_URL = ""; //TODO
-    public PodcastEpisode(OnixWebDriver driver) {
+    public AppleWindowForLogin(OnixWebDriver driver) {
         super(driver);
-        log.debug("[{}] page is open", "PodcastEpisode"); //TODO
+        log.debug("[{}] page is open", "AppleWindowForLogin"); //TODO
     }
 
-    public MyPodcast clickBackToMyPodcast() {
-        driver.findElement(Locator.BACK_ARROW_LINK).click();
-        log.info("click [{}] button", "Back Arrow");
-        return new MyPodcast(driver);
-    }
 
     @Override
-    public PodcastEpisode make(Fly fly) {
+    public AppleWindowForLogin make(Fly fly) {
         fly.make();
         return this;
     }
 
     @Override
-    public PodcastEpisode openFromScratch() {
+    public AppleWindowForLogin openFromScratch() {
         driver.get(Settings.BASE_URL);
         //TODO
         return this;
     }
     @Override
-    public PodcastEpisode openFromUrl() {
+    public AppleWindowForLogin openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
     @Override
-    public PodcastEpisode check(OnixUiAssert onixUiAssert) {
+    public AppleWindowForLogin check(OnixUiAssert onixUiAssert) {
+        onixUiAssert.softCheckUrlContains("apple");
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                PodcastEpisode.Locator.values(),
-                MainHeader.MainHeaderLtr.values(),
-                Footer.FooterLtr.values()
+                AppleWindowForLogin.Locator.values()
+                //TODO
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                PodcastEpisode.Locators.values(),
-                MainHeader.MainHeaderLtrs.values(),
-                Footer.FooterLtrs.values()
+                AppleWindowForLogin.Locators.values()
+                //TODO
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -63,7 +56,7 @@ public class PodcastEpisode extends OnixPageObject implements MainHeader, Footer
 
 
     public enum Locator implements OnixLocator {
-        BACK_ARROW_LINK(By.cssSelector("[href='/podcasts/']")),
+        //TODO
         ;
         private By path;
         private S[] actions;
