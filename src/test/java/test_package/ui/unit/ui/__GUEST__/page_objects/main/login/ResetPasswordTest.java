@@ -4,6 +4,8 @@ package test_package.ui.unit.ui.__GUEST__.page_objects.main.login;
 
 import main_package.engine.test_engine.OnixUiTestRunner;
 import main_package.engine.ui_engine.OnixLocator;
+import main_package.ui.__GUEST__.general_parts.Footer;
+import main_package.ui.__GUEST__.general_parts.MainHeader;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -15,8 +17,7 @@ public class ResetPasswordTest extends OnixUiTestRunner {
     ResetPassword resetPassword;
     @BeforeClass
     public void openResetPassword() {
-        //TODO
-        //resetPassword = openSite();
+        resetPassword = openSite().clickHeaderLogin().clickForgotPassword();
     }
 
     @Test(dataProvider = "getUnique")
@@ -28,8 +29,9 @@ public class ResetPasswordTest extends OnixUiTestRunner {
     @DataProvider
     public Object[] getUnique() {
         return mergeArrays(
-                ResetPassword.Locator.values()
-                //TODO
+                ResetPassword.Locator.values(),
+                MainHeader.MainHeaderLtr.values(),
+                Footer.FooterLtr.values()
         );
     }
 
@@ -42,8 +44,9 @@ public class ResetPasswordTest extends OnixUiTestRunner {
     @DataProvider
     public Object[] getRepeated() {
         return mergeArrays(
-                ResetPassword.Locators.values()
-                //TODO
+                ResetPassword.Locators.values(),
+                MainHeader.MainHeaderLtr.values(),
+                Footer.FooterLtr.values()
         );
     }
 }

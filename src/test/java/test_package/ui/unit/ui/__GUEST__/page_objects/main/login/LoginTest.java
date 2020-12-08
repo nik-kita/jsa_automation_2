@@ -15,8 +15,7 @@ public class LoginTest extends OnixUiTestRunner {
     Login login;
     @BeforeClass
     public void openLogin() {
-        //TODO
-        //login = openSite();
+        login = openSite().clickHeaderLogin();
     }
 
     @Test(dataProvider = "getUnique")
@@ -29,7 +28,6 @@ public class LoginTest extends OnixUiTestRunner {
     public Object[] getUnique() {
         return mergeArrays(
                 Login.Locator.values()
-                //TODO
         );
     }
 
@@ -43,7 +41,6 @@ public class LoginTest extends OnixUiTestRunner {
     public Object[] getRepeated() {
         return mergeArrays(
                 Login.Locators.values()
-                //TODO
         );
     }
 }

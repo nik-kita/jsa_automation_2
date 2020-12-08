@@ -15,8 +15,7 @@ public class CreateAccountTest extends OnixUiTestRunner {
     CreateAccount createAccount;
     @BeforeClass
     public void openCreateAccount() {
-        //TODO
-        //createAccount = openSite();
+        createAccount = openSite().clickGetStartedButton();
     }
 
     @Test(dataProvider = "getUnique")
@@ -29,7 +28,6 @@ public class CreateAccountTest extends OnixUiTestRunner {
     public Object[] getUnique() {
         return mergeArrays(
                 CreateAccount.Locator.values()
-                //TODO
         );
     }
 
@@ -43,7 +41,6 @@ public class CreateAccountTest extends OnixUiTestRunner {
     public Object[] getRepeated() {
         return mergeArrays(
                 CreateAccount.Locators.values()
-                //TODO
         );
     }
 }

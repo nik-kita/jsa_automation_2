@@ -65,9 +65,6 @@ public interface MainHeader extends OnixPart {
         getLog().info("click [Login] button in header");
         return new Login(driver);
     }
-    default Login clickHeaderLogin(OnixUiAssert onixUiAssert) {
-        return clickHeaderLogin().check(onixUiAssert);
-    }
 
     default CreateAccount clickHeaderJoinNow() {
         OnixWebDriver driver = getDriver();
