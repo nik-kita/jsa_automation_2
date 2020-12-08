@@ -4,6 +4,8 @@ package test_package.ui.unit.ui.__GUEST__.page_objects.main;
 
 import main_package.engine.test_engine.OnixUiTestRunner;
 import main_package.engine.ui_engine.OnixLocator;
+import main_package.ui.__GUEST__.general_parts.Footer;
+import main_package.ui.__GUEST__.general_parts.MainHeader;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -15,8 +17,7 @@ public class PricingTest extends OnixUiTestRunner {
     Pricing pricing;
     @BeforeClass
     public void openPricing() {
-        //TODO
-        //pricing = openSite();
+        pricing = openSite().clickHeaderPricing();
     }
 
     @Test(dataProvider = "getUnique")
@@ -28,8 +29,9 @@ public class PricingTest extends OnixUiTestRunner {
     @DataProvider
     public Object[] getUnique() {
         return mergeArrays(
-                Pricing.Locator.values()
-                //TODO
+                Pricing.Locator.values(),
+                Footer.FooterLtr.values(),
+                MainHeader.MainHeaderLtr.values()
         );
     }
 
@@ -42,8 +44,9 @@ public class PricingTest extends OnixUiTestRunner {
     @DataProvider
     public Object[] getRepeated() {
         return mergeArrays(
-                Pricing.Locators.values()
-                //TODO
+                Pricing.Locators.values(),
+                Footer.FooterLtrs.values(),
+                MainHeader.MainHeaderLtrs.values()
         );
     }
 }

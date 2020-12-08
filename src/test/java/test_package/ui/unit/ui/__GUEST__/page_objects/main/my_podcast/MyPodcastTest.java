@@ -4,6 +4,8 @@ package test_package.ui.unit.ui.__GUEST__.page_objects.main.my_podcast;
 
 import main_package.engine.test_engine.OnixUiTestRunner;
 import main_package.engine.ui_engine.OnixLocator;
+import main_package.ui.__GUEST__.general_parts.Footer;
+import main_package.ui.__GUEST__.general_parts.MainHeader;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -15,8 +17,7 @@ public class MyPodcastTest extends OnixUiTestRunner {
     MyPodcast myPodcast;
     @BeforeClass
     public void openMyPodcast() {
-        //TODO
-        //myPodcast = openSite();
+        myPodcast = openSite().clickHeaderMyPodcast();
     }
 
     @Test(dataProvider = "getUnique")
@@ -28,8 +29,9 @@ public class MyPodcastTest extends OnixUiTestRunner {
     @DataProvider
     public Object[] getUnique() {
         return mergeArrays(
-                MyPodcast.Locator.values()
-                //TODO
+                MyPodcast.Locator.values(),
+                Footer.FooterLtr.values(),
+                MainHeader.MainHeaderLtr.values()
         );
     }
 
@@ -42,8 +44,9 @@ public class MyPodcastTest extends OnixUiTestRunner {
     @DataProvider
     public Object[] getRepeated() {
         return mergeArrays(
-                MyPodcast.Locators.values()
-                //TODO
+                MyPodcast.Locators.values(),
+                Footer.FooterLtrs.values(),
+                MainHeader.MainHeaderLtrs.values()
         );
     }
 }
