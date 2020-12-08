@@ -183,17 +183,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire-ver}</version>
                 <configuration>
-                    <properties>
-                        <property>
-                            <name>usedefaultlisteners</name>
-                            <value>false</value>
-                        </property>
-                        <property>
-                            <name>listener</name>
-                            <value>org.uncommons.reportng.HTMLReporter</value>
-                            <value>org.uncommons.reportng.JUnitXMLReporter</value>
-                        </property>
-                    </properties>
                     <suiteXmlFiles>
                         <suiteXmlFile>TestNG.xml</suiteXmlFile>
                     </suiteXmlFiles>
@@ -202,12 +191,11 @@
                     </argLine>
                     <systemPropertyVariables>
                         <testng.dtd.http>true</testng.dtd.http>
-                        <org.uncommons.reportng.failures-only>false</org.uncommons.reportng.failures-only>
                         <org.uncommons.reportng.escape-output>false</org.uncommons.reportng.escape-output>
-                        <org.uncommons.reportng.title>JSA Automation Testing Report</org.uncommons.reportng.title>
-                        <org.uncommons.reportng.logOutputReport>true</org.uncommons.reportng.logOutputReport>
-                        <org.uncommons.reportng.show-suite-configuration-methods>false</org.uncommons.reportng.show-suite-configuration-methods>
-                        <org.uncommons.reportng.show-regression-column>true</org.uncommons.reportng.show-regression-column>
+<!--                        <org.uncommons.reportng.title>JSA Automation Testing Report</org.uncommons.reportng.title>-->
+<!--                        <org.uncommons.reportng.logOutputReport>true</org.uncommons.reportng.logOutputReport>-->
+<!--                        <org.uncommons.reportng.show-suite-configuration-methods>false</org.uncommons.reportng.show-suite-configuration-methods>-->
+<!--                        <org.uncommons.reportng.show-regression-column>true</org.uncommons.reportng.show-regression-column>-->
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

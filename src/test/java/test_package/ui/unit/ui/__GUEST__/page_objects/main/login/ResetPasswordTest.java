@@ -45,8 +45,8 @@ public class ResetPasswordTest extends OnixUiTestRunner {
     public Object[] getRepeated() {
         return mergeArrays(
                 ResetPassword.Locators.values(),
-                MainHeader.MainHeaderLtr.values(),
-                Footer.FooterLtr.values()
+                MainHeader.MainHeaderLtrs.values(),
+                Footer.FooterLtrs.values()
         );
     }
 }

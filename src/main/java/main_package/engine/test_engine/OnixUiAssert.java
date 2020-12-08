@@ -114,7 +114,7 @@ public class OnixUiAssert extends BaseAssert {
                 "\n" + locatorPath +
                 "\n----------------------------find " + actualElCount + " elements" +
                 "\n=== EXPECTED THAT THEIR COUNT WILL BE MORE THAN "+ min + " ===\n";
-        boolean result = actualElCount > min;
+        boolean result = actualElCount >= min;
         message(result, locatorClass + "." + locatorName + " with " + locatorPath + " + has more than " + min + " elements (" + actualElCount + ")",
                 locatorClass + "." + locatorName + " with " + locatorPath + " + hasn't more than " + min + " elements (only " + actualElCount + ")");
         Assert.assertTrue(result, errorMessage);
@@ -135,7 +135,7 @@ public class OnixUiAssert extends BaseAssert {
                 "\n" + locatorPath +
                 "\n----------------------------find " + actualElCount + " elements" +
                 "\n=== EXPECTED THAT THEIR COUNT WILL BE MORE THAN "+ min + " ===\n";
-        boolean result = actualElCount > min;
+        boolean result = actualElCount >= min;
         softMessage(result, locatorClass + "." + locatorName + " with " + locatorPath + " + has more than " + min + " elements (" + actualElCount + ")",
                 errorMessage);
         softAssert.assertTrue(result, errorMessage);
