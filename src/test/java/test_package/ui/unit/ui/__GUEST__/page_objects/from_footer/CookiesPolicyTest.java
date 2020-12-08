@@ -4,6 +4,8 @@ package test_package.ui.unit.ui.__GUEST__.page_objects.from_footer;
 
 import main_package.engine.test_engine.OnixUiTestRunner;
 import main_package.engine.ui_engine.OnixLocator;
+import main_package.ui.__GUEST__.general_parts.Footer;
+import main_package.ui.__GUEST__.general_parts.MainHeader;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -15,8 +17,7 @@ public class CookiesPolicyTest extends OnixUiTestRunner {
     CookiesPolicy cookiesPolicy;
     @BeforeClass
     public void openCookiesPolicy() {
-        //TODO
-        //cookiesPolicy = openSite();
+        cookiesPolicy = openSite().clickFooterCookiesPolicy();
     }
 
     @Test(dataProvider = "getUnique")
@@ -28,8 +29,9 @@ public class CookiesPolicyTest extends OnixUiTestRunner {
     @DataProvider
     public Object[] getUnique() {
         return mergeArrays(
-                CookiesPolicy.Locator.values()
-                //TODO
+                CookiesPolicy.Locator.values(),
+                Footer.FooterLtr.values(),
+                MainHeader.MainHeaderLtr.values()
         );
     }
 
@@ -42,8 +44,9 @@ public class CookiesPolicyTest extends OnixUiTestRunner {
     @DataProvider
     public Object[] getRepeated() {
         return mergeArrays(
-                CookiesPolicy.Locators.values()
-                //TODO
+                CookiesPolicy.Locators.values(),
+                Footer.FooterLtrs.values(),
+                MainHeader.MainHeaderLtrs.values()
         );
     }
 }
