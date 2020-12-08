@@ -7,10 +7,12 @@ import main_package.engine.test_engine.OnixUiAssert;
 import main_package.engine.ui_engine.OnixLocator;
 import main_package.engine.ui_engine.OnixPageObject;
 import main_package.engine.ui_engine.OnixWebDriver;
+import main_package.ui.__GUEST__.general_parts.Footer;
+import main_package.ui.__GUEST__.general_parts.MainHeader;
 import org.openqa.selenium.By;
 import main_package.data.S;
 
-public class ResetPassword extends OnixPageObject {
+public class ResetPassword extends OnixPageObject implements Footer, MainHeader {
     private String ENDPOINT_URL = ""; //TODO
     public ResetPassword(OnixWebDriver driver) {
         super(driver);
@@ -38,14 +40,16 @@ public class ResetPassword extends OnixPageObject {
     @Override
     public ResetPassword check(OnixUiAssert onixUiAssert) {
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                ResetPassword.Locator.values()
-                //TODO
+                ResetPassword.Locator.values(),
+                MainHeader.MainHeaderLtr.values(),
+                Footer.FooterLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
         for(OnixLocator l : OnixUiAssert.mergeArrays(
-                ResetPassword.Locators.values()
-                //TODO
+                ResetPassword.Locators.values(),
+                MainHeader.MainHeaderLtrs.values(),
+                Footer.FooterLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
@@ -54,7 +58,8 @@ public class ResetPassword extends OnixPageObject {
 
 
     public enum Locator implements OnixLocator {
-        //TODO
+        EMAIL_INPUT(By.cssSelector("input#id_email")),
+        ENTER_BUTTON(By.cssSelector("input[type='submit']"))
         ;
         private By path;
         private S[] actions;
