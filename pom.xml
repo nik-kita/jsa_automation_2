@@ -11,8 +11,8 @@
     <properties>
         <selenium-ver>3.141.59</selenium-ver>
         <testng-ver>7.3.0</testng-ver>
-        <jdk_source_version>14</jdk_source_version>
-        <jdk_compiler_version>14</jdk_compiler_version>
+        <jdk_source_version>8</jdk_source_version>
+        <jdk_compiler_version>8</jdk_compiler_version>
         <aspectj.version>1.9.6</aspectj.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <surefire-ver>3.0.0-M5</surefire-ver>

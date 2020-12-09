@@ -47,8 +47,10 @@ public class OnixWebDriver extends BaseClass {
         if (locator.specialActions() != null) {
             for (S s : locator.specialActions()) {
                 switch (s) {
-                    case SCROLL_PAGE_DOWN -> this.scrollPageDown();
-                    case HARD_WAITING_2_SECONDS -> {
+                    case SCROLL_PAGE_DOWN:
+                        this.scrollPageDown();
+                        break;
+                    case HARD_WAITING_2_SECONDS:
                         try {
                             int pause = 2000;
                             Thread.sleep(pause);
@@ -56,12 +58,12 @@ public class OnixWebDriver extends BaseClass {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                    }
+                        break;
                 }
             }
         }
         WebElement findingElement;
-        if(seleniumWebDriver.findElements(path).size() == 0) {
+        if (seleniumWebDriver.findElements(path).size() == 0) {
             log.warn("waining for element located by [{}]", path);
             try {
                 Thread.sleep(300);
@@ -260,6 +262,7 @@ public class OnixWebDriver extends BaseClass {
                 .until(ExpectedConditions.elementToBeClickable(locator.getPath()));
         return new OnixWebElement(e);
     }
+
     public OnixWebElement waitToClick(By path) {
         log.trace("wait to click the element located by [{}]", path);
         WebElement e = new WebDriverWait(seleniumWebDriver, 5)

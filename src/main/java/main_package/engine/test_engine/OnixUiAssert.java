@@ -33,7 +33,7 @@ public class OnixUiAssert extends BaseAssert {
         String errorMessage = "";
         if(first < second) {
             StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[2];
-            String classLoaderName = stackTraceElement.getClassLoaderName();
+            String classLoaderName = stackTraceElement.getClassName();
             String className = stackTraceElement.getClassName();
             String methodName = stackTraceElement.getMethodName();
             errorMessage = "\n\n" +
