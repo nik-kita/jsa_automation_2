@@ -20,31 +20,42 @@ import java.util.concurrent.TimeUnit;
 
 
 @Listeners(OnixScreenFailListener.class)
-public class OnixUiTestRunner extends OnixTestRunner{
+public class OnixUiTestRunner extends OnixTestRunner {
     protected OnixUiAssert onixUiAssert;
     protected OnixWebDriver driver;
     private Main mainGuest;
 
     @BeforeClass
     public void settingDriver() {
-        String className = this.getClass().toString();
-        MDC.put("class", className);
-        log.debug("Class '{}' is started.", className);
-        WebDriverManager.chromedriver().setup();
-        Map<String, Object> prefs = new HashMap<>();
-        prefs.put("profile.default_content_setting_values.notifications", 2);
+        log.debug("Class '{}' is started.", this.getClass().toString());
         ChromeOptions options = new ChromeOptions();
+        /**
+         * ===================================== HEROKU =============================
+         */
+        String GOOGLE_CHROME_PATH = "/app/.apt/usr/bin/google_chrome";
+        String CHROMEDRIVER_PATH = "/app/.chromedriver/bin/chromedriver";
         options.addArguments("--headless");
-//        options.addArguments("--start-maximized");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
         options.addArguments("--window-size=1280,800");
-        options.addArguments("--disable-web-security");
-        options.addArguments("--no-proxy-server");
-        options.setExperimentalOption("prefs", prefs);
-        prefs.put("credentials_enable_service", false);
-        prefs.put("profile.password_manager_enabled", false);
-        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
-        options.setExperimentalOption("prefs", prefs);
+        options.setBinary(GOOGLE_CHROME_PATH);
+        System.setProperty("webdriver.chrome.driver", CHROMEDRIVER_PATH);
         WebDriver chrome = new ChromeDriver(options);
+        /**
+         *===========================================================================
+         */
+//        WebDriverManager.chromedriver().setup();
+//        Map<String, Object> prefs = new HashMap<>();
+//        prefs.put("profile.default_content_setting_values.notifications", 2);
+//        options.addArguments("--start-maximized");
+//        options.addArguments("--disable-web-security");
+//        options.addArguments("--no-proxy-server");
+//        options.setExperimentalOption("prefs", prefs);
+//        prefs.put("credentials_enable_service", false);
+//        prefs.put("profile.password_manager_enabled", false);
+//        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+//        options.setExperimentalOption("prefs", prefs);
+//        WebDriver chrome = new ChromeDriver(options);
         chrome.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver = new OnixWebDriver(chrome);
         onixUiAssert = new OnixUiAssert(driver);
@@ -61,7 +72,7 @@ public class OnixUiTestRunner extends OnixTestRunner{
         MDC.put("sms_role", "test");
         String name = result.getMethod().getMethodName();
         Long executionTime = result.getEndMillis() - result.getStartMillis();
-        if(result.isSuccess()) {
+        if (result.isSuccess()) {
             log.info("Test '{}' is successfully finished. Time: {} ms.", name, executionTime);
         } else {
             log.error("Test '{}' fails! ({} ms)", name, executionTime);

@@ -1,0 +1,1 @@
+worker:  mvn -Dtest=src/test/java/test_package/ui/unit/ui/__GUEST__/page_objects/main/login/LoginTest test
