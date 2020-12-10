@@ -15,8 +15,7 @@ public class AccessAndDownloadTest extends OnixUiTestRunner {
     AccessAndDownload accessAndDownload;
     @BeforeClass
     public void openAccessAndDownload() {
-        //TODO
-        //accessAndDownload = openSite();
+        accessAndDownload = openSite(user).goAccessAndDownloadFromFooter();
     }
 
     @Test(dataProvider = "getUnique")

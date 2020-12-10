@@ -15,8 +15,7 @@ public class CookiesPolicyTest extends OnixUiTestRunner {
     CookiesPolicy cookiesPolicy;
     @BeforeClass
     public void openCookiesPolicy() {
-        //TODO
-        //cookiesPolicy = openSite();
+        cookiesPolicy = openSite(user).goCookiesPolicyFromFooter();
     }
 
     @Test(dataProvider = "getUnique")

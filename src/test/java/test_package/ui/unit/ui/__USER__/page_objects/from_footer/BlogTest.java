@@ -15,8 +15,7 @@ public class BlogTest extends OnixUiTestRunner {
     Blog blog;
     @BeforeClass
     public void openBlog() {
-        //TODO
-        //blog = openSite();
+        blog = openSite(user).goBlogPageFromFooter();
     }
 
     @Test(dataProvider = "getUnique")

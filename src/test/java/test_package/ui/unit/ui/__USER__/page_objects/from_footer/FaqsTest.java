@@ -15,8 +15,7 @@ public class FaqsTest extends OnixUiTestRunner {
     Faqs faqs;
     @BeforeClass
     public void openFaqs() {
-        //TODO
-        //faqs = openSite();
+        faqs = openSite(user).goFaqsFromFooter();
     }
 
     @Test(dataProvider = "getUnique")

@@ -15,8 +15,7 @@ public class ReportBugsTest extends OnixUiTestRunner {
     ReportBugs reportBugs;
     @BeforeClass
     public void openReportBugs() {
-        //TODO
-        //reportBugs = openSite();
+        reportBugs = openSite(user).goReportBugsFromFooter();
     }
 
     @Test(dataProvider = "getUnique")

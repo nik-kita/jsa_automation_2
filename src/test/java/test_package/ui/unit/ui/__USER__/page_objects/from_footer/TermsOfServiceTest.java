@@ -15,8 +15,7 @@ public class TermsOfServiceTest extends OnixUiTestRunner {
     TermsOfService termsOfService;
     @BeforeClass
     public void openTermsOfService() {
-        //TODO
-        //termsOfService = openSite();
+        termsOfService = openSite(user).goTermsOfServiceFromFooter();
     }
 
     @Test(dataProvider = "getUnique")

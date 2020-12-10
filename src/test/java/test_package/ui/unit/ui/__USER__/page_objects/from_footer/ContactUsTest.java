@@ -15,8 +15,7 @@ public class ContactUsTest extends OnixUiTestRunner {
     ContactUs contactUs;
     @BeforeClass
     public void openContactUs() {
-        //TODO
-        //contactUs = openSite();
+        contactUs = openSite(user).goContactUsFromFooter();
     }
 
     @Test(dataProvider = "getUnique")
