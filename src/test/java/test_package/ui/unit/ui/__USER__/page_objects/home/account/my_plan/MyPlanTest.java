@@ -14,8 +14,10 @@ public class MyPlanTest extends OnixUiTestRunner {
     MyPlan myPlan;
     @BeforeClass
     public void openMyPlan() {
-        //TODO
-        //myPlan = openSite();
+        myPlan = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickAccountIcon();
     }
 
     @Test(dataProvider = "getUnique")

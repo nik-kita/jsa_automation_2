@@ -14,8 +14,11 @@ public class PairedDevicesTest extends OnixUiTestRunner {
     PairedDevices pairedDevices;
     @BeforeClass
     public void openPairedDevices() {
-        //TODO
-        //pairedDevices = openSite();
+        pairedDevices = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickAccountIcon()
+                .clickPairedDevices();
     }
 
     @Test(dataProvider = "getUnique")

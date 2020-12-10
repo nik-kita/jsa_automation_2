@@ -14,8 +14,10 @@ public class ConfirmCancelPopupTest extends OnixUiTestRunner {
     ConfirmCancelPopup confirmCancelPopup;
     @BeforeClass
     public void openConfirmCancelPopup() {
-        //TODO
-        //confirmCancelPopup = openSite();
+        confirmCancelPopup = openSite().clickHeaderLogin()
+                .login(user)
+                .clickAccountIcon()
+                .clickCancelSubscriptionPlan();
     }
 
     @Test(dataProvider = "getUnique")

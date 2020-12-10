@@ -14,8 +14,11 @@ public class MyProfileTest extends OnixUiTestRunner {
     MyProfile myProfile;
     @BeforeClass
     public void openMyProfile() {
-        //TODO
-        //myProfile = openSite();
+        myProfile = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickAccountIcon()
+                .clickMyProfile();
     }
 
     @Test(dataProvider = "getUnique")

@@ -14,8 +14,12 @@ public class EmailPreferencesTest extends OnixUiTestRunner {
     EmailPreferences emailPreferences;
     @BeforeClass
     public void openEmailPreferences() {
-        //TODO
-        //emailPreferences = openSite();
+        emailPreferences = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickAccountIcon()
+                .clickMyProfile()
+                .clickUpdateEmailPreferences();
     }
 
     @Test(dataProvider = "getUnique")

@@ -14,8 +14,12 @@ public class LocalFilesTest extends OnixUiTestRunner {
     LocalFiles localFiles;
     @BeforeClass
     public void openLocalFiles() {
-        //TODO
-        //localFiles = openSite();
+        localFiles = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickAccountIcon()
+                .clickMyProfile()
+                .clickUploadImageIconButton();
     }
 
     @Test(dataProvider = "getUnique")

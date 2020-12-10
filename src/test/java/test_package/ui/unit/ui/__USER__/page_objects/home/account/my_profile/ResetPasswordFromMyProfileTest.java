@@ -14,8 +14,12 @@ public class ResetPasswordFromMyProfileTest extends OnixUiTestRunner {
     ResetPasswordFromMyProfile resetPasswordFromMyProfile;
     @BeforeClass
     public void openResetPasswordFromMyProfile() {
-        //TODO
-        //resetPasswordFromMyProfile = openSite();
+        resetPasswordFromMyProfile = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickAccountIcon()
+                .clickMyProfile()
+                .clickResetPassword();
     }
 
     @Test(dataProvider = "getUnique")

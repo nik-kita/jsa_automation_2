@@ -14,8 +14,11 @@ public class UpdateCardPopupTest extends OnixUiTestRunner {
     UpdateCardPopup updateCardPopup;
     @BeforeClass
     public void openUpdateCardPopup() {
-        //TODO
-        //updateCardPopup = openSite();
+        updateCardPopup = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickAccountIcon()
+                .clickUpdateCard();
     }
 
     @Test(dataProvider = "getUnique")

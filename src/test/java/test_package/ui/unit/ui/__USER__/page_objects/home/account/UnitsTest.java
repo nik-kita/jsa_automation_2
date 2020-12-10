@@ -14,8 +14,11 @@ public class UnitsTest extends OnixUiTestRunner {
     Units units;
     @BeforeClass
     public void openUnits() {
-        //TODO
-        //units = openSite();
+        units = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickAccountIcon()
+                .clickUnits();
     }
 
     @Test(dataProvider = "getUnique")
