@@ -115,7 +115,6 @@ public class Main extends OnixPageObject implements MainHeader, Footer {
     @Override
     public Main openFromScratch() {
         driver.get(Settings.BASE_URL);
-        //TODO
         return this;
     }
     @Override

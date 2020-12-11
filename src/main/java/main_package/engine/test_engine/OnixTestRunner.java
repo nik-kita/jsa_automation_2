@@ -6,6 +6,7 @@ import org.testng.annotations.Listeners;
 
 @Listeners(org.uncommons.reportng.HTMLReporter.class)
 public abstract class OnixTestRunner extends BaseClass {
+    protected OnixUiAssert onixUiAssert;
     {
         Runtime.getRuntime().addShutdownHook(new AfterAllReportRewriter());
     }

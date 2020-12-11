@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 
 @Listeners(OnixScreenFailListener.class)
 public class OnixUiTestRunner extends OnixTestRunner {
-    protected OnixUiAssert onixUiAssert;
+
     protected OnixWebDriver driver;
     private Main mainGuest;
     private main_package.ui.__USER__.page_objects.main.Main mainUser;

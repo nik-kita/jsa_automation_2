@@ -14,8 +14,11 @@ import main_package.data.S;
 
 public class Transformations extends OnixPageObject implements MainHeader, Footer {
     private String ENDPOINT_URL = ""; //TODO
-    private By TRANSFORMATION_BLOCK =
-            By.xpath("//div[@class='masonry-grid']//div[contains(@class, 'masonry-block')][contains(@style, 'display: block')]");
+    private By TRANSFORMATION_BLOCK = By.xpath(
+            "//div[@class='masonry-grid']//div[contains(@class, 'masonry-block')][contains(@style, 'display: block')]"
+    );
+    private By HIDDEN_SEE_MORE_BUTTON = By.xpath("//*[@class='transformation_wr']//a[@style='display: none;']");
+
     public Transformations(OnixWebDriver driver) {
         super(driver);
         log.debug("[{}] page is open", "Transformations"); //TODO
@@ -23,7 +26,6 @@ public class Transformations extends OnixPageObject implements MainHeader, Foote
 
 
     public Transformations clickSeeMoreButton() {
-        driver.scrollPageDown();
         driver.findElement(Locator.SEE_MORE_BUTTON).click();
         log.info("Click [{}] button", "See more");
         return new Transformations(driver);
@@ -39,8 +41,9 @@ public class Transformations extends OnixPageObject implements MainHeader, Foote
                 .findElement(Locator.SEE_MORE_BUTTON)
                 .getSeleniumWebElement().isDisplayed();
     }
+
     public boolean seeMore() {
-        if(isSeeMoreButtonPresent()) {
+        if (isSeeMoreButtonPresent()) {
             clickSeeMoreButton();
             return true;
         }
@@ -60,21 +63,23 @@ public class Transformations extends OnixPageObject implements MainHeader, Foote
         //TODO
         return this;
     }
+
     @Override
     public Transformations openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
+
     @Override
     public Transformations check(OnixUiAssert onixUiAssert) {
-        for(OnixLocator l : OnixUiAssert.mergeArrays(
+        for (OnixLocator l : OnixUiAssert.mergeArrays(
                 Transformations.Locator.values(),
                 Footer.FooterLtr.values(),
                 MainHeader.MainHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
-        for(OnixLocator l : OnixUiAssert.mergeArrays(
+        for (OnixLocator l : OnixUiAssert.mergeArrays(
                 Transformations.Locators.values(),
                 Footer.FooterLtrs.values(),
                 MainHeader.MainHeaderLtrs.values()
@@ -86,26 +91,29 @@ public class Transformations extends OnixPageObject implements MainHeader, Foote
 
 
     public enum Locator implements OnixLocator {
-        SEE_MORE_BUTTON(By.cssSelector(".transformation_wr a")),
-        HIDDEN_SEE_MORE_BUTTON(By.xpath("//*[@class='transformation_wr']//a[@style='display: none;']"))
+        SEE_MORE_BUTTON(By.cssSelector(".transformation_wr a"), S.SCROLL_PAGE_DOWN),
 
         ;
         private By path;
         private S[] actions;
+
         Locator(By path) {
             this.path = path;
         }
+
         Locator(By path, S... actions) {
             this.path = path;
             this.actions = actions;
         }
+
         @Override
         public By getPath() {
             return path;
         }
+
         @Override
         public S[] specialActions() {
-           return actions;
+            return actions;
         }
     }
 
@@ -114,20 +122,24 @@ public class Transformations extends OnixPageObject implements MainHeader, Foote
         ;
         private By path;
         private S[] actions;
+
         Locators(By path) {
             this.path = path;
         }
+
         Locators(By path, S... actions) {
             this.path = path;
             this.actions = actions;
         }
+
         @Override
         public By getPath() {
             return path;
         }
+
         @Override
         public S[] specialActions() {
-           return actions;
+            return actions;
         }
     }
 
