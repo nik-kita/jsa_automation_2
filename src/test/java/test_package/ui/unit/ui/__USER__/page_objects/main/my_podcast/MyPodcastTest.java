@@ -15,8 +15,7 @@ public class MyPodcastTest extends OnixUiTestRunner {
     MyPodcast myPodcast;
     @BeforeClass
     public void openMyPodcast() {
-        //TODO
-        //myPodcast = openSite();
+        myPodcast = openSite(user).goMyPodcastPageFromHeader();
     }
 
     @Test(dataProvider = "getUnique")

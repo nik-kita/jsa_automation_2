@@ -12,10 +12,13 @@ import main_package.ui.__USER__.page_objects.main.pricing.pricingplans.payment_p
 
 public class PaymentMethodPopupTest extends OnixUiTestRunner {
     PaymentMethodPopup paymentMethodPopup;
+
     @BeforeClass
     public void openPaymentMethodPopup() {
-        //TODO
-        //paymentMethodPopup = openSite();
+        paymentMethodPopup = openSite(user)
+                .goPricingPage()
+                .goPricingPlans()
+                .buyNow();
     }
 
     @Test(dataProvider = "getUnique")

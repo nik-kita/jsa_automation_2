@@ -15,8 +15,8 @@ public class TransformationsTest extends OnixUiTestRunner {
     Transformations transformations;
     @BeforeClass
     public void openTransformations() {
-        //TODO
-        //transformations = openSite();
+        transformations = openSite(user)
+                .clickSeeMoreTransformationsButton();
     }
 
     @Test(dataProvider = "getUnique")

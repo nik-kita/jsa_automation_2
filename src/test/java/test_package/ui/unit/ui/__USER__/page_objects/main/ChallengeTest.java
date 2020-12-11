@@ -15,8 +15,8 @@ public class ChallengeTest extends OnixUiTestRunner {
     Challenge challenge;
     @BeforeClass
     public void openChallenge() {
-        //TODO
-        //challenge = openSite();
+        challenge = openSite(user)
+                .clickAboutChallengesButton();
     }
 
     @Test(dataProvider = "getUnique")

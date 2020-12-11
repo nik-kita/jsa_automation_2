@@ -15,8 +15,7 @@ public class MainTest extends OnixUiTestRunner {
     Main main;
     @BeforeClass
     public void openMain() {
-        //TODO
-        //main = openSite();
+        main = openSite(user);
     }
 
     @Test(dataProvider = "getUnique")

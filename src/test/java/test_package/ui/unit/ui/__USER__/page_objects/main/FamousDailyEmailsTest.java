@@ -15,8 +15,8 @@ public class FamousDailyEmailsTest extends OnixUiTestRunner {
     FamousDailyEmails famousDailyEmails;
     @BeforeClass
     public void openFamousDailyEmails() {
-        //TODO
-        //famousDailyEmails = openSite();
+        famousDailyEmails = openSite(user)
+                .cheaterClickFamousDailyEmail();
     }
 
     @Test(dataProvider = "getUnique")

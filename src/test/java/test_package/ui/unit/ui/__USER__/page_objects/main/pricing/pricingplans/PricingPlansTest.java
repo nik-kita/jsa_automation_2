@@ -15,8 +15,9 @@ public class PricingPlansTest extends OnixUiTestRunner {
     PricingPlans pricingPlans;
     @BeforeClass
     public void openPricingPlans() {
-        //TODO
-        //pricingPlans = openSite();
+        pricingPlans = openSite(user)
+                .goPricingPage()
+                .goPricingPlans();
     }
 
     @Test(dataProvider = "getUnique")
