@@ -91,24 +91,24 @@ public class WS extends OnixUiTestRunner {
         onixUiAssert.checkCount(total, fromEveryTab);
     }
 
-    @Test(description = "<a href=\"https://docs.google.com/spreadsheets/d/1gudjZ7fh4aUsozP7aPIovLnI4qGdbUFpIHJ6AbTlbC4/edit?ts=5f7593b0#gid=633091546&range=B53\">see documentation</a>\"")
-    public void login() {
-        Allure.link("Original test case", "https://docs.google.com/spreadsheets/d/1gudjZ7fh4aUsozP7aPIovLnI4qGdbUFpIHJ6AbTlbC4/edit?ts=5f7593b0#gid=633091546&range=B53");
-
-        Home home = main.clickHeaderLogin().login(User.getValidUser());
-        onixUiAssert.softCheckCountOfElementByLocator(Home.Locator.CHALLENGE_DIV_LINK, 1);
-        main = home.openUserDropDown().logout().clickHeaderJsaLogo();
-        ResetPassword resetPassword = main.clickHeaderLogin().clickForgotPassword();
-        onixUiAssert.softCheckCountOfElementByLocator(ResetPassword.Locator.EMAIL_INPUT, 1);
-        main = resetPassword.clickHeaderJsaLogo();
-        home = main.clickHeaderLogin().loginByFB(User.getValidUser());
-        onixUiAssert.softCheckCountOfElementByLocator(Home.Locator.CHALLENGE_DIV_LINK, 1);
-        main = home.openUserDropDown().logout().clickHeaderJsaLogo();
-        CreateAccount createAccount = main.clickGetStartedButton();
-        onixUiAssert.softCheckCountOfElementByLocator(CreateAccount.Locator.CREATE_ACCOUNT_BUTTON, 1);
-        main = createAccount.clickJsaLogo();
-        onixUiAssert.assertAll();
-    }
+//    @Test(description = "<a href=\"https://docs.google.com/spreadsheets/d/1gudjZ7fh4aUsozP7aPIovLnI4qGdbUFpIHJ6AbTlbC4/edit?ts=5f7593b0#gid=633091546&range=B53\">see documentation</a>\"")
+//    public void login() {
+//        Allure.link("Original test case", "https://docs.google.com/spreadsheets/d/1gudjZ7fh4aUsozP7aPIovLnI4qGdbUFpIHJ6AbTlbC4/edit?ts=5f7593b0#gid=633091546&range=B53");
+//
+//        Home home = main.clickHeaderLogin().login(User.getValidUser());
+//        onixUiAssert.softCheckCountOfElementByLocator(Home.Locator.CHALLENGE_DIV_LINK, 1);
+//        main = home.openUserDropDown().logout().clickHeaderJsaLogo();
+//        ResetPassword resetPassword = main.clickHeaderLogin().clickForgotPassword();
+//        onixUiAssert.softCheckCountOfElementByLocator(ResetPassword.Locator.EMAIL_INPUT, 1);
+//        main = resetPassword.clickHeaderJsaLogo();
+//        home = main.clickHeaderLogin().loginByFB(User.getValidUser());
+//        onixUiAssert.softCheckCountOfElementByLocator(Home.Locator.CHALLENGE_DIV_LINK, 1);
+//        main = home.openUserDropDown().logout().clickHeaderJsaLogo();
+//        CreateAccount createAccount = main.clickGetStartedButton();
+//        onixUiAssert.softCheckCountOfElementByLocator(CreateAccount.Locator.CREATE_ACCOUNT_BUTTON, 1);
+//        main = createAccount.clickJsaLogo();
+//        onixUiAssert.assertAll();
+//    }
 
     @Test(description = "<a href=\"https://docs.google.com/spreadsheets/d/1gudjZ7fh4aUsozP7aPIovLnI4qGdbUFpIHJ6AbTlbC4/edit#gid=633091546&range=B84\">" +
             "see documentation</a>")

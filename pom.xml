@@ -193,7 +193,7 @@
                         <testng.dtd.http>true</testng.dtd.http>
                         <org.uncommons.reportng.escape-output>false</org.uncommons.reportng.escape-output>
 <!--                        <org.uncommons.reportng.title>JSA Automation Testing Report</org.uncommons.reportng.title>-->
-<!--                        <org.uncommons.reportng.logOutputReport>true</org.uncommons.reportng.logOutputReport>-->
+                        <org.uncommons.reportng.logOutputReport>true</org.uncommons.reportng.logOutputReport>
 <!--                        <org.uncommons.reportng.show-suite-configuration-methods>false</org.uncommons.reportng.show-suite-configuration-methods>-->
 <!--                        <org.uncommons.reportng.show-regression-column>true</org.uncommons.reportng.show-regression-column>-->
                     </systemPropertyVariables>
