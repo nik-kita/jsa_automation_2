@@ -42,16 +42,16 @@ public class OnixApiAssert extends BaseAssert {
         }
     }
 
-    @Override
-    public void softMessage(boolean success, String good, String bad) {
-        if(success) {
-            log.trace("Pass in softAssert: <pre>{}</pre>", good);
-            successSoftCounter++;
-        } else {
-            log.error("Fail in softAssert: <pre>{}</pre>", bad);
-        }
-        totalSoftCounter++;
-    }
+//    @Override
+//    public void softMessage(boolean success, String good, String bad) {
+//        if(success) {
+//            log.trace("Pass in softAssert: <pre>{}</pre>", good);
+//            successSoftCounter++;
+//        } else {
+//            log.error("Fail in softAssert: <pre>{}</pre>", bad);
+//        }
+//        totalSoftCounter++;
+//    }
     @Override
     public BaseClass make(Fly fly) {
         return null;

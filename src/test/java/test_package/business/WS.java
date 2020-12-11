@@ -1,4 +1,4 @@
-package test_package.ui.business;
+package test_package.business;
 
 import io.qameta.allure.Allure;
 import main_package.data.User;

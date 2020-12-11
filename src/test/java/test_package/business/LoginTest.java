@@ -1,8 +1,7 @@
-package test_package.ui.business;
+package test_package.business;
 
 import main_package.data.User;
 import main_package.engine.test_engine.OnixUiTestRunner;
-import main_package.ui.__USER__.general_parts.home.HomeHeader;
 import org.testng.annotations.Test;
 
 public class LoginTest extends OnixUiTestRunner {

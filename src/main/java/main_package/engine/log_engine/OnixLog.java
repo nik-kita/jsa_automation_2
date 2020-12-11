@@ -9,16 +9,16 @@ public class OnixLog implements Logger {
     String before = "";
     String after = "";
 
-    String startTraceDiv = "<h5 " + Tag.styleBuild(CssInTag.Display.INLINE_BLOCK, CssInTag.Color.GREY) + ">";
-    String finishTraceDiv = "</h5>";
-    String startDebugDiv = "<h4 " + Tag.styleBuild(CssInTag.Display.INLINE_BLOCK, CssInTag.Color.BLUE) + ">";
-    String finishDebugDiv = "</h4>";
-    String startInfoDiv = "<h4 " + Tag.styleBuild(CssInTag.Display.INLINE_BLOCK, CssInTag.Color.GREEN) + ">";
-    String finishInfoDiv = "</h4>";
-    String startWarnDiv = "<h4 " + Tag.styleBuild(CssInTag.Display.INLINE_BLOCK, CssInTag.Color.ORANGE) + ">";
-    String finishWarnDiv = "</h4>";
-    String startErrorDiv = "<h4 " + Tag.styleBuild(CssInTag.Display.INLINE_BLOCK, CssInTag.Color.RED) + ">";
-    String finishErrorDiv = "</h4>";
+    String startTraceDiv = "<br><h5 " + Tag.styleBuild(CssInTag.Display.INLINE_BLOCK, CssInTag.Color.GREY) + ">";
+    String finishTraceDiv = "</h5><br>";
+    String startDebugDiv = "<br><h4 " + Tag.styleBuild(CssInTag.Display.INLINE_BLOCK, CssInTag.Color.BLUE) + ">";
+    String finishDebugDiv = "</h4><br>";
+    String startInfoDiv = "<br><h2 " + Tag.styleBuild(CssInTag.Display.INLINE_BLOCK, CssInTag.Color.GREEN) + ">";
+    String finishInfoDiv = "</h2><br>";
+    String startWarnDiv = "<br><h4 " + Tag.styleBuild(CssInTag.Display.INLINE_BLOCK, CssInTag.Color.ORANGE) + ">";
+    String finishWarnDiv = "</h4><br>";
+    String startErrorDiv = "<br><h4 " + Tag.styleBuild(CssInTag.Display.INLINE_BLOCK, CssInTag.Color.RED) + ">";
+    String finishErrorDiv = "</h4><br>";
 
 
     private final Logger logger;
