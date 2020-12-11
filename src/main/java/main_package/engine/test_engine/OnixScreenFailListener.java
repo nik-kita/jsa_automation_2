@@ -47,7 +47,7 @@ public class OnixScreenFailListener implements ITestListener {
             File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             try {
                 String reportDirectory = new File(System.getProperty("user.dir")).getAbsolutePath();
-                File destFile = new File((String) reportDirectory+"/test-output/"+methodName+"_"+formater.format(calendar.getTime())+".png");
+                File destFile = new File((String) reportDirectory+"/test-output/html/images/"+methodName+"_"+formater.format(calendar.getTime())+".png");
                 FileUtils.copyFile(scrFile, destFile);
                 Reporter.log("<a href='"+ destFile.getAbsolutePath() + "'> <img src='"+ destFile.getAbsolutePath() + "' height='100' width='100'/> </a>");
             } catch (IOException e) {
