@@ -8,7 +8,7 @@
             <onMismatch>DENY</onMismatch>
         </filter>
         <encoder>
-            <pattern>[%d{HH:mm:ss.SSS}] [%level] %msg [%X{suite}|%X{class}|%X{test}] %n</pattern>
+            <pattern>[%d{HH:mm:ss.SSS}] [%level] %msg %n </pattern>
         </encoder>
     </appender>
     <appender name="consoleDebug" class="ch.qos.logback.core.ConsoleAppender">
@@ -19,7 +19,7 @@
             <onMismatch>DENY</onMismatch>
         </filter>
         <encoder>
-            <pattern>%gray([%d{HH:mm:ss.SSS}] [%level] %msg [%X{suite}|%X{class}|%X{test}] %n)</pattern>
+            <pattern>%gray([%d{HH:mm:ss.SSS}] [%level] %msg %n </pattern>
         </encoder>
     </appender>
     <appender name="consoleInfo" class="ch.qos.logback.core.ConsoleAppender">
@@ -30,7 +30,7 @@
             <onMismatch>DENY</onMismatch>
         </filter>
         <encoder>
-            <pattern>%boldGreen([%d{HH:mm:ss.SSS}] [%level] %msg [%X{suite}|%X{class}|%X{test}] %n)</pattern>
+            <pattern>%boldGreen([%d{HH:mm:ss.SSS}] [%level] %msg %n </pattern>
         </encoder>
     </appender>
     <appender name="consoleWarn" class="ch.qos.logback.core.ConsoleAppender">
@@ -41,7 +41,7 @@
             <onMismatch>DENY</onMismatch>
         </filter>
         <encoder>
-            <pattern>%boldYellow([%d{HH:mm:ss.SSS}] [%level] %msg [%X{suite}|%X{class}|%X{test}] %n %caller)</pattern>
+            <pattern>%boldYellow([%d{HH:mm:ss.SSS}] [%level] %msg %caller %n </pattern>
         </encoder>
     </appender>
     <appender name="consoleError" class="ch.qos.logback.core.ConsoleAppender">
@@ -52,7 +52,7 @@
             <onMismatch>DENY</onMismatch>
         </filter>
         <encoder>
-            <pattern>%boldRed([%d{HH:mm:ss.SSS}] [%level] %msg [%X{suite}|%X{class}|%X{test}] %n %caller)</pattern>
+            <pattern>%boldRed([%d{HH:mm:ss.SSS}] [%level] %msg %caller %n </pattern>
         </encoder>
     </appender>
     <!--     ===============================================>>>   T e s t N G   <<<================================================ -->
@@ -64,7 +64,7 @@
             <onMismatch>DENY</onMismatch>
         </filter>
         <encoder>
-            <pattern>&lt;h3 style='color:#cf0000'>[%level %d{HH:mm:ss.SSS}] %msg &lt;/h3></pattern>
+            <pattern>&lt;span style='color:#cf0000'>[%level %d{HH:mm:ss.SSS}]&lt;/span> %msg %n </pattern>
         </encoder>
         t
     </appender>
@@ -75,7 +75,7 @@
             <onMismatch>DENY</onMismatch>
         </filter>
         <encoder>
-            <pattern>&lt;h3 style='color:#ffb700'>[%level %d{HH:mm:ss.SSS}] %msg &lt;/h3></pattern>
+            <pattern>&lt;span style='color:#ffb700'>[%level %d{HH:mm:ss.SSS}]&lt;/span> %msg %n </pattern>
         </encoder>
         t
     </appender>
@@ -86,7 +86,7 @@
             <onMismatch>DENY</onMismatch>
         </filter>
         <encoder>
-            <pattern>&lt;pre style='color:#2db300'>[%level %d{HH:mm:ss.SSS}] %msg &lt;/pre></pattern>
+            <pattern>&lt;span style='color:#2db300'>[%level %d{HH:mm:ss.SSS}]&lt;/span> %msg %n </pattern>
         </encoder>
         t
     </appender>
@@ -97,7 +97,7 @@
             <onMismatch>DENY</onMismatch>
         </filter>
         <encoder>
-            <pattern>&lt;h4 style='color:#5c77ff'>[%level %d{HH:mm:ss.SSS}] %msg &lt;/h4></pattern>
+            <pattern>&lt;span style='color:#5c77ff'>[%level %d{HH:mm:ss.SSS}]&lt;span> %msg %n </pattern>
         </encoder>
         t
     </appender>
@@ -108,9 +108,9 @@
             <onMismatch>DENY</onMismatch>
         </filter>
         <encoder>
-            <pattern>&lt;h5 style='color:#666666'>[%level %d{HH:mm:ss.SSS}] %msg &lt;/h5></pattern>
+            <pattern>&lt;span style='color:#666666'>[%level %d{HH:mm:ss.SSS}]&lt;/span> %msg %n </pattern>
         </encoder>
-        t
+
     </appender>
     <!--     =====================================================>>>   J S O N   <<<================================================= -->
     <!--     <appender name="Json" class="ch.qos.logback.core.ConsoleAppender"> -->

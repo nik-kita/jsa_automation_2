@@ -1,7 +1,7 @@
 gnores ######
 nikita/
 file_appender_results/
-test-output/
+test-output*/
 MyTest.java
 credentials.properties
 Laboratory.java

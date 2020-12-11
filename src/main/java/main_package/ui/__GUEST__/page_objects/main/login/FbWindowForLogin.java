@@ -26,8 +26,11 @@ public class FbWindowForLogin extends OnixPageObject {
 
     public Home login(String name, String password) {
         driver.findElement(Locator.EMAIL_OR_NUMBER_INPUT).sendKeys(name);
+        log.info("fill [{}] input with [{}]", Locator.EMAIL_OR_NUMBER_INPUT, name);
         driver.findElement(Locator.PASSWORD_INPUT).sendKeys(password);
+        log.info("fill [{}] input with user's password", Locator.PASSWORD_INPUT);
         driver.findElement(Locator.LOG_IN_BUTTON).click();
+        log.info("click [{}] button", Locator.LOG_IN_BUTTON);
         if (driver.isElementPresent(confirm_button)) {
             log.warn("additional facebook page for confirmation is present");
             driver.waitToClick(confirm_button).click();

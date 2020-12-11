@@ -13,12 +13,12 @@ public class OnixLog implements Logger {
     String finishTraceDiv = "</h5>";
     String startDebugDiv = "<h4 " + Tag.styleBuild(CssInTag.Display.INLINE_BLOCK, CssInTag.Color.BLUE) + ">";
     String finishDebugDiv = "</h4>";
-    String startInfoDiv = "<h2 " + Tag.styleBuild(CssInTag.Display.INLINE_BLOCK, CssInTag.Color.GREEN) + ">";
-    String finishInfoDiv = "</h2>";
-    String startWarnDiv = "<h3 " + Tag.styleBuild(CssInTag.Display.INLINE_BLOCK, CssInTag.Color.ORANGE) + ">";
-    String finishWarnDiv = "</h3>";
-    String startErrorDiv = "<h3 " + Tag.styleBuild(CssInTag.Display.INLINE_BLOCK, CssInTag.Color.RED) + ">";
-    String finishErrorDiv = "</h3>";
+    String startInfoDiv = "<h4 " + Tag.styleBuild(CssInTag.Display.INLINE_BLOCK, CssInTag.Color.GREEN) + ">";
+    String finishInfoDiv = "</h4>";
+    String startWarnDiv = "<h4 " + Tag.styleBuild(CssInTag.Display.INLINE_BLOCK, CssInTag.Color.ORANGE) + ">";
+    String finishWarnDiv = "</h4>";
+    String startErrorDiv = "<h4 " + Tag.styleBuild(CssInTag.Display.INLINE_BLOCK, CssInTag.Color.RED) + ">";
+    String finishErrorDiv = "</h4>";
 
 
     private final Logger logger;
