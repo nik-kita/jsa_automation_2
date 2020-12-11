@@ -15,8 +15,11 @@ public class ToCompleteTest extends OnixUiTestRunner {
     ToComplete toComplete;
     @BeforeClass
     public void openToComplete() {
-        //TODO
-        //toComplete = openSite();
+        toComplete = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickLearnTab()
+                .clickToComplete();
     }
 
     @Test(dataProvider = "getUnique")

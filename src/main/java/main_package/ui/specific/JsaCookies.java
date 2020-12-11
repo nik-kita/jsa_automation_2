@@ -22,12 +22,14 @@ public class JsaCookies extends BaseSpecificPageObject {
     }
 
     public OnixWebDriver acceptIfCookiesPresent() {
-        if (driver.findElements(Locator.OK_BUTTON).size() > 0) {
-            driver.findElement(Locator.OK_BUTTON).click();
-            driver.setSetting("jsacookies", true);
-            log.debug("close 'JsaCookies' popup");
-        } else {
-            log.warn("try to close 'JsaCookies' popup but no such elements was found");
+        if (!driver.checkSetting("jsacookies")) {
+            if (driver.findElements(Locator.OK_BUTTON).size() > 0) {
+                driver.findElement(Locator.OK_BUTTON).click();
+                driver.setSetting("jsacookies", true);
+                log.debug("close 'JsaCookies' popup");
+            } else {
+                log.warn("try to close 'JsaCookies' popup but no such elements was found");
+            }
         }
 
         return driver;

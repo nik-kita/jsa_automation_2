@@ -14,8 +14,10 @@ public class MyGoalTest extends OnixUiTestRunner {
     MyGoal myGoal;
     @BeforeClass
     public void openMyGoal() {
-        //TODO
-        //myGoal = openSite();
+        myGoal = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickMyGoalLink();
     }
 
     @Test(dataProvider = "getUnique")

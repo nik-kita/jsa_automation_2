@@ -15,8 +15,10 @@ public class UserCabinetDropdownTest extends OnixUiTestRunner {
     UserCabinetDropdown userCabinetDropdown;
     @BeforeClass
     public void openUserCabinetDropdown() {
-        //TODO
-        //userCabinetDropdown = openSite();
+        userCabinetDropdown = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .openUserDropDown();
     }
 
     @Test(dataProvider = "getUnique")

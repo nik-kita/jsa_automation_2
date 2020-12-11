@@ -315,7 +315,7 @@
                     <include name="repeated"/>
                 </methods>
             </class>
-            <class name="test_package.ui.unit.ui.__USER__.page_objects.home_header.learn.SingleLearnVideoTest">
+            <class name="test_package.ui.unit.ui.__USER__.page_objects.home_header.learn.single_learn_video.SingleLearnVideoTest">
                 <methods>
                     <include name="unique"/>
                     <include name="repeated"/>

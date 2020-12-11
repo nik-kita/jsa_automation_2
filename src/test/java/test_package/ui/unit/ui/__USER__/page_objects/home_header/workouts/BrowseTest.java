@@ -15,8 +15,11 @@ public class BrowseTest extends OnixUiTestRunner {
     Browse browse;
     @BeforeClass
     public void openBrowse() {
-        //TODO
-        //browse = openSite();
+        browse = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickWorkoutsTab()
+                .clickBrowseTab();
     }
 
     @Test(dataProvider = "getUnique")

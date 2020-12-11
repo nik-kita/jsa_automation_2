@@ -17,6 +17,11 @@ public class VideoIFrame extends OnixPageObject {
         log.debug("[{}] page is open", "VideoIFrame"); //TODO
     }
 
+    public SingleLearnVideo backFromVideoIframe() {
+        driver.getSeleniumDriver().switchTo().parentFrame();
+        return new SingleLearnVideo(driver);
+    }
+
 
     @Override
     public VideoIFrame make(Fly fly) {

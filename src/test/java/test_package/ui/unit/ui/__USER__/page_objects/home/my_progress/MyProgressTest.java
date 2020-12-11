@@ -14,8 +14,10 @@ public class MyProgressTest extends OnixUiTestRunner {
     MyProgress myProgress;
     @BeforeClass
     public void openMyProgress() {
-        //TODO
-        //myProgress = openSite();
+        myProgress = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickMyProgressLink();
     }
 
     @Test(dataProvider = "getUnique")

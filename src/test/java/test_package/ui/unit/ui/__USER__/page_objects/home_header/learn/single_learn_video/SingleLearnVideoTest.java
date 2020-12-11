@@ -1,5 +1,5 @@
 
-package test_package.ui.unit.ui.__USER__.page_objects.home_header.learn;
+package test_package.ui.unit.ui.__USER__.page_objects.home_header.learn.single_learn_video;
 
 
 import main_package.engine.test_engine.OnixUiTestRunner;

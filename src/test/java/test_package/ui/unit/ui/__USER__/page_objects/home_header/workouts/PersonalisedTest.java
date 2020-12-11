@@ -15,8 +15,10 @@ public class PersonalisedTest extends OnixUiTestRunner {
     Personalised personalised;
     @BeforeClass
     public void openPersonalised() {
-        //TODO
-        //personalised = openSite();
+        personalised = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickWorkoutsTab();
     }
 
     @Test(dataProvider = "getUnique")

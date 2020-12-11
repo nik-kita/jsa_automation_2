@@ -14,8 +14,9 @@ public class HomeTest extends OnixUiTestRunner {
     Home home;
     @BeforeClass
     public void openHome() {
-        //TODO
-        //home = openSite();
+        home = openSite()
+                .clickHeaderLogin()
+                .login(user);
     }
 
     @Test(dataProvider = "getUnique")

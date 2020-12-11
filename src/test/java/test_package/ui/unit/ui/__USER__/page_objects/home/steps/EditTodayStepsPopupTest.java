@@ -14,8 +14,11 @@ public class EditTodayStepsPopupTest extends OnixUiTestRunner {
     EditTodayStepsPopup editTodayStepsPopup;
     @BeforeClass
     public void openEditTodayStepsPopup() {
-        //TODO
-        //editTodayStepsPopup = openSite();
+        editTodayStepsPopup = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickStepsLink()
+                .clickEditTodayStepsIconButton();
     }
 
     @Test(dataProvider = "getUnique")

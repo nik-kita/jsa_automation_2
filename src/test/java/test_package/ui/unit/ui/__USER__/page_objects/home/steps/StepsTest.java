@@ -14,8 +14,10 @@ public class StepsTest extends OnixUiTestRunner {
     Steps steps;
     @BeforeClass
     public void openSteps() {
-        //TODO
-        //steps = openSite();
+        steps = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickStepsLink();
     }
 
     @Test(dataProvider = "getUnique")

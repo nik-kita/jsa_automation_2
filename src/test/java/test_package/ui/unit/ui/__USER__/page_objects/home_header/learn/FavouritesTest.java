@@ -15,8 +15,11 @@ public class FavouritesTest extends OnixUiTestRunner {
     Favourites favourites;
     @BeforeClass
     public void openFavourites() {
-        //TODO
-        //favourites = openSite();
+        favourites = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickLearnTab()
+                .clickFavourites();
     }
 
     @Test(dataProvider = "getUnique")

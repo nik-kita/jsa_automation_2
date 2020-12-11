@@ -15,8 +15,10 @@ public class MealsTest extends OnixUiTestRunner {
     Meals meals;
     @BeforeClass
     public void openMeals() {
-        //TODO
-        //meals = openSite();
+        meals = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickNutritionTab();
     }
 
     @Test(dataProvider = "getUnique")

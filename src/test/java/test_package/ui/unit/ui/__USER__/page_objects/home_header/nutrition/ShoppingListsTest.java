@@ -15,8 +15,11 @@ public class ShoppingListsTest extends OnixUiTestRunner {
     ShoppingLists shoppingLists;
     @BeforeClass
     public void openShoppingLists() {
-        //TODO
-        //shoppingLists = openSite();
+        shoppingLists = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickNutritionTab()
+                .clickShoppingListsTab();
     }
 
     @Test(dataProvider = "getUnique")

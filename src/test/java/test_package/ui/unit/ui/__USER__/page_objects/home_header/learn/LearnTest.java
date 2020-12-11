@@ -15,8 +15,10 @@ public class LearnTest extends OnixUiTestRunner {
     Learn learn;
     @BeforeClass
     public void openLearn() {
-        //TODO
-        //learn = openSite();
+        learn = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickLearnTab();
     }
 
     @Test(dataProvider = "getUnique")

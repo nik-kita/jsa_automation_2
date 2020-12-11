@@ -14,8 +14,11 @@ public class MeasurementsTabTest extends OnixUiTestRunner {
     MeasurementsTab measurementsTab;
     @BeforeClass
     public void openMeasurementsTab() {
-        //TODO
-        //measurementsTab = openSite();
+        measurementsTab = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickMyProgressLink()
+                .clickMeasurementsTab();
     }
 
     @Test(dataProvider = "getUnique")

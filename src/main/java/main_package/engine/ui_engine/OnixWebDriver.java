@@ -63,14 +63,6 @@ public class OnixWebDriver extends BaseClass {
             }
         }
         WebElement findingElement;
-        if (seleniumWebDriver.findElements(path).size() == 0) {
-            log.warn("waining for element located by [{}]", path);
-            try {
-                Thread.sleep(300);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
         try {
             findingElement = seleniumWebDriver.findElement(path);
         } catch (Exception e) {

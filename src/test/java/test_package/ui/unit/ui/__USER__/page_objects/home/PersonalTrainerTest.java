@@ -14,8 +14,10 @@ public class PersonalTrainerTest extends OnixUiTestRunner {
     PersonalTrainer personalTrainer;
     @BeforeClass
     public void openPersonalTrainer() {
-        //TODO
-        //personalTrainer = openSite();
+        personalTrainer = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickSupportButton();
     }
 
     @Test(dataProvider = "getUnique")

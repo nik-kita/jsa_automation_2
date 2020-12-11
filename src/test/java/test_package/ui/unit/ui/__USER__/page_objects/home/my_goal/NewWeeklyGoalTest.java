@@ -14,8 +14,11 @@ public class NewWeeklyGoalTest extends OnixUiTestRunner {
     NewWeeklyGoal newWeeklyGoal;
     @BeforeClass
     public void openNewWeeklyGoal() {
-        //TODO
-        //newWeeklyGoal = openSite();
+        newWeeklyGoal = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickMyGoalLink()
+                .clickNewGoalButton();
     }
 
     @Test(dataProvider = "getUnique")

@@ -15,8 +15,11 @@ public class CategoriesMultiPageTest extends OnixUiTestRunner {
     CategoriesMultiPage categoriesMultiPage;
     @BeforeClass
     public void openCategoriesMultiPage() {
-        //TODO
-        //categoriesMultiPage = openSite();
+        categoriesMultiPage = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickLearnTab()
+                .clickCategory();
     }
 
     @Test(dataProvider = "getUnique")

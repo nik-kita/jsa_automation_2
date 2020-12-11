@@ -14,8 +14,11 @@ public class ImagesTabTest extends OnixUiTestRunner {
     ImagesTab imagesTab;
     @BeforeClass
     public void openImagesTab() {
-        //TODO
-        //imagesTab = openSite();
+        imagesTab = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickMyProgressLink()
+                .clickImagesTab();
     }
 
     @Test(dataProvider = "getUnique")

@@ -14,8 +14,11 @@ public class EditYourGoalStepsPopupTest extends OnixUiTestRunner {
     EditYourGoalStepsPopup editYourGoalStepsPopup;
     @BeforeClass
     public void openEditYourGoalStepsPopup() {
-        //TODO
-        //editYourGoalStepsPopup = openSite();
+        editYourGoalStepsPopup = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickStepsLink()
+                .clickEditYourStepsGoalIconPenButton();
     }
 
     @Test(dataProvider = "getUnique")

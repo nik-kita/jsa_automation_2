@@ -14,8 +14,10 @@ public class ChallengesTest extends OnixUiTestRunner {
     Challenges challenges;
     @BeforeClass
     public void openChallenges() {
-        //TODO
-        //challenges = openSite();
+        challenges = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickChallenges();
     }
 
     @Test(dataProvider = "getUnique")

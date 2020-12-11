@@ -14,6 +14,7 @@ import main_package.data.S;
 
 public class SingleLearnVideo extends OnixPageObject implements HomeHeader {
     private String ENDPOINT_URL = ""; //TODO
+
     public SingleLearnVideo(OnixWebDriver driver) {
         super(driver);
         log.debug("[{}] page is open", "SingleLearnVideo"); //TODO
@@ -37,26 +38,37 @@ public class SingleLearnVideo extends OnixPageObject implements HomeHeader {
         //TODO
         return this;
     }
+
     @Override
     public SingleLearnVideo openFromUrl() {
         driver.get(Settings.BASE_URL + ENDPOINT_URL);
         return this;
     }
+
     @Override
     public SingleLearnVideo check(OnixUiAssert onixUiAssert) {
-        for(OnixLocator l : OnixUiAssert.mergeArrays(
+        for (OnixLocator l : OnixUiAssert.mergeArrays(
                 SingleLearnVideo.Locator.values(),
                 HomeHeader.HomeHeaderLtr.values()
         )) {
             onixUiAssert.softCheckCountOfElementByLocator(l, 1);
         }
-        for(OnixLocator l : OnixUiAssert.mergeArrays(
+        for (OnixLocator l : OnixUiAssert.mergeArrays(
                 SingleLearnVideo.Locators.values(),
                 HomeHeader.HomeHeaderLtrs.values()
         )) {
             onixUiAssert.softCheckMinimumOfElementsByLocator(l, 1);
         }
         return this;
+    }
+
+    public VideoIFrame toVideoIframe() {
+        driver.getSeleniumDriver()
+                .switchTo()
+                .frame(//TODO wrap by onix instances
+                        driver.findElement(By.cssSelector("iframe")).getSeleniumWebElement()
+                );
+        return new VideoIFrame(driver);
     }
 
 
@@ -68,20 +80,24 @@ public class SingleLearnVideo extends OnixPageObject implements HomeHeader {
         ;
         private By path;
         private S[] actions;
+
         Locator(By path) {
             this.path = path;
         }
+
         Locator(By path, S... actions) {
             this.path = path;
             this.actions = actions;
         }
+
         @Override
         public By getPath() {
             return path;
         }
+
         @Override
         public S[] specialActions() {
-           return actions;
+            return actions;
         }
     }
 
@@ -90,20 +106,24 @@ public class SingleLearnVideo extends OnixPageObject implements HomeHeader {
         ;
         private By path;
         private S[] actions;
+
         Locators(By path) {
             this.path = path;
         }
+
         Locators(By path, S... actions) {
             this.path = path;
             this.actions = actions;
         }
+
         @Override
         public By getPath() {
             return path;
         }
+
         @Override
         public S[] specialActions() {
-           return actions;
+            return actions;
         }
     }
 

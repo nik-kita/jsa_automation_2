@@ -15,8 +15,11 @@ public class RecipesTest extends OnixUiTestRunner {
     Recipes recipes;
     @BeforeClass
     public void openRecipes() {
-        //TODO
-        //recipes = openSite();
+        recipes = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickNutritionTab()
+                .clickRecipesTab();
     }
 
     @Test(dataProvider = "getUnique")

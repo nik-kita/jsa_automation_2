@@ -15,8 +15,11 @@ public class MyWorkoutsTest extends OnixUiTestRunner {
     MyWorkouts myWorkouts;
     @BeforeClass
     public void openMyWorkouts() {
-        //TODO
-        //myWorkouts = openSite();
+        myWorkouts = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickWorkoutsTab()
+                .clickMyWorkoutsTab();
     }
 
     @Test(dataProvider = "getUnique")

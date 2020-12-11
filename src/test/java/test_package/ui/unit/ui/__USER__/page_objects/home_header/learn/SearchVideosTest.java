@@ -15,8 +15,11 @@ public class SearchVideosTest extends OnixUiTestRunner {
     SearchVideos searchVideos;
     @BeforeClass
     public void openSearchVideos() {
-        //TODO
-        //searchVideos = openSite();
+        searchVideos = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickLearnTab()
+                .clickSearchIcon();
     }
 
     @Test(dataProvider = "getUnique")
