@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="/home/p/jsa_test_automation_framework/src/test/java/test_package/business/WS.java"><classes><class name="test_package.business.WS"><methods><include name="pricing"/><include name="transformations"/><include name="blog"/><include name="login"/><include name="footer"/></methods></class></classes></test></suite>

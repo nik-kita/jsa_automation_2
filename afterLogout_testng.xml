@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="/home/p/jsa_test_automation_framework/src/test/java/test_package/ui/smoke/ui/__GUEST__/page_objects/AfterLogoutTest.java"><classes/></test></suite>

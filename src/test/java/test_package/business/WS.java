@@ -23,7 +23,6 @@ public class WS extends OnixUiTestRunner {
     @BeforeClass
     public void startFromMainPage() {
         main = openSite();
-        log.info("open site");
     }
 
     @Test(description = "https://docs.google.com/spreadsheets/d/1gudjZ7fh4aUsozP7aPIovLnI4qGdbUFpIHJ6AbTlbC4/edit?ts=5f7593b0#gid=633091546&range=B12")
