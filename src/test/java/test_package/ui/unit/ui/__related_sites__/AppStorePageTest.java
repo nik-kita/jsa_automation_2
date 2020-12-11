@@ -15,8 +15,8 @@ public class AppStorePageTest extends OnixUiTestRunner {
     AppStorePage appStorePage;
     @BeforeClass
     public void openAppStorePage() {
-        //TODO
-        //appStorePage = openSite();
+        appStorePage = openSite()
+                .clickAppStoreBannerButton();
     }
 
     @Test(dataProvider = "getUnique")

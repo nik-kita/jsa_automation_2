@@ -15,8 +15,7 @@ public class SpotifyPageTest extends OnixUiTestRunner {
     SpotifyPage spotifyPage;
     @BeforeClass
     public void openSpotifyPage() {
-        //TODO
-        //spotifyPage = openSite();
+        spotifyPage = openSite().clickFooterSpotify();
     }
 
     @Test(dataProvider = "getUnique")

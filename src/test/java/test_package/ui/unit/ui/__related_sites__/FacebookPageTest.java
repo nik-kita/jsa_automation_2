@@ -15,8 +15,8 @@ public class FacebookPageTest extends OnixUiTestRunner {
     FacebookPage facebookPage;
     @BeforeClass
     public void openFacebookPage() {
-        //TODO
-        //facebookPage = openSite();
+        facebookPage = openSite()
+                .clickMyFacebookBannerButton();
     }
 
     @Test(dataProvider = "getUnique")

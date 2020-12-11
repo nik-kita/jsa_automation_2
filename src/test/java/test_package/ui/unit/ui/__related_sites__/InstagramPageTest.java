@@ -15,8 +15,8 @@ public class InstagramPageTest extends OnixUiTestRunner {
     InstagramPage instagramPage;
     @BeforeClass
     public void openInstagramPage() {
-        //TODO
-        //instagramPage = openSite();
+        instagramPage = openSite()
+                .clickMyInstagramBannerButton();
     }
 
     @Test(dataProvider = "getUnique")

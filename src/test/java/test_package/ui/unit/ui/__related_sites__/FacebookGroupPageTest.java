@@ -15,8 +15,10 @@ public class FacebookGroupPageTest extends OnixUiTestRunner {
     FacebookGroupPage facebookGroupPage;
     @BeforeClass
     public void openFacebookGroupPage() {
-        //TODO
-        //facebookGroupPage = openSite();
+        facebookGroupPage = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickJoinNow();
     }
 
     @Test(dataProvider = "getUnique")

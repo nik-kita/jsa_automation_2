@@ -15,8 +15,7 @@ public class GooglePlayPageTest extends OnixUiTestRunner {
     GooglePlayPage googlePlayPage;
     @BeforeClass
     public void openGooglePlayPage() {
-        //TODO
-        //googlePlayPage = openSite();
+        googlePlayPage = openSite().clickPlayStoreBannerButton();
     }
 
     @Test(dataProvider = "getUnique")

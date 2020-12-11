@@ -14,8 +14,11 @@ public class SingleLearnVideoTest extends OnixUiTestRunner {
     SingleLearnVideo singleLearnVideo;
     @BeforeClass
     public void openSingleLearnVideo() {
-        //TODO
-        //singleLearnVideo = openSite();
+        singleLearnVideo = openSite()
+                .clickHeaderLogin()
+                .login(user)
+                .clickLearnTab()
+                .clickVideo();
     }
 
     @Test(dataProvider = "getUnique")
