@@ -5,8 +5,8 @@ import org.testng.asserts.SoftAssert;
 
 public abstract class BaseAssert extends BaseClass {
     private SoftAssert softAssert;
-    private int totalSoftCounter;
-    private int successSoftCounter;
+    protected int totalSoftCounter;
+    protected int successSoftCounter;
     public SoftAssert getSoftAssert() {
         if(softAssert == null) {
             softAssert = new SoftAssert();
