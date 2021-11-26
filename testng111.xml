@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="/home/p/jsa_test_automation_framework/src/test/java/test_package/ui/unit/ui/__GUEST__/page_objects/main/login">
+        <classes>
+            <class name="test_package.ui.unit.ui.__GUEST__.page_objects.main.login.CreateAccountTest">
+                <methods>
+                    <include name="unique"/>
+                    <include name="repeated"/>
+                </methods>
+            </class>
+            <class name="test_package.ui.unit.ui.__GUEST__.page_objects.main.login.LoginTest">
+                <methods>
+                    <include name="unique"/>
+                    <include name="repeated"/>
+                </methods>
+            </class>
+            <class name="test_package.ui.unit.ui.__GUEST__.page_objects.main.login.ResetPasswordTest">
+                <methods>
+                    <include name="unique"/>
+                    <include name="repeated"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

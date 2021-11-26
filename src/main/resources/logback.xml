@@ -1,0 +1,175 @@
+<configuration>
+    <!-- ================================================>>>   C O N S O L E   <<<=============================================== -->
+    <appender name="consoleTrace" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>TRACE</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>[%d{HH:mm:ss.SSS}] [%level] %msg %n </pattern>
+        </encoder>
+    </appender>
+    <appender name="consoleDebug" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%gray([%d{HH:mm:ss.SSS}] [%level] %msg) %n </pattern>
+        </encoder>
+    </appender>
+    <appender name="consoleInfo" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%boldGreen([%d{HH:mm:ss.SSS}] [%level] %msg) %n </pattern>
+        </encoder>
+    </appender>
+    <appender name="consoleWarn" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%boldYellow([%d{HH:mm:ss.SSS}] [%level] %msg) %caller %n </pattern>
+        </encoder>
+    </appender>
+    <appender name="consoleError" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%boldRed([%d{HH:mm:ss.SSS}] [%level] %msg %caller) %n </pattern>
+        </encoder>
+    </appender>
+    <!--     ===============================================>>>   T e s t N G   <<<================================================ -->
+    This is the ReporterAppender
+    <appender name="ngerror" class="com.github.sbabcoc.logback.testng.ReporterAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern> %n &lt;span style='color:#cf0000'> [%level %d{HH:mm:ss.SSS}]&lt;/span> %n %msg %n </pattern>
+        </encoder>
+    </appender>
+    <appender name="ngwarn" class="com.github.sbabcoc.logback.testng.ReporterAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern> %n &lt;span style='color:#ffb700'>[%level %d{HH:mm:ss.SSS}]&lt;/span> %n %msg %n</pattern>
+        </encoder>
+
+    </appender>
+    <appender name="nginfo" class="com.github.sbabcoc.logback.testng.ReporterAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern> %n &lt;span style='color:#2db300'>[%level %d{HH:mm:ss.SSS}]&lt;/span> %n %msg %n </pattern>
+        </encoder>
+
+    </appender>
+    <appender name="ngdebug" class="com.github.sbabcoc.logback.testng.ReporterAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern> %n &lt;span style='color:#5c77ff'>[%level %d{HH:mm:ss.SSS}]&lt;span> %n %msg %n </pattern>
+        </encoder>
+    </appender>
+    <appender name="ngtrace" class="com.github.sbabcoc.logback.testng.ReporterAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>TRACE</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern> %n &lt;span style='color:#666666'>[%level %d{HH:mm:ss.SSS}]&lt;/span> %n %msg %n </pattern>
+        </encoder>
+
+    </appender>
+    <!--     =====================================================>>>   J S O N   <<<================================================= -->
+    <!--     <appender name="Json" class="ch.qos.logback.core.ConsoleAppender"> -->
+    <!--         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder"> -->
+    <!--             <layout class="ch.qos.logback.contrib.json.classic.JsonLayout"> -->
+    <!--                 <timestampFormat>yyyy-MM-dd'T'HH:mm:ss.SSSX</timestampFormat> -->
+    <!--                 <timestampFormatTimezoneId>Etc/UTC</timestampFormatTimezoneId> -->
+    <!--                 <jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter"> -->
+    <!--                     <prettyPrint>true</prettyPrint> -->
+    <!--                 </jsonFormatter> -->
+    <!--             </layout> -->
+    <!--         </encoder> -->
+    <!--     </appender> -->
+    <!--     =====================================================>>>   MySQL   <<<=============================================== -->
+    <!--     <appender name="mysql" class="ch.qos.logback.classic.db.DBAppender"> -->
+    <!--         <connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource"> -->
+    <!--             <dataSource class="com.mysql.cj.jdbc.MysqlDataSource"> -->
+    <!--                 <serverName>127.0.0.1</serverName> -->
+    <!--                 <port>3306</port> -->
+    <!--                 <databaseName>jsa</databaseName> -->
+    <!--                 <user>nikita</user> -->
+    <!--                 <password>strongpassword</password> -->
+    <!--             </dataSource> -->
+    <!--         </connectionSource> -->
+    <!--     </appender> -->
+    <!--     =========================================================>>>  F I L E  <<<======================================================= -->
+    <!--     <appender name="FILE" class="ch.qos.logback.core.FileAppender"> -->
+    <!--         <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/> -->
+    <!--         <file>file_appender_results/log-${bySecond}.txt</file> -->
+    <!--         <append>true</append> -->
+    <!--         <immediateFlush>true</immediateFlush> -->
+    <!--         <encoder> -->
+    <!--             <pattern>[%d{HH:mm:ss.SSS}] [%level] %msg [%X{suite}|%X{class}|%X{test}] %n</pattern> -->
+    <!--         </encoder> -->
+    <!--     </appender> -->
+    <!-- =====================================================>>>   L O G G E R S    <<<=========================================== -->
+    <logger name="main_package" level="TRACE">
+        <appender-ref ref="consoleTrace"/>
+        <appender-ref ref="consoleDebug"/>
+        <appender-ref ref="consoleInfo"/>
+        <appender-ref ref="consoleWarn"/>
+        <appender-ref ref="consoleError"/>
+        <appender-ref ref="ngerror"/>
+        <appender-ref ref="ngwarn"/>
+        <appender-ref ref="nginfo"/>
+        <appender-ref ref="ngdebug"/>
+        <appender-ref ref="ngtrace"/>
+    </logger>
+    <logger name="test_package" level="TRACE">
+        <appender-ref ref="consoleTrace"/>
+        <appender-ref ref="consoleDebug"/>
+        <appender-ref ref="consoleInfo"/>
+        <appender-ref ref="consoleWarn"/>
+        <appender-ref ref="consoleError"/>
+        <appender-ref ref="ngerror"/>
+        <appender-ref ref="ngwarn"/>
+        <appender-ref ref="nginfo"/>
+        <appender-ref ref="ngdebug"/>
+        <appender-ref ref="ngtrace"/>
+    </logger>
+    <root level="TRACE">
+        <!--         <appender-ref ref="mysql"/> -->
+    </root>
+</configuration>
